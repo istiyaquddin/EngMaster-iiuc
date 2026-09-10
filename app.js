@@ -300,6 +300,34 @@ function initSidebar() {
   if (sidebarClose) sidebarClose.addEventListener('click', closeSidebar);
   if (sidebarOverlay) sidebarOverlay.addEventListener('click', closeSidebar);
 
+  // Mobile Bottom Navigation Menu Toggle Button
+  const bottomMenuBtn = document.getElementById('bottom-nav-menu-btn');
+  if (bottomMenuBtn && sidebar) {
+    bottomMenuBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (sidebar.classList.contains('open')) {
+        closeSidebar();
+      } else {
+        openSidebar();
+      }
+    });
+  }
+
+  // Floating Back-to-Top Button
+  const fabTop = document.getElementById('mobile-back-to-top');
+  if (fabTop) {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 280) {
+        fabTop.classList.add('visible');
+      } else {
+        fabTop.classList.remove('visible');
+      }
+    }, { passive: true });
+    fabTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
   // Close on Escape key
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
@@ -376,7 +404,16 @@ function switchView(viewId) {
       item.classList.add('active');
     }
   });
+
+  // Synchronize Mobile Bottom Navigation active states
+  document.querySelectorAll('.bottom-nav-item').forEach(item => {
+    item.classList.remove('active');
+    if (item.getAttribute('data-view-target') === viewId) {
+      item.classList.add('active');
+    }
+  });
 }
+window.switchView = switchView;
 
 function loadModuleContent(mod) {
   const container = document.getElementById('module-reader-container');
@@ -1415,7 +1452,7 @@ function initWritingWorkshop() {
 
   tabsContainer.innerHTML = templates.map((t, idx) => `
     <button class="passage-tab-btn ${idx === 0 ? 'active' : ''}" data-wt-idx="${idx}">
-      ${t.category}: ${t.title.substring(0, 24)}...
+      ${t.title}
     </button>
   `).join('');
 

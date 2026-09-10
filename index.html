@@ -1421,6 +1421,35 @@
     </main>
   </div>
 
+  <!-- Floating Mobile Bottom Navigation Dock (Visible on Mobile <= 768px) -->
+  <nav id="mobile-bottom-nav" class="mobile-bottom-nav" aria-label="Mobile Navigation">
+    <button class="bottom-nav-item active" data-view-target="view-dashboard" aria-label="Home Dashboard">
+      <i class="fas fa-chart-pie"></i>
+      <span>Home</span>
+    </button>
+    <button class="bottom-nav-item" data-view-target="view-midterm" aria-label="Midterm Hub">
+      <i class="fas fa-book-reader"></i>
+      <span>Midterm</span>
+    </button>
+    <button class="bottom-nav-item" data-view-target="view-final-exam" aria-label="Final Exam Hub">
+      <i class="fas fa-graduation-cap"></i>
+      <span>Final SEE</span>
+    </button>
+    <button class="bottom-nav-item" data-view-target="view-practice-zone" aria-label="Practice Zone">
+      <i class="fas fa-vial"></i>
+      <span>Practice</span>
+    </button>
+    <button class="bottom-nav-item" id="bottom-nav-menu-btn" aria-label="More Menu & Modules">
+      <i class="fas fa-bars"></i>
+      <span>Menu</span>
+    </button>
+  </nav>
+
+  <!-- Mobile Floating Back-to-Top Button -->
+  <button id="mobile-back-to-top" class="mobile-fab-btn" aria-label="Back to top" title="Scroll to top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
   <!-- Application Scripts -->
   <script src="data.js"></script>
   <script src="app.js"></script>

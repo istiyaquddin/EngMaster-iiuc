@@ -2343,6 +2343,8 @@ body.sidebar-locked {
   #main-wrapper {
     margin-left: 0;
     width: 100%;
+    max-width: 100%;
+    min-width: 0;
   }
   #mobile-toggle {
     display: flex;
@@ -2402,8 +2404,124 @@ body.sidebar-locked {
   }
 }
 
+/* ==========================================================================
+   Mobile Bottom Navigation Dock & Floating Quick Action (Base Styles)
+   ========================================================================== */
+.mobile-bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  background: rgba(15, 23, 42, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid var(--border-subtle);
+  display: none;
+  align-items: center;
+  justify-content: space-around;
+  z-index: 99;
+  padding: 0 4px env(safe-area-inset-bottom, 0px);
+  box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.45);
+}
+
+[data-theme="light"] .mobile-bottom-nav {
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.bottom-nav-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  height: 100%;
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  padding: 6px 2px;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.bottom-nav-item i {
+  font-size: 18px;
+  transition: transform var(--transition-fast);
+}
+
+.bottom-nav-item span {
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: -0.2px;
+}
+
+.bottom-nav-item:active {
+  transform: scale(0.92);
+}
+
+.bottom-nav-item.active {
+  color: var(--primary);
+}
+
+.bottom-nav-item.active i {
+  transform: translateY(-2px);
+  filter: drop-shadow(0 2px 8px var(--primary-glow));
+}
+
+.mobile-fab-btn {
+  position: fixed;
+  bottom: 76px;
+  right: 14px;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-full);
+  background: var(--gradient-brand);
+  color: #fff;
+  border: none;
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  cursor: pointer;
+  z-index: 98;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(16px);
+  transition: all var(--transition-normal);
+}
+
+.mobile-fab-btn.visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.mobile-fab-btn:active {
+  transform: scale(0.92);
+}
+
 /* 3. Small Tablets & Phablets (max-width: 768px) */
 @media (max-width: 768px) {
+  #main-wrapper {
+    margin-left: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+  #content-area {
+    padding: 18px 14px 84px !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  .mobile-bottom-nav {
+    display: flex !important;
+  }
+
   .hero-card > div:first-child,
   .hero-banner > div:first-child {
     flex-direction: column;
@@ -2434,8 +2552,13 @@ body.sidebar-locked {
     width: 100%;
   }
   
-  /* Horizontal Touch-Scrollable Tabs for all tab bars */
-  .passage-tabs {
+  /* Horizontal Touch-Scrollable Tabs with momentum */
+  .passage-tabs,
+  .filter-pills,
+  .quick-pills,
+  #midterm-tabs,
+  #final-exam-tabs,
+  #practice-zone-tabs {
     display: flex !important;
     flex-wrap: nowrap !important;
     overflow-x: auto !important;
@@ -2443,38 +2566,28 @@ body.sidebar-locked {
     scrollbar-width: none !important;
     padding-bottom: 6px !important;
     gap: 8px !important;
-    margin-bottom: 18px !important;
+    margin-bottom: 16px !important;
   }
-  .passage-tabs::-webkit-scrollbar {
+  .passage-tabs::-webkit-scrollbar,
+  .filter-pills::-webkit-scrollbar,
+  .quick-pills::-webkit-scrollbar,
+  #midterm-tabs::-webkit-scrollbar,
+  #final-exam-tabs::-webkit-scrollbar,
+  #practice-zone-tabs::-webkit-scrollbar {
     display: none !important;
   }
-  .passage-tab-btn {
+  .passage-tab-btn,
+  .filter-btn,
+  .pill-btn,
+  #midterm-tabs button,
+  #final-exam-tabs button,
+  #practice-zone-tabs button {
     flex-shrink: 0 !important;
     white-space: nowrap !important;
     padding: 8px 14px !important;
     font-size: 13px !important;
     min-height: 40px !important;
     border-radius: var(--radius-sm) !important;
-  }
-
-  /* Horizontal Touch-Scrollable Category Filter Pills */
-  .filter-pills {
-    display: flex !important;
-    flex-wrap: nowrap !important;
-    overflow-x: auto !important;
-    -webkit-overflow-scrolling: touch !important;
-    scrollbar-width: none !important;
-    padding-bottom: 6px !important;
-    gap: 6px !important;
-  }
-  .filter-pills::-webkit-scrollbar {
-    display: none !important;
-  }
-  .filter-btn {
-    flex-shrink: 0 !important;
-    white-space: nowrap !important;
-    padding: 6px 13px !important;
-    font-size: 12.5px !important;
   }
 
   .grid-cards {
@@ -2558,7 +2671,7 @@ body.sidebar-locked {
   }
   #top-header {
     padding: 0 12px;
-    height: 58px;
+    height: 56px;
   }
   .header-left {
     gap: 8px;
@@ -2568,40 +2681,56 @@ body.sidebar-locked {
   .search-box {
     flex: 1;
     min-width: 0;
+    position: relative;
   }
   .search-box input {
     height: 36px;
     padding: 0 12px 0 34px;
     font-size: 13px;
     width: 100%;
+    border-radius: var(--radius-full);
   }
   .search-icon {
-    left: 11px;
+    left: 12px;
     font-size: 13px;
+  }
+  /* Full-width anchored search results on mobile */
+  .search-results-dropdown {
+    position: fixed !important;
+    top: 58px !important;
+    left: 10px !important;
+    right: 10px !important;
+    width: auto !important;
+    max-height: 72vh !important;
+    border-radius: var(--radius-md) !important;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7) !important;
+    z-index: 1000 !important;
   }
   .header-actions {
     gap: 6px;
     flex-shrink: 0;
   }
   .btn-icon {
-    width: 34px;
-    height: 34px;
+    width: 36px;
+    height: 36px;
     font-size: 13px;
+    border-radius: var(--radius-full);
   }
   #content-area {
-    padding: 14px 10px;
+    padding: 14px 10px 84px !important;
   }
   
   /* Hero Cards & Banners on Mobile */
   .hero-card,
   .hero-banner {
-    padding: 16px 14px;
+    padding: 18px 14px;
     margin-bottom: 14px;
     border-radius: var(--radius-md);
   }
   .hero-title {
     font-size: clamp(18px, 5.5vw, 22px);
     margin-bottom: 8px;
+    line-height: 1.3;
   }
   .hero-desc,
   .hero-subtitle {
@@ -2613,31 +2742,54 @@ body.sidebar-locked {
     font-size: 11px;
     padding: 3px 9px;
     margin-bottom: 10px;
+    line-height: 1.4;
+    white-space: normal;
   }
+  
+  /* Hero Stats: Modern 2-Column Compact Grid */
   .hero-stats {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 8px;
-    padding-top: 14px;
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 8px !important;
+    padding-top: 14px !important;
   }
   .hero-stats .stat-box:last-child {
-    grid-column: span 2;
+    grid-column: span 2 !important;
   }
   .stat-box {
-    padding: 8px 10px;
-    border-radius: var(--radius-sm);
+    padding: 10px 12px !important;
+    border-radius: var(--radius-sm) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    min-height: 58px !important;
   }
   .stat-val {
-    font-size: 17px;
-    font-weight: 700;
+    font-size: 17px !important;
+    font-weight: 700 !important;
+    line-height: 1.2 !important;
   }
   .stat-label {
-    font-size: 10px;
-    line-height: 1.3;
+    font-size: 10.5px !important;
+    line-height: 1.25 !important;
+    color: var(--text-muted) !important;
   }
+  
+  /* Midterm & Final Exam Hub Hero Stats (2x2 Grid) */
+  .hero-banner .hero-stats {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 8px !important;
+  }
+  .hero-banner .hero-stats .stat-box,
+  .hero-banner .hero-stats .stat-box:last-child {
+    grid-column: span 1 !important;
+  }
+
   .clock-unit span {
     font-size: 17px;
     min-width: 36px;
-    padding: 3px 6px;
+    padding: 4px 6px;
   }
   .clock-unit small {
     font-size: 9px;
@@ -2750,10 +2902,17 @@ body.sidebar-locked {
 
   /* Mock Test Suite on Mobile */
   .mock-track-selector {
-    grid-template-columns: 1fr;
-    gap: 10px;
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important;
+    gap: 10px !important;
   }
+  .mock-track-selector::-webkit-scrollbar { display: none !important; }
   .track-card {
+    flex-shrink: 0;
+    min-width: 160px;
     padding: 12px 14px;
   }
   .mock-test-header {
@@ -2789,9 +2948,9 @@ body.sidebar-locked {
     font-size: 11.5px;
   }
   .mcq-option {
-    min-height: 44px;
-    padding: 10px 12px;
-    font-size: 13.5px;
+    min-height: 48px;
+    padding: 11px 14px;
+    font-size: 14px;
   }
   .quiz-header {
     flex-direction: column;
@@ -2822,7 +2981,7 @@ body.sidebar-locked {
     padding: 9px 12px;
   }
   .toast-container {
-    bottom: 12px;
+    bottom: 74px;
     right: 12px;
     left: 12px;
   }
@@ -2856,25 +3015,25 @@ body.sidebar-locked {
     gap: 6px;
   }
   #mobile-toggle {
-    width: 32px;
-    height: 32px;
+    width: 34px;
+    height: 34px;
     font-size: 13px;
   }
   .search-box input {
     font-size: 12px;
-    height: 32px;
-    padding: 0 8px 0 28px;
+    height: 34px;
+    padding: 0 8px 0 30px;
   }
   .search-icon {
-    left: 8px;
+    left: 9px;
     font-size: 11px;
   }
   .header-actions {
     gap: 4px;
   }
   .btn-icon {
-    width: 30px;
-    height: 30px;
+    width: 32px;
+    height: 32px;
     font-size: 12px;
   }
   .btn-primary[data-view-target="view-mock-test"] {
@@ -2882,25 +3041,27 @@ body.sidebar-locked {
     font-size: 12px;
   }
   #content-area {
-    padding: 10px 6px;
+    padding: 12px 8px 84px !important;
   }
   
-  /* Stat boxes on extra small devices: 1 col if cramped */
+  /* Keep 2-column stats on extra small devices */
   .hero-stats {
-    grid-template-columns: 1fr;
-    gap: 6px;
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 6px !important;
   }
   .hero-stats .stat-box:last-child {
-    grid-column: span 1;
+    grid-column: span 2 !important;
   }
   .stat-box {
-    padding: 8px 10px;
+    padding: 8px 10px !important;
+    min-height: 54px !important;
   }
   .stat-val {
-    font-size: 16px;
+    font-size: 16px !important;
   }
   .stat-label {
-    font-size: 10.5px;
+    font-size: 10px !important;
   }
   
   /* Countdown clock on extra small devices */
@@ -2917,8 +3078,8 @@ body.sidebar-locked {
     gap: 4px;
   }
   .filter-btn {
-    padding: 4px 9px;
-    font-size: 11px;
+    padding: 5px 10px;
+    font-size: 11.5px;
   }
   .hero-tag {
     font-size: 10px;
@@ -2936,6 +3097,42 @@ body.sidebar-locked {
     width: 30px;
     height: 30px;
     font-size: 11px;
+  }
+}
+
+/* 6. Ultra-Compact Devices (max-width: 360px) */
+@media (max-width: 360px) {
+  #top-header {
+    padding: 0 6px;
+    height: 50px;
+  }
+  .header-left {
+    gap: 4px;
+  }
+  .search-box input {
+    font-size: 11.5px;
+    padding: 0 6px 0 26px;
+  }
+  .search-icon {
+    left: 8px;
+    font-size: 10px;
+  }
+  .btn-icon {
+    width: 28px;
+    height: 28px;
+    font-size: 11px;
+  }
+  .stat-val {
+    font-size: 14.5px !important;
+  }
+  .stat-label {
+    font-size: 9px !important;
+  }
+  .bottom-nav-item i {
+    font-size: 16px;
+  }
+  .bottom-nav-item span {
+    font-size: 9.5px;
   }
 }
 
