@@ -737,7 +737,8 @@ body.sidebar-locked {
 /* ==========================================================================
    Dashboard Widgets & Components
    ========================================================================== */
-.hero-card {
+.hero-card,
+.hero-banner {
   background: var(--bg-card);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-lg);
@@ -748,7 +749,8 @@ body.sidebar-locked {
   box-shadow: var(--shadow-md);
 }
 
-.hero-card::before {
+.hero-card::before,
+.hero-banner::before {
   content: '';
   position: absolute;
   top: -100px;
@@ -786,7 +788,8 @@ body.sidebar-locked {
   line-height: 1.25;
 }
 
-.hero-desc {
+.hero-desc,
+.hero-subtitle {
   color: var(--text-muted);
   font-size: 14.5px;
   max-width: 780px;
@@ -2401,8 +2404,15 @@ body.sidebar-locked {
 
 /* 3. Small Tablets & Phablets (max-width: 768px) */
 @media (max-width: 768px) {
-  .hero-card > div:first-child {
+  .hero-card > div:first-child,
+  .hero-banner > div:first-child {
     flex-direction: column;
+  }
+  .hero-card,
+  .hero-banner {
+    padding: 22px 18px;
+    margin-bottom: 20px;
+    border-radius: var(--radius-md);
   }
   .exam-countdown-widget {
     width: 100%;
@@ -2414,7 +2424,59 @@ body.sidebar-locked {
   .quick-revision-bar {
     padding: 10px 14px;
     margin-bottom: 18px;
+    flex-wrap: wrap;
+    gap: 8px;
   }
+  .quick-revision-bar .quick-links-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    width: 100%;
+  }
+  
+  /* Horizontal Touch-Scrollable Tabs for all tab bars */
+  .passage-tabs {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important;
+    padding-bottom: 6px !important;
+    gap: 8px !important;
+    margin-bottom: 18px !important;
+  }
+  .passage-tabs::-webkit-scrollbar {
+    display: none !important;
+  }
+  .passage-tab-btn {
+    flex-shrink: 0 !important;
+    white-space: nowrap !important;
+    padding: 8px 14px !important;
+    font-size: 13px !important;
+    min-height: 40px !important;
+    border-radius: var(--radius-sm) !important;
+  }
+
+  /* Horizontal Touch-Scrollable Category Filter Pills */
+  .filter-pills {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important;
+    padding-bottom: 6px !important;
+    gap: 6px !important;
+  }
+  .filter-pills::-webkit-scrollbar {
+    display: none !important;
+  }
+  .filter-btn {
+    flex-shrink: 0 !important;
+    white-space: nowrap !important;
+    padding: 6px 13px !important;
+    font-size: 12.5px !important;
+  }
+
   .grid-cards {
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
     gap: 14px;
@@ -2427,6 +2489,11 @@ body.sidebar-locked {
     grid-template-columns: 1fr;
     gap: 10px;
   }
+  .summary-workspace-grid,
+  .writing-dual-workspace {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
   .summary-studio {
     padding: 20px 16px;
   }
@@ -2437,22 +2504,39 @@ body.sidebar-locked {
   .summary-counter-bar {
     flex-direction: column;
     align-items: flex-start;
-    gap: 8px;
+    gap: 10px;
   }
+  .summary-counter-bar > div:last-child {
+    width: 100%;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .summary-counter-bar > div:last-child button {
+    flex: 1 1 auto;
+    min-width: 110px;
+    justify-content: center;
+  }
+
   /* Table horizontal scroll handling on touch devices */
-  .reader-article table {
+  .reader-article table,
+  #module-reader-container table,
+  #midterm-prescribed-container table,
+  #final-grammar-container table {
     display: block;
     width: 100%;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     border-collapse: collapse;
   }
-  .reader-article th, .reader-article td {
+  .reader-article th, .reader-article td,
+  #module-reader-container th, #module-reader-container td {
     padding: 8px 10px;
     font-size: 12.5px;
     white-space: nowrap;
   }
-  .reader-article table th:first-child, .reader-article table td:first-child {
+  .reader-article table th:first-child, .reader-article table td:first-child,
+  #module-reader-container table th:first-child, #module-reader-container table td:first-child {
     white-space: normal;
     min-width: 100px;
   }
@@ -2474,14 +2558,22 @@ body.sidebar-locked {
   }
   #top-header {
     padding: 0 12px;
+    height: 58px;
   }
   .header-left {
     gap: 8px;
+    flex: 1;
+    min-width: 0;
+  }
+  .search-box {
+    flex: 1;
+    min-width: 0;
   }
   .search-box input {
     height: 36px;
     padding: 0 12px 0 34px;
     font-size: 13px;
+    width: 100%;
   }
   .search-icon {
     left: 11px;
@@ -2489,6 +2581,7 @@ body.sidebar-locked {
   }
   .header-actions {
     gap: 6px;
+    flex-shrink: 0;
   }
   .btn-icon {
     width: 34px;
@@ -2498,9 +2591,28 @@ body.sidebar-locked {
   #content-area {
     padding: 14px 10px;
   }
-  .hero-card {
+  
+  /* Hero Cards & Banners on Mobile */
+  .hero-card,
+  .hero-banner {
     padding: 16px 14px;
     margin-bottom: 14px;
+    border-radius: var(--radius-md);
+  }
+  .hero-title {
+    font-size: clamp(18px, 5.5vw, 22px);
+    margin-bottom: 8px;
+  }
+  .hero-desc,
+  .hero-subtitle {
+    font-size: 13px;
+    line-height: 1.5;
+    margin-bottom: 14px;
+  }
+  .hero-tag {
+    font-size: 11px;
+    padding: 3px 9px;
+    margin-bottom: 10px;
   }
   .hero-stats {
     grid-template-columns: repeat(2, 1fr);
@@ -2511,13 +2623,16 @@ body.sidebar-locked {
     grid-column: span 2;
   }
   .stat-box {
-    padding: 10px 12px;
+    padding: 8px 10px;
+    border-radius: var(--radius-sm);
   }
   .stat-val {
-    font-size: 18px;
+    font-size: 17px;
+    font-weight: 700;
   }
   .stat-label {
-    font-size: 10.5px;
+    font-size: 10px;
+    line-height: 1.3;
   }
   .clock-unit span {
     font-size: 17px;
@@ -2527,35 +2642,156 @@ body.sidebar-locked {
   .clock-unit small {
     font-size: 9px;
   }
-  .grid-cards {
-    grid-template-columns: 1fr;
-  }
-  .card-feature {
-    padding: 16px 14px;
-  }
-  .vocab-grid, .notes-grid {
-    grid-template-columns: 1fr;
+  
+  /* Layout Grids */
+  .grid-cards,
+  .smart-notes-grid,
+  .vocab-grid,
+  .notes-grid {
+    grid-template-columns: 1fr !important;
     gap: 12px;
   }
-  .modal-card {
-    max-width: 95vw;
-    margin: 8px;
+  .card-feature {
+    padding: 14px 12px;
   }
-  .modal-header {
-    padding: 12px 16px;
+  
+  /* Inputs in Catalog Headers */
+  #rules-search-input,
+  #mistakes-search-input,
+  #vocab-search-input {
+    min-width: 0 !important;
+    width: 100% !important;
+    padding: 9px 12px !important;
+    font-size: 13.5px !important;
   }
-  .modal-body {
-    padding: 16px;
+  .catalog-counter-pill {
+    font-size: 11px;
+    padding: 4px 9px;
+    align-self: flex-start;
   }
-  .toast {
-    max-width: 90vw;
+  
+  /* Practice Zone & Drills */
+  .mistake-card,
+  .mcq-card,
+  .mock-q-card,
+  .rule-card,
+  .pq-card {
+    padding: 14px 12px;
+    gap: 10px;
+    border-radius: var(--radius-sm);
+  }
+  .mistake-header {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .mistake-row {
+    flex-direction: column;
+    gap: 4px;
+    padding: 8px 10px;
+    font-size: 13px;
+  }
+  .mistake-row i {
+    margin-top: 0;
+  }
+  .mistake-expl {
+    padding: 8px 10px;
     font-size: 12.5px;
-    padding: 10px 14px;
   }
-  .toast-container {
-    bottom: 16px;
-    right: 16px;
-    left: 16px;
+  
+  /* Buttons inside cards */
+  .card-actions,
+  .drill-actions,
+  .pz-action-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    width: 100%;
+  }
+  .card-actions button,
+  .drill-actions button,
+  .pz-action-row button {
+    flex: 1 1 auto;
+    justify-content: center;
+    min-width: 110px;
+    font-size: 12.5px;
+    padding: 8px 10px;
+  }
+  
+  /* Reader Article Formatting on Mobile */
+  .reader-article {
+    padding: 16px 12px !important;
+    border-radius: var(--radius-sm) !important;
+    line-height: 1.65 !important;
+  }
+  .reader-article h1 { font-size: 20px !important; margin-bottom: 12px !important; }
+  .reader-article h2 { font-size: 17px !important; margin: 18px 0 10px !important; }
+  .reader-article h3 { font-size: 15px !important; margin: 14px 0 8px !important; }
+  .reader-article p { font-size: 14px !important; margin-bottom: 12px !important; }
+  .reader-article ul, .reader-article ol { padding-left: 20px !important; margin-bottom: 12px !important; }
+  .reader-article blockquote { padding: 8px 12px !important; font-size: 13px !important; margin: 12px 0 !important; }
+  
+  /* Module Reader Header Controls */
+  #view-module-reader > div:first-child {
+    flex-direction: column;
+    align-items: flex-start !important;
+    gap: 12px;
+  }
+  #view-module-reader > div:first-child > div:last-child {
+    width: 100%;
+    display: flex;
+    gap: 8px;
+  }
+  #view-module-reader > div:first-child > div:last-child button {
+    flex: 1;
+    justify-content: center;
+    font-size: 12.5px;
+    padding: 8px 10px;
+  }
+
+  /* Mock Test Suite on Mobile */
+  .mock-track-selector {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .track-card {
+    padding: 12px 14px;
+  }
+  .mock-test-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    padding: 12px 10px;
+  }
+  .mock-timer-box {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .mock-timer-clock {
+    font-size: 20px;
+  }
+  .mock-nav-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    width: 100%;
+  }
+  .mock-nav-actions button {
+    flex: 1 1 45%;
+    justify-content: center;
+    font-size: 12.5px;
+    padding: 8px 10px;
+  }
+  .pal-btn {
+    width: 32px;
+    height: 32px;
+    font-size: 11.5px;
+  }
+  .mcq-option {
+    min-height: 44px;
+    padding: 10px 12px;
+    font-size: 13.5px;
   }
   .quiz-header {
     flex-direction: column;
@@ -2566,54 +2802,140 @@ body.sidebar-locked {
     width: 100%;
     justify-content: space-between;
   }
-  .mcq-card, .mock-q-card, .rule-card, .mistake-card, .pq-card {
-    padding: 16px 12px;
+  
+  /* Modals & Dialogs */
+  .modal-card {
+    width: calc(100vw - 20px) !important;
+    max-width: calc(100vw - 20px) !important;
+    margin: 10px auto !important;
+    max-height: 88vh;
   }
-  .mcq-option {
-    min-height: 44px;
-    padding: 10px 12px;
-    font-size: 13.5px;
+  .modal-header {
+    padding: 12px 14px;
+  }
+  .modal-body {
+    padding: 14px;
+  }
+  .toast {
+    max-width: 92vw;
+    font-size: 12.5px;
+    padding: 9px 12px;
+  }
+  .toast-container {
+    bottom: 12px;
+    right: 12px;
+    left: 12px;
+  }
+  
+  /* Settings on Mobile */
+  .settings-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 12px 0;
+  }
+  .settings-control {
+    width: 100%;
+    justify-content: flex-start;
   }
 }
 
-/* 5. Extra Small Smartphones (max-width: 400px) */
-@media (max-width: 400px) {
+/* 5. Extra Small Smartphones (max-width: 420px) */
+@media (max-width: 420px) {
   .hide-mobile-sm {
     display: none !important;
   }
   .btn-label-responsive {
     display: none !important;
   }
-  .btn-primary[data-view-target="view-mock-test"] {
-    padding: 8px 12px;
-  }
   #top-header {
     padding: 0 8px;
+    height: 52px;
+  }
+  .header-left {
+    gap: 6px;
+  }
+  #mobile-toggle {
+    width: 32px;
+    height: 32px;
+    font-size: 13px;
+  }
+  .search-box input {
+    font-size: 12px;
+    height: 32px;
+    padding: 0 8px 0 28px;
+  }
+  .search-icon {
+    left: 8px;
+    font-size: 11px;
+  }
+  .header-actions {
+    gap: 4px;
+  }
+  .btn-icon {
+    width: 30px;
+    height: 30px;
+    font-size: 12px;
+  }
+  .btn-primary[data-view-target="view-mock-test"] {
+    padding: 6px 10px;
+    font-size: 12px;
   }
   #content-area {
     padding: 10px 6px;
   }
+  
+  /* Stat boxes on extra small devices: 1 col if cramped */
+  .hero-stats {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+  .hero-stats .stat-box:last-child {
+    grid-column: span 1;
+  }
+  .stat-box {
+    padding: 8px 10px;
+  }
+  .stat-val {
+    font-size: 16px;
+  }
+  .stat-label {
+    font-size: 10.5px;
+  }
+  
+  /* Countdown clock on extra small devices */
   .clock-unit span {
     font-size: 15px;
     min-width: 30px;
     padding: 2px 4px;
   }
   .countdown-clock {
-    gap: 6px;
+    gap: 4px;
   }
+  
   .filter-pills {
     gap: 4px;
   }
   .filter-btn {
-    padding: 4px 10px;
-    font-size: 11.5px;
+    padding: 4px 9px;
+    font-size: 11px;
   }
   .hero-tag {
-    font-size: 10.5px;
-    padding: 3px 8px;
+    font-size: 10px;
+    padding: 2px 7px;
   }
   .brand-text h1 {
-    font-size: 15px;
+    font-size: 14px;
+  }
+  .passage-tab-btn {
+    padding: 6px 10px !important;
+    font-size: 11.5px !important;
+    min-height: 36px !important;
+  }
+  .pal-btn {
+    width: 30px;
+    height: 30px;
+    font-size: 11px;
   }
 }
 
