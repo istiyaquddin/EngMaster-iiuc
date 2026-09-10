@@ -570,14 +570,19 @@
       <div class="hero-banner">
         <div class="hero-tag" style="background: rgba(245, 158, 11, 0.2); color: #fbbf24;"><i class="fas fa-vial"></i> Interactive Self-Assessment Arena</div>
         <h1 class="hero-title">Practice Zone & Interactive Drills</h1>
-        <p class="hero-subtitle">Master every examination skill through targeted, self-checking drills: Sentence Correction, Fill in the Blanks, Error Identification, and CQ Prompts with Instant Explanations.</p>
+        <p class="hero-subtitle">Master every examination skill through 9 targeted, self-checking drill modes: MCQs, CQs, Grammar, Reading, Writing, Sentence Correction, Fill in the Blanks, Error Identification, and Mixed Practice with instant explanations and scoring.</p>
       </div>
 
-      <div class="passage-tabs" id="practice-zone-tabs" style="margin-bottom: 24px;">
+      <div class="passage-tabs" id="practice-zone-tabs" style="margin-bottom: 24px; flex-wrap: wrap;">
         <button class="passage-tab-btn active" data-pz-tab="correction"><i class="fas fa-wrench"></i> Sentence Correction</button>
         <button class="passage-tab-btn" data-pz-tab="blanks"><i class="fas fa-edit"></i> Fill in the Blanks</button>
         <button class="passage-tab-btn" data-pz-tab="errors"><i class="fas fa-bug"></i> Error Identification</button>
+        <button class="passage-tab-btn" data-pz-tab="mcq"><i class="fas fa-check-circle"></i> MCQ Practice</button>
         <button class="passage-tab-btn" data-pz-tab="cq"><i class="fas fa-file-alt"></i> CQ Analytical Practice</button>
+        <button class="passage-tab-btn" data-pz-tab="grammar"><i class="fas fa-spell-check"></i> Grammar Drills</button>
+        <button class="passage-tab-btn" data-pz-tab="reading"><i class="fas fa-glasses"></i> Reading Drills</button>
+        <button class="passage-tab-btn" data-pz-tab="writing"><i class="fas fa-pen-nib"></i> Writing Drills</button>
+        <button class="passage-tab-btn" data-pz-tab="mixed"><i class="fas fa-random"></i> Mixed Practice Arena</button>
       </div>
 
       <div id="pz-tab-correction" class="pz-tab-content">
@@ -598,8 +603,38 @@
         </div>
       </div>
 
+      <div id="pz-tab-mcq" class="pz-tab-content" style="display: none;">
+        <div id="pz-mcq-container" class="mistakes-container">
+          <!-- Injected via app.js -->
+        </div>
+      </div>
+
       <div id="pz-tab-cq" class="pz-tab-content" style="display: none;">
         <div id="pz-cq-container">
+          <!-- Injected via app.js -->
+        </div>
+      </div>
+
+      <div id="pz-tab-grammar" class="pz-tab-content" style="display: none;">
+        <div id="pz-grammar-container" class="mistakes-container">
+          <!-- Injected via app.js -->
+        </div>
+      </div>
+
+      <div id="pz-tab-reading" class="pz-tab-content" style="display: none;">
+        <div id="pz-reading-container">
+          <!-- Injected via app.js -->
+        </div>
+      </div>
+
+      <div id="pz-tab-writing" class="pz-tab-content" style="display: none;">
+        <div id="pz-writing-container">
+          <!-- Injected via app.js -->
+        </div>
+      </div>
+
+      <div id="pz-tab-mixed" class="pz-tab-content" style="display: none;">
+        <div id="pz-mixed-container" class="mistakes-container">
           <!-- Injected via app.js -->
         </div>
       </div>

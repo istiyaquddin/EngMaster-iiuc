@@ -2398,6 +2398,9 @@ function renderMarkdown(md) {
 /* ==========================================================================
    MIDTERM ACADEMIC HUB CONTROLLER (CIE 50 MARKS / MIDTERM 30 MARKS)
    ========================================================================== */
+/* ==========================================================================
+   MIDTERM HUB CONTROLLER (CIE 50 MARKS / MIDTERM 30 MARKS)
+   ========================================================================== */
 function initMidtermHub() {
   const tabs = document.querySelectorAll('#midterm-section-tabs .passage-tab-btn');
   const prescribedContainer = document.getElementById('midterm-prescribed-container');
@@ -2425,93 +2428,169 @@ function initMidtermHub() {
     });
   });
 
-  // Render Section 1: Prescribed Reading
+  // Render Section 1: Prescribed Reading (All 4 Modules with complete 9-point structure)
   if (prescribedContainer && data.prescribedReading) {
     prescribedContainer.innerHTML = data.prescribedReading.map((pr, idx) => `
-      <div class="reader-article" style="margin-bottom: 24px;">
+      <div class="reader-article" style="margin-bottom: 28px;">
         <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 10px; margin-bottom: 12px;">
           <div>
             <span class="hero-tag" style="background: rgba(59, 130, 246, 0.2); color: #60a5fa;"><i class="fas fa-bookmark"></i> ${pr.source}</span>
-            <h3 style="margin: 4px 0 6px; font-size: 20px;">${pr.title}</h3>
-            <div style="font-size: 13px; color: var(--text-muted);"><strong>Scope:</strong> ${pr.coverage}</div>
+            <h3 style="margin: 6px 0 4px; font-size: 21px;">${pr.title}</h3>
+            ${pr.coverage ? `<div style="font-size: 13px; color: var(--text-muted);"><strong>Coverage:</strong> ${pr.coverage}</div>` : ''}
           </div>
-          <button class="btn-text-sm" onclick="toggleBookmark('mid-${pr.id}', 'Midterm Reading', '${escapeHtml(pr.title)}', '${escapeHtml(pr.coverage)}')">
+          <button class="btn-text-sm" onclick="toggleBookmark('mid-${pr.id}', 'Midterm Reading', '${escapeHtml(pr.title)}', '${escapeHtml(pr.source)}')">
             <i class="far fa-bookmark" style="color: var(--accent-amber);"></i> Bookmark
           </button>
         </div>
 
-        <p style="font-size: 14px; line-height: 1.6; color: var(--text-main); margin-bottom: 14px;">${pr.summary}</p>
-
-        <!-- Important Vocabulary Table -->
-        <h4 style="font-size: 15px; color: var(--accent-cyan); margin: 16px 0 8px;"><i class="fas fa-spell-check"></i> High-Yield Vocabulary:</h4>
-        <div style="overflow-x: auto; margin-bottom: 16px;">
-          <table class="reader-table" style="width: 100%; font-size: 13px;">
-            <thead><tr><th>Term</th><th>Part of Speech</th><th>Meaning</th><th>Synonym / Antonym</th><th>Exam Exemplar</th></tr></thead>
-            <tbody>
-              ${pr.importantVocabulary.map(v => `
-                <tr>
-                  <td><strong>${v.word}</strong></td>
-                  <td><span class="nav-badge" style="font-size: 10px;">${v.pos}</span></td>
-                  <td>${v.meaning}</td>
-                  <td><small style="color: var(--accent-emerald);">Syn: ${v.synonym}</small><br><small style="color: var(--accent-rose);">Ant: ${v.antonym}</small></td>
-                  <td><em>"${v.example}"</em></td>
-                </tr>
-              `).join('')}
-            </tbody>
-          </table>
+        <!-- 1. Introduction -->
+        <div style="background: var(--bg-surface); padding: 12px 16px; border-left: 3px solid var(--primary); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; margin-bottom: 14px; font-size: 13.5px; line-height: 1.6;">
+          <strong style="color: var(--primary);"><i class="fas fa-info-circle"></i> Introduction:</strong> ${pr.introduction || 'Prescribed foundational reading comprehension text.'}
         </div>
 
-        <!-- Important Questions & Model Answers -->
-        <h4 style="font-size: 15px; color: var(--accent-emerald); margin: 16px 0 8px;"><i class="fas fa-question-circle"></i> Examination Comprehension & Model Answers:</h4>
-        <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 16px;">
-          ${pr.importantQuestions.map((q, qIdx) => `
-            <div style="background: var(--bg-surface); padding: 12px 16px; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle);">
-              <div style="font-size: 11px; font-weight: 700; color: var(--primary);">QUESTION #${qIdx + 1} (${q.type || 'Comprehension'})</div>
-              <div style="font-size: 14px; font-weight: 600; margin: 2px 0 6px;">${q.q}</div>
-              <div style="background: rgba(16, 185, 129, 0.08); padding: 8px 12px; border-left: 3px solid var(--accent-emerald); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; font-size: 13px;">
-                <strong>Model Answer:</strong> ${q.a}
-              </div>
-            </div>
-          `).join('')}
-        </div>
+        <!-- 2. Summary -->
+        <h4 style="font-size: 15px; color: var(--accent-cyan); margin: 14px 0 6px;"><i class="fas fa-align-left"></i> Summary & Core Thematic Overview:</h4>
+        <p style="font-size: 14px; line-height: 1.6; color: var(--text-main); margin-bottom: 16px;">${pr.summary}</p>
 
-        <!-- Practice MCQ Box -->
-        <h4 style="font-size: 15px; color: var(--accent-amber); margin: 16px 0 8px;"><i class="fas fa-tasks"></i> Midterm Practice Drill:</h4>
-        <div style="display: flex; flex-direction: column; gap: 10px;">
-          ${pr.practiceMCQ.map((mcq, mIdx) => `
-            <div style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 12px 14px;">
-              <div style="font-size: 13.5px; font-weight: 600; margin-bottom: 8px;">Q${mIdx + 1}: ${mcq.q}</div>
-              <div style="display: flex; gap: 8px; flex-wrap: wrap;">
-                ${mcq.options.map(opt => `
-                  <button class="btn-sm btn-outline" onclick="checkMidMCQ(this, '${escapeHtml(opt)}', '${escapeHtml(mcq.answer)}', '${escapeHtml(mcq.explanation)}')">${opt}</button>
+        <!-- 3. Important Vocabulary -->
+        ${pr.importantVocabulary && pr.importantVocabulary.length ? `
+          <h4 style="font-size: 15px; color: var(--accent-cyan); margin: 16px 0 8px;"><i class="fas fa-spell-check"></i> Important Examination Vocabulary:</h4>
+          <div style="overflow-x: auto; margin-bottom: 16px;">
+            <table class="reader-table" style="width: 100%; font-size: 13px;">
+              <thead><tr><th>Word</th><th>POS</th><th>Meaning</th><th>Synonym / Antonym</th><th>Example Sentence</th></tr></thead>
+              <tbody>
+                ${pr.importantVocabulary.map(v => `
+                  <tr>
+                    <td><strong>${v.word}</strong></td>
+                    <td><span class="nav-badge" style="font-size: 10px;">${v.pos || 'Noun'}</span></td>
+                    <td>${v.meaning}</td>
+                    <td><small style="color: var(--accent-emerald);">Syn: ${v.synonym || 'N/A'}</small><br><small style="color: var(--accent-rose);">Ant: ${v.antonym || 'N/A'}</small></td>
+                    <td><em>"${v.example}"</em></td>
+                  </tr>
                 `).join('')}
+              </tbody>
+            </table>
+          </div>
+        ` : ''}
+
+        <!-- 4. Important Questions & Model Answers -->
+        ${pr.importantQuestions && pr.importantQuestions.length ? `
+          <h4 style="font-size: 15px; color: var(--accent-emerald); margin: 16px 0 8px;"><i class="fas fa-question-circle"></i> Important Questions & Model Answers:</h4>
+          <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 16px;">
+            ${pr.importantQuestions.map((q, qIdx) => `
+              <div style="background: var(--bg-surface); padding: 12px 16px; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle);">
+                <div style="font-size: 11px; font-weight: 700; color: var(--primary);">QUESTION #${qIdx + 1} (${q.type || 'Comprehension'})</div>
+                <div style="font-size: 14px; font-weight: 600; margin: 2px 0 6px;">${q.q}</div>
+                <div style="background: rgba(16, 185, 129, 0.08); padding: 8px 12px; border-left: 3px solid var(--accent-emerald); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; font-size: 13px;">
+                  <strong>Model Answer:</strong> ${q.a}
+                </div>
               </div>
-              <div class="mid-mcq-expl" style="font-size: 12.5px; margin-top: 8px; display: none;"></div>
-            </div>
-          `).join('')}
-        </div>
+            `).join('')}
+          </div>
+        ` : ''}
+
+        <!-- 5. 50-Word Precision Model Answers -->
+        ${pr.modelAnswers && pr.modelAnswers.length ? `
+          <h4 style="font-size: 15px; color: var(--accent-purple); margin: 16px 0 8px;"><i class="fas fa-feather-alt"></i> Model Answers (Precision Summaries):</h4>
+          <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 16px;">
+            ${pr.modelAnswers.map(ma => `
+              <div style="background: var(--bg-surface); padding: 12px 16px; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle);">
+                <div style="font-size: 13.5px; font-weight: 600; margin-bottom: 6px;">${ma.question}</div>
+                <div style="font-size: 13px; line-height: 1.6; color: var(--text-main); font-style: italic;">"${ma.answer}"</div>
+                ${ma.wordCount ? `<div style="font-size: 11px; color: var(--text-faint); margin-top: 4px;">Word count: <strong>${ma.wordCount} words</strong> (Strict 45–50 Word Criteria)</div>` : ''}
+              </div>
+            `).join('')}
+          </div>
+        ` : ''}
+
+        <!-- 6. Practice Drills -->
+        ${pr.practice && pr.practice.length ? `
+          <h4 style="font-size: 15px; color: var(--accent-cyan); margin: 16px 0 8px;"><i class="fas fa-pencil-alt"></i> Guided Practice Task:</h4>
+          <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 16px;">
+            ${pr.practice.map((p, pIdx) => `
+              <div style="background: var(--bg-surface); padding: 12px 14px; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle);">
+                <div style="font-size: 13.5px; font-weight: 600;">${p.task}</div>
+                <div style="margin-top: 6px; font-size: 12.5px; color: var(--accent-emerald);"><strong>Solution:</strong> ${p.solution}</div>
+              </div>
+            `).join('')}
+          </div>
+        ` : ''}
+
+        <!-- 7. Practice MCQ -->
+        ${pr.practiceMCQ && pr.practiceMCQ.length ? `
+          <h4 style="font-size: 15px; color: var(--accent-amber); margin: 16px 0 8px;"><i class="fas fa-tasks"></i> Multiple Choice Practice (MCQ):</h4>
+          <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 16px;">
+            ${pr.practiceMCQ.map((mcq, mIdx) => `
+              <div style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 12px 14px;">
+                <div style="font-size: 13.5px; font-weight: 600; margin-bottom: 8px;">Q${mIdx + 1}: ${mcq.q}</div>
+                <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                  ${mcq.options.map(opt => `
+                    <button class="btn-sm btn-outline" onclick="checkMidMCQ(this, '${escapeHtml(opt)}', '${escapeHtml(mcq.answer)}', '${escapeHtml(mcq.explanation)}')">${opt}</button>
+                  `).join('')}
+                </div>
+                <div class="mid-mcq-expl" style="font-size: 12.5px; margin-top: 8px; display: none;"></div>
+              </div>
+            `).join('')}
+          </div>
+        ` : ''}
+
+        <!-- 8. Creative/Comprehension Question (CQ) -->
+        ${pr.practiceCQ && pr.practiceCQ.length ? `
+          <h4 style="font-size: 15px; color: var(--accent-rose); margin: 16px 0 8px;"><i class="fas fa-file-invoice"></i> Comprehension & Creative Question (CQ):</h4>
+          <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 16px;">
+            ${pr.practiceCQ.map((cq, cIdx) => `
+              <div style="background: var(--bg-surface); padding: 12px 16px; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle);">
+                <div style="font-size: 13.5px; font-weight: 600; margin-bottom: 6px;">${cq.prompt}</div>
+                ${cq.modelAnswer ? `<div style="font-size: 13px; color: var(--text-muted); line-height: 1.5; background: rgba(99, 102, 241, 0.06); padding: 8px 12px; border-radius: var(--radius-sm);"><strong>Model Evaluation:</strong> ${cq.modelAnswer}</div>` : ''}
+              </div>
+            `).join('')}
+          </div>
+        ` : ''}
+
+        <!-- 9. Previous Exam Questions -->
+        ${pr.previousExamQuestions && pr.previousExamQuestions.length ? `
+          <h4 style="font-size: 15px; color: var(--accent-cyan); margin: 16px 0 8px;"><i class="fas fa-history"></i> Previous University Examination Questions:</h4>
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            ${pr.previousExamQuestions.map(peq => `
+              <div style="background: rgba(99, 102, 241, 0.08); padding: 10px 14px; border-radius: var(--radius-sm); font-size: 13px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+                <div><span class="nav-badge" style="background: rgba(99, 102, 241, 0.2); color: #818cf8; margin-right: 8px;">${peq.year}</span> <strong>${peq.question}</strong></div>
+                <div style="font-size: 12px; color: var(--text-muted);">${peq.marks || ''}</div>
+              </div>
+            `).join('')}
+          </div>
+        ` : ''}
       </div>
     `).join('');
   }
 
-  // Render Section 2: Reading Skills
+  // Render Section 2: Reading Skills (12 Skills)
   if (readingSkillsContainer && data.readingSkills) {
     readingSkillsContainer.innerHTML = data.readingSkills.map(rs => `
       <div class="rule-card">
         <div class="rule-header">
-          <span class="rule-badge" style="background: rgba(59, 130, 246, 0.2); color: #60a5fa;"><i class="fas fa-lightbulb"></i> READING SKILL</span>
+          <span class="rule-badge" style="background: rgba(59, 130, 246, 0.2); color: #60a5fa;"><i class="fas fa-lightbulb"></i> READING STRATEGY</span>
+          <button class="btn-text-sm" onclick="toggleBookmark('rs-${rs.id}', 'Reading Skill', '${escapeHtml(rs.title)}', 'Reading Strategy')">
+            <i class="far fa-bookmark" style="color: var(--accent-amber);"></i>
+          </button>
         </div>
         <h3 class="rule-title">${rs.title}</h3>
         <p class="rule-desc"><strong>Definition:</strong> ${rs.definition}</p>
-        <p style="font-size: 13px; color: var(--text-muted); margin: 6px 0;">${rs.explanation}</p>
+        <p style="font-size: 13px; color: var(--text-muted); margin: 8px 0; line-height: 1.5;">${rs.explanation}</p>
         
+        ${rs.examples && rs.examples.length ? `
+          <div style="background: var(--bg-surface); padding: 10px 12px; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle); font-size: 12.5px; margin: 8px 0;">
+            <strong style="color: var(--accent-cyan);"><i class="fas fa-search"></i> Worked Example:</strong>
+            <div style="margin-top: 4px; color: var(--text-main);">${rs.examples[0].task || rs.examples[0].technique || rs.examples[0].paragraph} &rarr; <em>${rs.examples[0].technique || rs.examples[0].mainIdea || ''}</em></div>
+          </div>
+        ` : ''}
+
         <div class="alert-box alert-info" style="margin: 8px 0; padding: 10px 12px; font-size: 12.5px;">
           <i class="fas fa-graduation-cap"></i>
           <div><strong>Exam Tip:</strong> ${rs.examTips}</div>
         </div>
         
-        <div style="background: var(--bg-surface); padding: 10px 12px; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle); font-size: 12.5px; margin-top: 8px;">
-          <strong style="color: var(--primary);">Practice Activity:</strong> ${rs.practice}
+        <div style="background: rgba(16, 185, 129, 0.08); padding: 10px 12px; border-radius: var(--radius-sm); border-left: 3px solid var(--accent-emerald); font-size: 12.5px; margin-top: 8px;">
+          <strong style="color: var(--accent-emerald);"><i class="fas fa-pencil-alt"></i> Practice Activity:</strong> ${rs.practice}
         </div>
       </div>
     `).join('');
@@ -2523,7 +2602,7 @@ function initMidtermHub() {
     writingCommContainer.innerHTML = `
       <div class="reader-article" style="margin-bottom: 24px;">
         <h3><i class="fas fa-project-diagram"></i> Sentence Types & Syntactic Structures:</h3>
-        <p>University examinations test both structural classification (Simple, Complex, Compound) and functional intent (Assertive, Imperative, Interrogative, Optative, Exclamatory).</p>
+        <p>University examinations test both functional classification (Assertive, Imperative, Interrogative, Optative, Exclamatory) and structural composition (Simple, Complex, Compound).</p>
         
         ${wc.sentenceTypes.map(st => `
           <h4 style="color: var(--accent-cyan); margin: 16px 0 8px;">${st.classification}:</h4>
@@ -2546,9 +2625,41 @@ function initMidtermHub() {
               <h4 style="color: var(--accent-emerald); margin: 0 0 6px;">${gs.topic}</h4>
               <p style="font-size: 13.5px; margin-bottom: 8px;">${gs.rules}</p>
               ${gs.examTrap ? `<div class="alert-box alert-warning" style="padding: 8px 12px; margin: 6px 0; font-size: 12.5px;"><i class="fas fa-radiation"></i><div>${gs.examTrap}</div></div>` : ''}
+              ${gs.examples ? `
+                <div style="font-size: 13px; color: var(--text-muted); margin-top: 6px;">
+                  ${gs.examples.map(ex => `<div>&bull; ${ex.active ? `<strong>Active:</strong> ${ex.active} &rarr; <strong>Passive:</strong> ${ex.passive}` : (ex.incorrect ? `<span style="color: var(--accent-rose);">${ex.incorrect}</span> &rarr; <span style="color: var(--accent-emerald);">${ex.correct}</span>` : `${ex.statement} &rarr; <strong>Q:</strong> ${ex.question}`)}</div>`).join('')}
+                </div>
+              ` : ''}
             </div>
           `).join('')}
         </div>
+
+        ${wc.writingWorkshops ? `
+          <h3 style="margin-top: 28px;"><i class="fas fa-edit"></i> Writing Workshops (Paragraphs & Story Completion):</h3>
+          <div style="display: flex; flex-direction: column; gap: 14px; margin-top: 12px;">
+            ${wc.writingWorkshops.map(ww => `
+              <div style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 16px;">
+                <h4 style="color: var(--accent-amber); margin: 0 0 6px;">${ww.type}</h4>
+                <div style="font-size: 13px; color: var(--text-muted); margin-bottom: 8px;"><strong>Structure:</strong> ${ww.structure}</div>
+                <div style="background: rgba(245, 158, 11, 0.08); padding: 8px 12px; border-radius: var(--radius-sm); font-size: 13px;"><strong>Sample Exam Prompt:</strong> ${ww.samplePrompt}</div>
+              </div>
+            `).join('')}
+          </div>
+        ` : ''}
+
+        ${wc.speakingWorkshops ? `
+          <h3 style="margin-top: 28px;"><i class="fas fa-comments"></i> Speaking & Communication Workshops (Text-Based Studio):</h3>
+          <div style="display: flex; flex-direction: column; gap: 14px; margin-top: 12px;">
+            ${wc.speakingWorkshops.map(sw => `
+              <div style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 16px;">
+                <h4 style="color: var(--accent-cyan); margin: 0 0 6px;">${sw.topic}</h4>
+                <div style="font-size: 13px; color: var(--text-muted); margin-bottom: 8px;"><strong>Guidelines:</strong> ${sw.guidelines}</div>
+                <div style="background: rgba(99, 102, 241, 0.06); padding: 10px 12px; border-radius: var(--radius-sm); font-size: 13px; white-space: pre-line;"><strong>Sample Dialogue / Script:</strong>
+${sw.sampleDialogue}</div>
+              </div>
+            `).join('')}
+          </div>
+        ` : ''}
       </div>
     `;
   }
@@ -2611,39 +2722,58 @@ function initFinalExamHub() {
     });
   });
 
-  // Render Section 1: Prescribed Reading
+  // Render Section 1: Prescribed Reading (All modules with themes, characters, vocab, Q&A)
   if (prescribedContainer && data.prescribedReading) {
-    const prSuite = data.prescribedReading[0];
-    prescribedContainer.innerHTML = `
-      <div class="reader-article">
-        <h3><i class="fas fa-book-open"></i> Tibbitts Units 11C to 20C Final Exam Suites:</h3>
-        <p>These 5 units represent 100% of the historical Seen Passage questions set in the Semester End Examination (15 Marks).</p>
-        <div style="display: flex; flex-direction: column; gap: 14px; margin-top: 14px;">
-          ${prSuite.units.map(u => `
-            <div style="background: var(--bg-surface); padding: 16px; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle);">
-              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-                <span class="nav-badge" style="background: rgba(16, 185, 129, 0.2); color: #34d399;">${u.unit}</span>
-                <span style="font-size: 12px; color: var(--text-faint); font-weight: 600;"><i class="fas fa-history"></i> Frequency: ${u.examHistory}</span>
-              </div>
-              <h4 style="font-size: 17px; margin: 4px 0 6px;">${u.title}</h4>
-              <p style="font-size: 13.5px; color: var(--text-muted); margin-bottom: 8px;">${u.summary}</p>
-              <div style="display: flex; gap: 6px; flex-wrap: wrap;">
-                ${u.vocabulary.map(v => `<span class="nav-badge" style="font-size: 11px;">${v}</span>`).join('')}
-              </div>
-            </div>
-          `).join('')}
+    prescribedContainer.innerHTML = data.prescribedReading.map(pr => `
+      <div class="reader-article" style="margin-bottom: 24px;">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 10px; margin-bottom: 12px;">
+          <div>
+            <span class="hero-tag" style="background: rgba(16, 185, 129, 0.2); color: #34d399;"><i class="fas fa-book"></i> ${pr.source || 'Prescribed Reading'}</span>
+            <h3 style="margin: 4px 0 6px; font-size: 20px;">${pr.title}</h3>
+          </div>
+          <button class="btn-text-sm" onclick="toggleBookmark('fin-${pr.id}', 'Final Reading', '${escapeHtml(pr.title)}', '${escapeHtml(pr.source || '')}')">
+            <i class="far fa-bookmark" style="color: var(--accent-amber);"></i> Bookmark
+          </button>
         </div>
+
+        <p style="font-size: 14px; line-height: 1.6; color: var(--text-main); margin-bottom: 12px;">${pr.summary}</p>
+        
+        ${pr.theme ? `<div style="font-size: 13px; margin-bottom: 8px;"><strong><i class="fas fa-lightbulb" style="color: var(--accent-amber);"></i> Core Themes:</strong> ${pr.theme}</div>` : ''}
+        ${pr.characters ? `<div style="font-size: 13px; margin-bottom: 14px;"><strong><i class="fas fa-users" style="color: var(--accent-cyan);"></i> Major Characters:</strong> ${pr.characters}</div>` : ''}
+
+        ${pr.importantVocabulary && pr.importantVocabulary.length ? `
+          <h4 style="font-size: 14px; color: var(--accent-cyan); margin: 12px 0 6px;">Key Examination Vocabulary:</h4>
+          <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px;">
+            ${pr.importantVocabulary.map(v => `
+              <span class="nav-badge" style="padding: 4px 10px; font-size: 12px;" title="${v.meaning}">
+                <strong>${v.word}</strong> (${v.pos}): ${v.meaning}
+              </span>
+            `).join('')}
+          </div>
+        ` : ''}
+
+        ${pr.importantQuestions && pr.importantQuestions.length ? `
+          <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 10px;">
+            ${pr.importantQuestions.map(q => `
+              <div style="background: var(--bg-surface); padding: 10px 14px; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle); font-size: 13px;">
+                <div style="font-weight: 700; color: var(--primary); margin-bottom: 4px;">Q: ${q.q}</div>
+                <div style="color: var(--text-muted);">${q.a}</div>
+              </div>
+            `).join('')}
+          </div>
+        ` : ''}
       </div>
-    `;
+    `).join('');
   }
 
-  // Render Section 2: Unseen Sources & Comprehension
+  // Render Section 2: Reading Sources & Unseen Passages
   if (unseenContainer && data.readingAndComprehension) {
     const rc = data.readingAndComprehension;
     unseenContainer.innerHTML = `
       <div class="reader-article">
-        <h3><i class="fas fa-newspaper"></i> Unseen Examination Sources & Academic Prose:</h3>
-        <p>Semester End Unseen Passages are selected from contemporary editorial journalism, research reports, and standardized IELTS Academic passages.</p>
+        <h3><i class="fas fa-newspaper"></i> Prescribed Unseen Examination Sources:</h3>
+        <p>Final examination unseen passages are drawn directly from contemporary journalism, research essays, and standardized academic reading archives.</p>
+        
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; margin: 16px 0;">
           ${rc.sources.map(s => `
             <div style="background: var(--bg-surface); padding: 16px; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle);">
@@ -2653,90 +2783,142 @@ function initFinalExamHub() {
             </div>
           `).join('')}
         </div>
-        <div class="alert-box alert-success">
-          <i class="fas fa-feather-alt"></i>
-          <div>Use the <strong>50-Word Summary Studio</strong> in the sidebar to practice drafting summaries with the live word count engine!</div>
-        </div>
+
+        ${rc.skills ? `
+          <h3 style="margin-top: 24px;"><i class="fas fa-brain"></i> Applied Comprehension Skills:</h3>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; margin-top: 12px;">
+            ${rc.skills.map(sk => `
+              <div style="background: var(--bg-surface); padding: 12px 14px; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle);">
+                <strong style="color: var(--accent-emerald); font-size: 13.5px;">${sk.name}</strong>
+                <p style="font-size: 12.5px; color: var(--text-muted); margin-top: 4px;">${sk.desc}</p>
+              </div>
+            `).join('')}
+          </div>
+        ` : ''}
       </div>
     `;
   }
 
-  // Render Section 3: 7 Complete Grammar Chapters
+  // Render Section 3: 7 Complete Grammar Chapters (With all 14 required sections)
   if (grammarContainer && data.grammarChapters) {
     grammarContainer.innerHTML = `
-      <div style="display: flex; flex-direction: column; gap: 20px;">
+      <div style="display: flex; flex-direction: column; gap: 24px;">
         ${data.grammarChapters.map(gc => `
           <div class="reader-article" id="grammar-chapter-${gc.chapterNumber}">
-            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-subtle); padding-bottom: 8px; margin-bottom: 12px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-subtle); padding-bottom: 8px; margin-bottom: 14px;">
               <div>
                 <span class="hero-tag" style="background: rgba(139, 92, 246, 0.2); color: #c084fc;">CHAPTER ${gc.chapterNumber}</span>
-                <h3 style="margin: 4px 0 0; font-size: 20px;">${gc.title}</h3>
+                <h3 style="margin: 4px 0 0; font-size: 21px;">${gc.title}</h3>
               </div>
               <button class="btn-text-sm" onclick="toggleBookmark('gc-${gc.chapterNumber}', 'Grammar Chapter', '${escapeHtml(gc.title)}', 'Chapter ${gc.chapterNumber}')">
                 <i class="far fa-bookmark" style="color: var(--accent-amber);"></i> Bookmark
               </button>
             </div>
 
-            <p style="font-size: 14px; color: var(--text-main); margin-bottom: 12px;"><strong>Definition:</strong> ${gc.definition}</p>
+            <!-- 1. Definition -->
+            <p style="font-size: 14px; color: var(--text-main); margin-bottom: 12px;"><strong><i class="fas fa-book"></i> Definition:</strong> ${gc.definition}</p>
 
+            <!-- 2. Formula & Structure -->
             <div class="formula-box active-f" style="margin-bottom: 12px;">
-              <strong>Primary Structural Formula:</strong> <code>${gc.formula}</code>
+              <div><strong>Primary Structural Formula:</strong> <code>${gc.formula}</code></div>
+              ${gc.structure ? `<div style="margin-top: 6px; font-size: 12.5px;"><strong>Syntax Structure:</strong> <code>${gc.structure}</code></div>` : ''}
             </div>
 
-            <h4 style="font-size: 14.5px; color: var(--accent-cyan); margin: 12px 0 6px;"><i class="fas fa-list-ul"></i> Core Examination Rules:</h4>
+            <!-- 3. Core Rules -->
+            <h4 style="font-size: 14.5px; color: var(--accent-cyan); margin: 14px 0 6px;"><i class="fas fa-list-ul"></i> Core Examination Rules:</h4>
             <ul style="margin: 0 0 12px 18px; font-size: 13px; line-height: 1.6; color: var(--text-muted);">
               ${gc.rules.map(r => `<li>${r}</li>`).join('')}
             </ul>
 
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 14px;">
-              <div style="background: rgba(244, 63, 94, 0.08); border-left: 3px solid var(--accent-rose); padding: 10px 12px; border-radius: 0 var(--radius-sm) var(--radius-sm) 0;">
-                <strong style="color: var(--accent-rose); font-size: 12px;"><i class="fas fa-times-circle"></i> Wrong Usage:</strong>
-                <div style="font-size: 13px; margin-top: 4px;">${gc.wrongVsCorrect[0].wrong}</div>
+            <!-- 4. Examples -->
+            ${gc.examples && gc.examples.length ? `
+              <h4 style="font-size: 14px; color: var(--accent-emerald); margin: 12px 0 6px;"><i class="fas fa-check-double"></i> Standard Examples:</h4>
+              <div style="display: flex; flex-direction: column; gap: 4px; margin-bottom: 12px; font-size: 13px; font-style: italic;">
+                ${gc.examples.map(ex => `<div>&bull; "${ex}"</div>`).join('')}
               </div>
-              <div style="background: rgba(16, 185, 129, 0.08); border-left: 3px solid var(--accent-emerald); padding: 10px 12px; border-radius: 0 var(--radius-sm) var(--radius-sm) 0;">
-                <strong style="color: var(--accent-emerald); font-size: 12px;"><i class="fas fa-check-circle"></i> Correct Usage:</strong>
-                <div style="font-size: 13px; margin-top: 4px;">${gc.wrongVsCorrect[0].correct}</div>
-              </div>
-            </div>
+            ` : ''}
 
+            <!-- 5. Wrong vs Correct Usage -->
+            ${gc.wrongVsCorrect && gc.wrongVsCorrect.length ? `
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 14px;">
+                <div style="background: rgba(244, 63, 94, 0.08); border-left: 3px solid var(--accent-rose); padding: 10px 12px; border-radius: 0 var(--radius-sm) var(--radius-sm) 0;">
+                  <strong style="color: var(--accent-rose); font-size: 12px;"><i class="fas fa-times-circle"></i> Wrong Usage:</strong>
+                  <div style="font-size: 13px; margin-top: 4px;">${gc.wrongVsCorrect[0].wrong}</div>
+                </div>
+                <div style="background: rgba(16, 185, 129, 0.08); border-left: 3px solid var(--accent-emerald); padding: 10px 12px; border-radius: 0 var(--radius-sm) var(--radius-sm) 0;">
+                  <strong style="color: var(--accent-emerald); font-size: 12px;"><i class="fas fa-check-circle"></i> Correct Usage:</strong>
+                  <div style="font-size: 13px; margin-top: 4px;">${gc.wrongVsCorrect[0].correct}</div>
+                </div>
+              </div>
+            ` : ''}
+
+            <!-- 6. Exceptions & Common Mistakes -->
+            ${gc.exceptions ? `<div style="font-size: 13px; margin-bottom: 8px;"><strong><i class="fas fa-exclamation-circle" style="color: var(--accent-cyan);"></i> Grammatical Exceptions:</strong> ${gc.exceptions}</div>` : ''}
+            
             <div class="alert-box alert-warning" style="margin-bottom: 12px; font-size: 12.5px;">
               <i class="fas fa-radiation"></i>
-              <div><strong>Common Mistake & Examiner Warning:</strong> ${gc.commonMistakes}</div>
+              <div><strong>Common Mistake & Pitfall:</strong> ${gc.commonMistakes}</div>
             </div>
 
+            <!-- 7. Shortcut Memory Trick -->
             <div style="background: var(--bg-surface); padding: 10px 14px; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle); font-size: 12.5px; color: var(--accent-amber); margin-bottom: 12px;">
-              <i class="fas fa-bolt"></i> <strong>Shortcut Memory Trick:</strong> ${gc.shortcutTricks}
+              <i class="fas fa-bolt"></i> <strong>Shortcut Trick:</strong> ${gc.shortcutTricks}
             </div>
 
-            <div style="background: rgba(99, 102, 241, 0.08); padding: 10px 14px; border-radius: var(--radius-sm); font-size: 13px;">
-              <strong>Recent IIUC Final Question:</strong> <em>"${gc.previousQuestions[0].q}"</em> &rarr; <strong>Model Ans:</strong> ${gc.previousQuestions[0].ans}
-            </div>
+            <!-- 8. Practice Drills & Previous Questions -->
+            ${gc.practice ? `<div style="font-size: 13px; margin-bottom: 10px;"><strong>Practice Drill:</strong> ${gc.practice}</div>` : ''}
+            
+            ${gc.previousQuestions && gc.previousQuestions.length ? `
+              <div style="background: rgba(99, 102, 241, 0.08); padding: 10px 14px; border-radius: var(--radius-sm); font-size: 13px; margin-bottom: 8px;">
+                <strong>Recent IIUC Final Question (${gc.previousQuestions[0].year}):</strong> <em>"${gc.previousQuestions[0].q}"</em> &rarr; <strong>Model Ans:</strong> ${gc.previousQuestions[0].ans}
+              </div>
+            ` : ''}
+
+            ${gc.revisionNotes ? `<div style="font-size: 12px; color: var(--text-faint); margin-top: 6px;"><strong>Quick Revision Note:</strong> ${gc.revisionNotes}</div>` : ''}
           </div>
         `).join('')}
       </div>
     `;
   }
 
-  // Render Section 4: Composition
+  // Render Section 4: Composition (Paragraph, Story, Graph/Charts, Opinion, Letters)
   if (compositionContainer && data.composition) {
     compositionContainer.innerHTML = `
-      <div style="display: flex; flex-direction: column; gap: 20px;">
+      <div style="display: flex; flex-direction: column; gap: 24px;">
         ${data.composition.map(c => `
           <div class="reader-article">
-            <h3 style="font-size: 19px; margin-bottom: 6px;"><i class="fas fa-pen-fancy"></i> ${c.title}</h3>
-            <div style="display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 12px;">
-              ${c.formats.map(f => `<span class="nav-badge">${f}</span>`).join('')}
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+              <h3 style="font-size: 20px; margin: 0;"><i class="fas fa-pen-fancy"></i> ${c.title}</h3>
+              <button class="btn-text-sm" onclick="toggleBookmark('comp-${c.id}', 'Writing Format', '${escapeHtml(c.title)}', 'Composition')">
+                <i class="far fa-bookmark" style="color: var(--accent-amber);"></i> Bookmark
+              </button>
             </div>
 
-            <h4 style="font-size: 14px; color: var(--accent-cyan); margin: 10px 0 6px;">Required Academic Structure:</h4>
-            <ul style="margin: 0 0 12px 18px; font-size: 13px; color: var(--text-muted); line-height: 1.6;">
-              ${c.structure.map(s => `<li>${s}</li>`).join('')}
-            </ul>
+            ${c.types || c.formats ? `
+              <div style="display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 12px;">
+                ${(c.types || c.formats).map(f => `<span class="nav-badge">${f}</span>`).join('')}
+              </div>
+            ` : ''}
 
-            ${c.modelAnswer ? `
-              <div style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 14px; font-size: 13px; line-height: 1.6;">
-                <strong style="color: var(--accent-emerald);"><i class="fas fa-file-alt"></i> Model Examination Extract:</strong>
-                <p style="margin-top: 6px; color: var(--text-main);">${c.modelAnswer}</p>
+            <h4 style="font-size: 14px; color: var(--accent-cyan); margin: 10px 0 6px;">Required Academic Structure:</h4>
+            <div style="font-size: 13px; color: var(--text-muted); line-height: 1.6; margin-bottom: 10px;">
+              ${Array.isArray(c.structure) ? `<ul>${c.structure.map(s => `<li>${s}</li>`).join('')}</ul>` : c.structure}
+            </div>
+
+            ${c.format ? `<div style="font-size: 13px; margin-bottom: 8px;"><strong>Standard Exam Format:</strong> ${c.format}</div>` : ''}
+            ${c.writingTips ? `<div class="alert-box alert-info" style="font-size: 12.5px; padding: 8px 12px; margin-bottom: 10px;"><i class="fas fa-lightbulb"></i><div><strong>Examiner Tip:</strong> ${c.writingTips}</div></div>` : ''}
+
+            ${c.template ? `
+              <div style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 12px 14px; font-size: 12.5px; margin-bottom: 12px; white-space: pre-line;">
+                <strong style="color: var(--primary);"><i class="fas fa-copy"></i> Ready-to-Use Blueprint / Template:</strong>
+${c.template}
+              </div>
+            ` : ''}
+
+            ${c.sample ? `
+              <div style="background: rgba(16, 185, 129, 0.05); border-left: 3px solid var(--accent-emerald); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; padding: 12px 14px; font-size: 13px; line-height: 1.6; margin-bottom: 12px; white-space: pre-line;">
+                <strong style="color: var(--accent-emerald);"><i class="fas fa-file-alt"></i> Complete Academic Sample:</strong>
+${c.sample}
               </div>
             ` : ''}
           </div>
@@ -2745,52 +2927,74 @@ function initFinalExamHub() {
     `;
   }
 
-  // Render Section 5: Speaking
+  // Render Section 5: Speaking (Text-Based Oral Communication Studio)
   if (speakingContainer && data.speaking) {
     speakingContainer.innerHTML = `
-      <div class="reader-article">
-        <h3><i class="fas fa-microphone-alt"></i> Academic Speaking & Professional Communication:</h3>
-        <p>Guidelines and rhetorical frameworks for viva voce assessments, technical presentations, and extempore speech.</p>
-        <div style="display: flex; flex-direction: column; gap: 14px; margin-top: 14px;">
-          ${data.speaking.map(sp => `
-            <div style="background: var(--bg-surface); padding: 16px; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle);">
-              <h4 style="color: var(--primary); margin: 0 0 6px;">${sp.topic}</h4>
-              <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 8px;"><strong>Rhetorical Framework:</strong> ${sp.framework}</p>
-              <div style="background: rgba(6, 182, 212, 0.08); padding: 8px 12px; border-radius: var(--radius-sm); font-size: 12.5px; color: var(--accent-cyan); margin-bottom: 8px;">
-                <strong>Useful Key Expressions:</strong> ${sp.expressions.join(' • ')}
+      <div style="display: flex; flex-direction: column; gap: 20px;">
+        ${data.speaking.map(sp => `
+          <div class="reader-article">
+            <h3 style="font-size: 19px; margin-bottom: 6px;"><i class="fas fa-microphone-alt"></i> ${sp.topic}</h3>
+            <p style="font-size: 13.5px; color: var(--text-main); margin-bottom: 10px;"><strong>Guidelines & Execution:</strong> ${sp.guidelines || sp.framework}</p>
+            
+            ${sp.usefulExpressions || sp.expressions ? `
+              <div style="font-size: 13px; margin-bottom: 10px;">
+                <strong style="color: var(--accent-cyan);"><i class="fas fa-quote-right"></i> High-Scoring Expressions:</strong>
+                <div style="display: flex; gap: 6px; flex-wrap: wrap; margin-top: 6px;">
+                  ${(sp.usefulExpressions || sp.expressions).map(e => `<span class="nav-badge" style="background: rgba(59, 130, 246, 0.15); color: #93c5fd;">"${e}"</span>`).join('')}
+                </div>
               </div>
-              <div style="font-size: 12.5px; color: var(--text-faint);">
-                <strong>Practice Drill:</strong> ${sp.practice}
+            ` : ''}
+
+            ${sp.sampleAnswers ? `
+              <div style="background: var(--bg-surface); padding: 12px 14px; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle); font-size: 13px; line-height: 1.6; margin-bottom: 10px;">
+                <strong style="color: var(--accent-emerald);">Model Speech Extract:</strong>
+                <p style="margin-top: 4px; font-style: italic;">"${sp.sampleAnswers}"</p>
               </div>
-            </div>
-          `).join('')}
-        </div>
+            ` : ''}
+
+            ${sp.practiceQuestions && sp.practiceQuestions.length ? `
+              <div style="background: rgba(99, 102, 241, 0.08); padding: 10px 14px; border-radius: var(--radius-sm); font-size: 12.5px;">
+                <strong>Viva / Extempore Practice Tasks:</strong>
+                <ul style="margin: 4px 0 0 16px;">
+                  ${sp.practiceQuestions.map(pq => `<li>${pq}</li>`).join('')}
+                </ul>
+              </div>
+            ` : ''}
+          </div>
+        `).join('')}
       </div>
     `;
   }
 
-  // Render Section 6: Vocabulary
-  if (vocabContainer && data.vocabularyCatalog) {
+  // Render Section 6: Vocabulary Masterlists (8 Categorized Lists)
+  if (vocabContainer && data.vocabularyLists) {
+    const vl = data.vocabularyLists;
+    const categories = Object.keys(vl);
+
     vocabContainer.innerHTML = `
       <div class="reader-article">
-        <h3><i class="fas fa-layer-group"></i> Advanced Academic Lexicon Masterlist:</h3>
-        <p>Comprehensive vocabulary entries calibrated for engineering students taking GEEL-1106.</p>
-        <div class="vocab-grid" style="margin-top: 16px;">
-          ${data.vocabularyCatalog.map(vc => `
-            <div class="vocab-card">
-              <div class="vocab-word-row">
-                <div>
-                  <span class="vocab-word">${vc.word}</span>
-                  <span class="nav-badge" style="font-size: 10px; margin-left: 6px;">${vc.pos}</span>
-                </div>
-              </div>
-              <div class="vocab-meaning"><strong>Meaning:</strong> ${vc.meaning}</div>
-              <div style="font-size: 12.5px; color: var(--text-faint); margin-top: 2px;">
-                <div style="color: var(--accent-emerald);"><strong>Syn:</strong> ${vc.synonym}</div>
-                <div style="color: var(--accent-rose); margin-top: 1px;"><strong>Ant:</strong> ${vc.antonym}</div>
-              </div>
-              <div style="font-size: 12px; color: var(--text-muted); font-style: italic; border-top: 1px solid var(--border-subtle); padding-top: 6px; margin-top: auto;">
-                "${vc.example}"
+        <h3><i class="fas fa-layer-group"></i> Categorized Academic Vocabulary Masterlists:</h3>
+        <p>Comprehensive high-frequency terms, phrasal verbs, idioms, and collocations tested across Semester End Examinations.</p>
+        
+        <div style="display: flex; flex-direction: column; gap: 20px; margin-top: 16px;">
+          ${categories.map(cat => `
+            <div>
+              <h4 style="font-size: 16px; color: var(--accent-amber); text-transform: capitalize; margin-bottom: 10px; border-bottom: 1px solid var(--border-subtle); padding-bottom: 4px;">
+                <i class="fas fa-tag"></i> ${cat.replace(/([A-Z])/g, ' $1')} (${vl[cat].length} entries)
+              </h4>
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px;">
+                ${vl[cat].map(item => `
+                  <div style="background: var(--bg-surface); padding: 12px 14px; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle);">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                      <strong style="font-size: 15px; color: var(--text-main);">${item.word}</strong>
+                      <span class="nav-badge" style="font-size: 10px;">${item.pos || 'Term'}</span>
+                    </div>
+                    <div style="font-size: 13px; color: var(--text-muted); margin-bottom: 4px;">${item.meaning}</div>
+                    ${item.example ? `<div style="font-size: 12px; color: var(--text-faint); font-style: italic; margin-bottom: 4px;">"${item.example}"</div>` : ''}
+                    ${item.synonym ? `<div style="font-size: 11.5px; color: var(--accent-emerald);">Syn: ${item.synonym}</div>` : ''}
+                    ${item.antonym ? `<div style="font-size: 11.5px; color: var(--accent-rose);">Ant: ${item.antonym}</div>` : ''}
+                  </div>
+                `).join('')}
               </div>
             </div>
           `).join('')}
@@ -2801,31 +3005,31 @@ function initFinalExamHub() {
 }
 
 /* ==========================================================================
-   PRACTICE ZONE INTERACTIVE CONTROLLER
+   PRACTICE ZONE INTERACTIVE CONTROLLER (9 Complete Drill Categories)
    ========================================================================== */
 function initPracticeZone() {
   const tabs = document.querySelectorAll('#practice-zone-tabs .passage-tab-btn');
-  const correctionContainer = document.getElementById('pz-correction-container');
-  const blanksContainer = document.getElementById('pz-blanks-container');
-  const errorsContainer = document.getElementById('pz-errors-container');
-  const cqContainer = document.getElementById('pz-cq-container');
-
   if (!tabs.length || !window.GEEL_DATA || !window.GEEL_DATA.practiceZone) return;
 
   const pz = window.GEEL_DATA.practiceZone;
+
+  const tabMap = {
+    'correction': 'pz-tab-correction',
+    'blanks': 'pz-tab-blanks',
+    'errors': 'pz-tab-errors',
+    'mcq': 'pz-tab-mcq',
+    'cq': 'pz-tab-cq',
+    'grammar': 'pz-tab-grammar',
+    'reading': 'pz-tab-reading',
+    'writing': 'pz-tab-writing',
+    'mixed': 'pz-tab-mixed'
+  };
 
   tabs.forEach(btn => {
     btn.addEventListener('click', () => {
       tabs.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       const target = btn.getAttribute('data-pz-tab');
-
-      const tabMap = {
-        'correction': 'pz-tab-correction',
-        'blanks': 'pz-tab-blanks',
-        'errors': 'pz-tab-errors',
-        'cq': 'pz-tab-cq'
-      };
 
       Object.keys(tabMap).forEach(k => {
         const el = document.getElementById(tabMap[k]);
@@ -2834,11 +3038,15 @@ function initPracticeZone() {
     });
   });
 
-  // Render Sentence Correction
+  // 1. Sentence Correction
+  const correctionContainer = document.getElementById('pz-correction-container');
   if (correctionContainer && pz.sentenceCorrection) {
     correctionContainer.innerHTML = pz.sentenceCorrection.map(sc => `
       <div class="mistake-card">
-        <div style="font-size: 11px; font-weight: 700; color: var(--accent-amber); margin-bottom: 4px;">DRILL #${sc.id}</div>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+          <span style="font-size: 11px; font-weight: 700; color: var(--accent-amber);">CORRECTION DRILL #${sc.id}</span>
+          <span class="nav-badge" style="font-size: 10px;">Difficulty: ${sc.difficulty || 'Easy'} &bull; Score: ${sc.score || 1}M</span>
+        </div>
         <div class="mistake-incorrect">
           <i class="fas fa-times-circle mistake-icon red"></i>
           <div><strong>Incorrect:</strong> <em>"${sc.sentence}"</em></div>
@@ -2848,63 +3056,176 @@ function initPracticeZone() {
           <div><strong>Correct:</strong> <em>"${sc.correction}"</em></div>
         </div>
         <div style="font-size: 12.5px; color: var(--text-muted); margin-top: 8px; border-top: 1px solid var(--border-subtle); padding-top: 6px;">
-          <strong>Rationale:</strong> ${sc.rule}
+          <strong>Detailed Explanation:</strong> ${sc.rule || sc.explanation}
         </div>
       </div>
     `).join('');
   }
 
-  // Render Fill in Blanks
+  // 2. Fill in the Blanks
+  const blanksContainer = document.getElementById('pz-blanks-container');
   if (blanksContainer && pz.fillInTheBlanks) {
     blanksContainer.innerHTML = pz.fillInTheBlanks.map(fib => `
       <div class="mistake-card">
-        <div style="font-size: 11px; font-weight: 700; color: var(--primary); margin-bottom: 6px;">FILL IN GAP #${fib.id}</div>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+          <span style="font-size: 11px; font-weight: 700; color: var(--primary);">GAP DRILL #${fib.id}</span>
+          <span class="nav-badge" style="font-size: 10px;">Difficulty: ${fib.difficulty || 'Easy'} &bull; Score: ${fib.score || 1}M</span>
+        </div>
         <div style="font-size: 14.5px; font-weight: 600; margin-bottom: 10px;">${fib.sentence}</div>
         <div style="display: flex; gap: 8px; align-items: center;">
-          <button class="btn-sm btn-outline" onclick="toggleFibAnswer('${fib.id}')" id="btn-fib-${fib.id}"><i class="fas fa-eye"></i> Show Answer</button>
-          <span style="font-size: 12px; color: var(--text-faint);">Hint: ${fib.hint}</span>
+          <button class="btn-sm btn-outline" onclick="toggleFibAnswer('${fib.id}')" id="btn-fib-${fib.id}"><i class="fas fa-eye"></i> Reveal Answer Key</button>
+          <span style="font-size: 12px; color: var(--text-faint);">Hint: ${fib.hint || 'Grammar Rule'}</span>
         </div>
         <div id="fib-ans-${fib.id}" style="display: none; margin-top: 8px; background: rgba(16, 185, 129, 0.08); padding: 8px 12px; border-radius: var(--radius-sm); font-size: 13px; color: var(--accent-emerald);">
-          <strong>Answer:</strong> "${fib.answer}" &bull; ${fib.rule}
+          <strong>Answer Key:</strong> "${fib.answerKey || fib.answer}" &bull; <strong>Explanation:</strong> ${fib.explanation || fib.rule}
         </div>
       </div>
     `).join('');
   }
 
-  // Render Error Identification
+  // 3. Error Identification
+  const errorsContainer = document.getElementById('pz-errors-container');
   if (errorsContainer && pz.errorIdentification) {
     errorsContainer.innerHTML = pz.errorIdentification.map(ei => `
       <div class="mistake-card">
-        <div style="font-size: 11px; font-weight: 700; color: var(--accent-rose); margin-bottom: 6px;">ERROR DETECTION #${ei.id}</div>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+          <span style="font-size: 11px; font-weight: 700; color: var(--accent-rose);">ERROR IDENTIFICATION #${ei.id}</span>
+          <span class="nav-badge" style="font-size: 10px;">Difficulty: ${ei.difficulty || 'Medium'} &bull; Score: ${ei.score || 1}M</span>
+        </div>
         <div style="font-size: 14.5px; font-weight: 600; margin-bottom: 8px;">"${ei.sentence}"</div>
         <div class="alert-box alert-warning" style="margin: 0; padding: 10px 12px; font-size: 13px;">
-          <div>Error token: <strong style="color: var(--accent-rose); text-decoration: underline;">${ei.errorWord}</strong> &rarr; Correct form: <strong style="color: var(--accent-emerald);">${ei.correctedWord}</strong></div>
-          <div style="font-size: 12px; color: var(--text-muted); margin-top: 4px;">${ei.explanation}</div>
+          <div>Error Token: <strong style="color: var(--accent-rose); text-decoration: underline;">${ei.errorWord}</strong> &rarr; Correct form: <strong style="color: var(--accent-emerald);">${ei.correctedWord}</strong></div>
+          <div style="font-size: 12px; color: var(--text-muted); margin-top: 4px;"><strong>Detailed Explanation:</strong> ${ei.explanation}</div>
         </div>
       </div>
     `).join('');
   }
 
-  // Render CQ Practice
-  if (cqContainer) {
+  // 4. MCQ Practice
+  const mcqContainer = document.getElementById('pz-mcq-container');
+  if (mcqContainer && pz.mcqPractice) {
+    mcqContainer.innerHTML = pz.mcqPractice.map((m, mIdx) => `
+      <div class="mistake-card">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+          <span style="font-size: 11px; font-weight: 700; color: var(--accent-cyan);">${m.category} MCQ #${mIdx + 1}</span>
+          <span class="nav-badge" style="font-size: 10px;">Difficulty: ${m.difficulty} &bull; Score: ${m.score}M</span>
+        </div>
+        <div style="font-size: 14.5px; font-weight: 600; margin-bottom: 10px;">${m.q}</div>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+          ${m.options.map(opt => `
+            <button class="btn-sm btn-outline" onclick="checkMidMCQ(this, '${escapeHtml(opt)}', '${escapeHtml(m.answerKey)}', '${escapeHtml(m.explanation)}')">${opt}</button>
+          `).join('')}
+        </div>
+        <div class="mid-mcq-expl" style="font-size: 12.5px; margin-top: 8px; display: none;"></div>
+      </div>
+    `).join('');
+  }
+
+  // 5. CQ Analytical Practice
+  const cqContainer = document.getElementById('pz-cq-container');
+  if (cqContainer && pz.cqPractice) {
     cqContainer.innerHTML = `
       <div class="reader-article">
-        <h3><i class="fas fa-pen-square"></i> Analytical Comprehension (CQ) Questions:</h3>
-        <p>Practice answering rigorous, multi-mark university examination questions according to the official Bloom's Taxonomy assessment rubrics.</p>
-        <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 14px;">
-          <div style="background: var(--bg-surface); padding: 14px; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle);">
-            <div style="font-size: 11px; color: var(--primary); font-weight: 700;">CQ PROMPT 1 (5 MARKS)</div>
-            <div style="font-size: 15px; font-weight: 600; margin: 4px 0 8px;">Explain the socio-economic implications of the Industrial Revolution on European craftsmanship as described in E.L. Tibbitts.</div>
-            <div style="font-size: 13px; color: var(--text-muted);"><strong>Evaluation Rubric:</strong> Accurate historical reference (2 Marks), contrast between craft and machine labor (2 Marks), precise grammar (1 Mark).</div>
-          </div>
-          <div style="background: var(--bg-surface); padding: 14px; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle);">
-            <div style="font-size: 11px; color: var(--primary); font-weight: 700;">CQ PROMPT 2 (5 MARKS)</div>
-            <div style="font-size: 15px; font-weight: 600; margin: 4px 0 8px;">Differentiate between Real Conditionals and Counterfactual Unreal Conditionals with four authentic engineering examples.</div>
-            <div style="font-size: 13px; color: var(--text-muted);"><strong>Evaluation Rubric:</strong> Correct tense sequence formulas (2 Marks), distinct semantic rationale (1 Mark), accurate modal auxiliaries (2 Marks).</div>
-          </div>
+        <h3><i class="fas fa-pen-square"></i> Analytical Comprehension (CQ) Practice:</h3>
+        <p>Examination questions calibrated according to Bloom's Taxonomy with full model scoring rubrics.</p>
+        <div style="display: flex; flex-direction: column; gap: 14px; margin-top: 14px;">
+          ${pz.cqPractice.map(cq => `
+            <div style="background: var(--bg-surface); padding: 14px; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle);">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                <span style="font-size: 11px; color: var(--primary); font-weight: 700;">${cq.category}</span>
+                <span class="nav-badge" style="font-size: 10px;">Difficulty: ${cq.difficulty} &bull; Score: ${cq.score} Marks</span>
+              </div>
+              <div style="font-size: 15px; font-weight: 600; margin: 4px 0 8px;">${cq.prompt}</div>
+              <div style="background: rgba(16, 185, 129, 0.08); padding: 10px 12px; border-radius: var(--radius-sm); font-size: 13px; line-height: 1.5; color: var(--text-main);">
+                <strong>Answer Key & Model Response:</strong> ${cq.answerKey}
+              </div>
+              <div style="font-size: 12px; color: var(--text-muted); margin-top: 6px;"><strong>Scoring Rubric:</strong> ${cq.explanation}</div>
+            </div>
+          `).join('')}
         </div>
       </div>
     `;
+  }
+
+  // 6. Grammar Drills
+  const grammarContainer = document.getElementById('pz-grammar-container');
+  if (grammarContainer && pz.grammarPractice) {
+    grammarContainer.innerHTML = pz.grammarPractice.map(gp => `
+      <div class="mistake-card">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+          <span style="font-size: 11px; font-weight: 700; color: var(--accent-purple);">GRAMMAR DRILL: ${gp.topic}</span>
+          <span class="nav-badge" style="font-size: 10px;">Difficulty: ${gp.difficulty} &bull; Score: ${gp.score}M</span>
+        </div>
+        <div style="font-size: 14px; font-weight: 600; margin-bottom: 8px;">${gp.prompt}</div>
+        <div style="background: rgba(139, 92, 246, 0.08); padding: 8px 12px; border-radius: var(--radius-sm); font-size: 13px; color: var(--text-main);">
+          <strong>Answer Key:</strong> "${gp.answerKey}" &bull; <em>${gp.explanation}</em>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  // 7. Reading Drills
+  const readingContainer = document.getElementById('pz-reading-container');
+  if (readingContainer && pz.readingPractice) {
+    readingContainer.innerHTML = `
+      <div class="reader-article">
+        <h3><i class="fas fa-glasses"></i> Applied Reading & Evidence Extraction Drills:</h3>
+        <div style="display: flex; flex-direction: column; gap: 14px; margin-top: 12px;">
+          ${pz.readingPractice.map(rp => `
+            <div style="background: var(--bg-surface); padding: 14px; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle);">
+              <div style="font-size: 13px; line-height: 1.6; color: var(--text-main); font-style: italic; background: rgba(255,255,255,0.03); padding: 10px; border-radius: var(--radius-sm); margin-bottom: 10px;">
+                "${rp.passage}"
+              </div>
+              <div style="font-weight: 700; font-size: 14px; margin-bottom: 6px;">Q: ${rp.q}</div>
+              <div style="font-size: 13px; color: var(--accent-emerald);"><strong>Answer Key:</strong> ${rp.answerKey}</div>
+              <div style="font-size: 12px; color: var(--text-muted); margin-top: 4px;"><strong>Explanation:</strong> ${rp.explanation}</div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `;
+  }
+
+  // 8. Writing Drills
+  const writingContainer = document.getElementById('pz-writing-container');
+  if (writingContainer && pz.writingPractice) {
+    writingContainer.innerHTML = `
+      <div class="reader-article">
+        <h3><i class="fas fa-pen-nib"></i> Writing Precision & Summary Drills:</h3>
+        <div style="display: flex; flex-direction: column; gap: 14px; margin-top: 12px;">
+          ${pz.writingPractice.map(wp => `
+            <div style="background: var(--bg-surface); padding: 14px; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle);">
+              <div style="font-size: 11px; font-weight: 700; color: var(--accent-amber); margin-bottom: 4px;">${wp.topic} (Score: ${wp.score} Marks)</div>
+              <div style="font-size: 14px; font-weight: 600; margin-bottom: 8px;">${wp.prompt}</div>
+              <div style="background: rgba(16, 185, 129, 0.08); padding: 10px 12px; border-radius: var(--radius-sm); font-size: 13px; line-height: 1.5; color: var(--text-main);">
+                <strong>Model Solution:</strong> "${wp.answerKey}"
+              </div>
+              <div style="font-size: 12px; color: var(--text-muted); margin-top: 6px;"><strong>Criteria:</strong> ${wp.explanation}</div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `;
+  }
+
+  // 9. Mixed Practice Arena
+  const mixedContainer = document.getElementById('pz-mixed-container');
+  if (mixedContainer && pz.mixedPractice) {
+    mixedContainer.innerHTML = pz.mixedPractice.map((mp, mpIdx) => `
+      <div class="mistake-card">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+          <span style="font-size: 11px; font-weight: 700; color: var(--accent-rose);">${mp.category} #${mpIdx + 1}</span>
+          <span class="nav-badge" style="font-size: 10px;">Difficulty: ${mp.difficulty} &bull; Score: ${mp.score}M</span>
+        </div>
+        <div style="font-size: 14px; font-weight: 600; margin-bottom: 8px;">${mp.q}</div>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+          ${mp.options.map(opt => `
+            <button class="btn-sm btn-outline" onclick="checkMidMCQ(this, '${escapeHtml(opt)}', '${escapeHtml(mp.answerKey)}', '${escapeHtml(mp.explanation)}')">${opt}</button>
+          `).join('')}
+        </div>
+        <div class="mid-mcq-expl" style="font-size: 12.5px; margin-top: 8px; display: none;"></div>
+      </div>
+    `).join('');
   }
 }
 
@@ -2914,7 +3235,7 @@ function toggleFibAnswer(id) {
   if (!ansBox || !btn) return;
   const isShown = ansBox.style.display === 'block';
   ansBox.style.display = isShown ? 'none' : 'block';
-  btn.innerHTML = isShown ? `<i class="fas fa-eye"></i> Show Answer` : `<i class="fas fa-eye-slash"></i> Hide Answer`;
+  btn.innerHTML = isShown ? `<i class="fas fa-eye"></i> Reveal Answer Key` : `<i class="fas fa-eye-slash"></i> Hide Answer Key`;
 }
 
 window.checkMidMCQ = checkMidMCQ;

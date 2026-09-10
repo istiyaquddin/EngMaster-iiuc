@@ -75,11 +75,16 @@ Rather than functioning as a static PDF viewer, the platform intelligently organ
   - By **Question Type** (Fill in the Blanks, Sentence Correction, Rewrite/Synthesis, Short Answer, MCQ, Essay)
 - Features: Official verified model answer reveal, grammatical rationale, difficulty level rating (Easy, Medium, Challenging), and a **Frequently Asked Indicator** highlighting recurring question types.
 
-### 5. ⚡ Practice Zone (Interactive Drills)
-- **Sentence Correction Drills:** High-frequency exam traps with instant solution reveals and grammatical justifications.
-- **Fill in the Blanks:** Prepositions, conjunctions, and right forms of verbs with hint toggles and check-answer validation.
-- **Error Identification:** Interactive sentence diagnostics highlighting error tokens.
+### 5. ⚡ Practice Zone (9 Interactive Drill Modes)
+- **MCQ Practice:** Multiple choice questions with immediate evaluation and score tracking.
 - **CQ Analytical Practice:** Analytical comprehension questions with official Bloom's Taxonomy grading rubrics.
+- **Grammar Drills:** Topic-specific grammar exercises (Voice, Sequence of Tense, Modals).
+- **Reading Drills:** Evidence extraction exercises from unseen and seen passages.
+- **Writing Drills:** Precision drafting and summary exercises with word count benchmarks.
+- **Sentence Correction Drills:** Spotting and fixing authentic university exam errors with detailed rationale.
+- **Fill in the Blanks:** Prepositions, conjunctions, and right forms of verbs with hint toggles.
+- **Error Identification:** Sentence diagnostics with clickable error token identification.
+- **Mixed Practice Arena:** Randomized multi-topic practice sessions.
 
 ### 6. 🚀 Exam Preparation & Cram Booster
 - **Exam Suggestions & Priority Matrix:** Category A (100% Recurrence), Category B (70–85%), Category C (40–60%), and Top 10 University Error Traps.
