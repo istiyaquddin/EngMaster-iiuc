@@ -1,0 +1,11 @@
+# Dependencies and virtual environments
+scratch/
+venv/
+.venv/
+__pycache__/
+*.pyc
+
+# Operating system files
+.DS_Store
+Thumbs.db
+*.tmp

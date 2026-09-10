@@ -1,0 +1,1189 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EngMaster IIUC — GEEL-1106 / UREL-1106 Advanced English Master Platform</title>
+  <meta name="description" content="Definitive offline-first interactive study platform for GEEL-1106 / UREL-1106 Advanced English at International Islamic University Chittagong. Complete with 100 Grammar Rules, Tibbitts Reading Units 11C-20C, 2018-2025 Solved Exam Questions, 45-Min Mock Test Simulator, Writing Workshop, and 50-Word Summary Studio.">
+  <meta name="author" content="Center for General Education (CGED) & EngMaster IIUC">
+  
+  <!-- Google Fonts & Font Awesome Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Application Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Top Reading Progress Indicator -->
+  <div id="reading-progress" aria-hidden="true"></div>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" class="toast-container" aria-live="polite"></div>
+
+  <!-- Interactive Vocabulary & Rule Popover Modal -->
+  <div id="popover-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 id="popover-title">Word Information</h3>
+        <button class="modal-close" id="popover-close" aria-label="Close dialog">&times;</button>
+      </div>
+      <div class="modal-body" id="popover-content">
+        <!-- Injected via JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Sidebar Overlay Backdrop for Mobile -->
+  <div id="sidebar-overlay" class="sidebar-overlay" aria-hidden="true"></div>
+
+  <!-- Sidebar Navigation -->
+  <aside id="sidebar" role="navigation" aria-label="Main Navigation">
+    <div class="sidebar-brand">
+      <div class="brand-icon">E</div>
+      <div class="brand-text">
+        <h1>EngMaster IIUC</h1>
+        <span>GEEL-1106 • Year 1 Sem 1</span>
+      </div>
+      <button id="sidebar-close" class="sidebar-close-btn" aria-label="Close navigation sidebar">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+
+    <!-- Live Study Progress Pill -->
+    <div class="sidebar-progress-card">
+      <div class="progress-title">
+        <span>Syllabus Mastery</span>
+        <strong id="sidebar-progress-percent">0%</strong>
+      </div>
+      <div class="progress-track">
+        <div class="progress-bar" id="sidebar-progress-fill" style="width: 0%;"></div>
+      </div>
+      <div class="progress-meta">
+        <span id="sidebar-rules-mastered">0/100 Rules</span>
+        <span id="sidebar-completed-modules">0/16 Modules</span>
+      </div>
+    </div>
+
+    <!-- Navigation Section: Command Center -->
+    <div class="nav-section">
+      <div class="nav-section-title">Command Center</div>
+      <ul class="nav-links">
+        <li><a class="nav-item active" data-view-target="view-dashboard"><i class="fas fa-chart-pie"></i><span>Home Dashboard</span></a></li>
+        <li><a class="nav-item" data-view-target="view-bookmarks"><i class="fas fa-bookmark"></i><span>My Bookmarks</span><span class="nav-badge" id="nav-badge-bookmarks">0</span></a></li>
+        <li><a class="nav-item" data-view-target="view-notes"><i class="fas fa-sticky-note"></i><span>Personal Notes</span><span class="nav-badge" id="nav-badge-notes">0</span></a></li>
+        <li><a class="nav-item" data-view-target="view-smart-notes"><i class="fas fa-book-open"></i><span>Smart Note (Notebook)</span></a></li>
+      </ul>
+    </div>
+
+    <!-- Navigation Section: Core Grammar Explorers -->
+    <div class="nav-section">
+      <div class="nav-section-title">Interactive Grammar Hub</div>
+      <ul class="nav-links">
+        <li><a class="nav-item" data-view-target="view-rules"><i class="fas fa-list-ol"></i><span>Top 100 Rules Catalog</span><span class="nav-badge">100</span></a></li>
+        <li><a class="nav-item" data-view-target="view-sva"><i class="fas fa-check-double"></i><span>Subject-Verb Agreement</span></a></li>
+        <li><a class="nav-item" data-view-target="view-conditionals"><i class="fas fa-code-branch"></i><span>Conditional Sentences</span></a></li>
+        <li><a class="nav-item" data-view-target="view-causatives"><i class="fas fa-cogs"></i><span>Causative Verbs Explorer</span></a></li>
+        <li><a class="nav-item" data-view-target="view-mistakes"><i class="fas fa-exclamation-triangle"></i><span>Top 50 Common Mistakes</span><span class="nav-badge">50</span></a></li>
+      </ul>
+    </div>
+
+    <!-- Navigation Section: Reading & Vocabulary -->
+    <div class="nav-section">
+      <div class="nav-section-title">Reading & Vocabulary</div>
+      <ul class="nav-links">
+        <li><a class="nav-item" data-view-target="view-seen-passages"><i class="fas fa-glasses"></i><span>Seen Passages (Tibbitts)</span><span class="nav-badge">11C–20C</span></a></li>
+        <li><a class="nav-item" data-view-target="view-vocab"><i class="fas fa-spell-check"></i><span>Top 50 Academic Vocab</span><span class="nav-badge">Audio</span></a></li>
+        <li><a class="nav-item" data-view-target="view-summary-studio"><i class="fas fa-feather-alt"></i><span>50-Word Summary Studio</span><span class="nav-badge">Live Counter</span></a></li>
+      </ul>
+    </div>
+
+    <!-- Navigation Section: Writing & Exam Practice -->
+    <div class="nav-section">
+      <div class="nav-section-title">Writing & Exam Practice</div>
+      <ul class="nav-links">
+        <li><a class="nav-item" data-view-target="view-writing-workshop"><i class="fas fa-pen-nib"></i><span>Writing Workshop (Letters & Essays)</span></a></li>
+        <li><a class="nav-item" data-view-target="view-prev-questions"><i class="fas fa-history"></i><span>Past Questions (2018–2025)</span><span class="nav-badge">Solved</span></a></li>
+        <li><a class="nav-item" data-view-target="view-quiz"><i class="fas fa-question-circle"></i><span>MCQ Quiz Simulator</span><span class="nav-badge">50 Qs</span></a></li>
+        <li><a class="nav-item" data-view-target="view-mock-test"><i class="fas fa-stopwatch-20"></i><span>45-Min Mock Test</span><span class="nav-badge" style="background: var(--accent-rose);">Timer</span></a></li>
+        <li><a class="nav-item" data-view-target="view-suggestions"><i class="fas fa-lightbulb"></i><span>Exam Suggestions & Trends</span></a></li>
+        <li><a class="nav-item" data-view-target="view-cram-booster"><i class="fas fa-bolt"></i><span>Last-Night Cram Booster</span></a></li>
+      </ul>
+    </div>
+
+    <!-- Navigation Section: Textbook Modules -->
+    <div class="nav-section">
+      <div class="nav-section-title">Complete Textbook Modules</div>
+      <ul class="nav-links" id="nav-all-chapters">
+        <!-- Injected dynamically via app.js -->
+      </ul>
+    </div>
+
+    <!-- Navigation Section: System & Settings -->
+    <div class="nav-section">
+      <div class="nav-section-title">System & Settings</div>
+      <ul class="nav-links">
+        <li><a class="nav-item" data-view-target="view-settings"><i class="fas fa-sliders-h"></i><span>Settings & Data</span></a></li>
+        <li><a class="nav-item" data-view-target="view-about"><i class="fas fa-university"></i><span>About Curriculum</span></a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <!-- Main Application Wrapper -->
+  <div id="main-wrapper">
+    
+    <!-- Top Header -->
+    <header id="top-header" role="banner">
+      <div class="header-left">
+        <button id="mobile-toggle" aria-label="Toggle Navigation Sidebar"><i class="fas fa-bars"></i></button>
+        <div class="search-box">
+          <i class="fas fa-search search-icon" aria-hidden="true"></i>
+          <input type="text" id="global-search-input" placeholder="Search rules, vocabulary, questions, passages..." autocomplete="off" aria-label="Global Search">
+          <div id="search-results-dropdown" class="search-results-dropdown" aria-live="polite"></div>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <!-- Exam Countdown Timer Badge -->
+        <div class="header-pill header-countdown" id="header-countdown-pill" title="Countdown to Semester End Examination">
+          <i class="fas fa-hourglass-half"></i>
+          <span id="header-countdown-text">Exam: Calc...</span>
+        </div>
+
+        <!-- Bookmarks Quick Access -->
+        <button class="btn-icon" data-view-target="view-bookmarks" title="View Saved Bookmarks" aria-label="My Bookmarks">
+          <i class="fas fa-bookmark"></i>
+          <span class="icon-badge" id="header-bookmark-badge">0</span>
+        </button>
+
+        <!-- Font Size Adjuster -->
+        <button class="btn-icon hide-mobile-sm" id="btn-font-size" title="Toggle Font Size (Standard / Large / Extra Large)" aria-label="Adjust font size">
+          <i class="fas fa-text-height"></i>
+        </button>
+
+        <!-- Theme Toggle -->
+        <button class="btn-icon" id="theme-toggle" title="Switch Light/Dark Theme" aria-label="Toggle Theme">
+          <i class="fas fa-sun"></i>
+        </button>
+
+        <!-- Print Cheat Sheet -->
+        <button class="btn-icon hide-mobile" onclick="window.print()" title="Print Current View or Smart Notes" aria-label="Print Document">
+          <i class="fas fa-print"></i>
+        </button>
+
+        <!-- Start Quick Quiz CTA -->
+        <a class="btn-primary" data-view-target="view-mock-test" role="button">
+          <i class="fas fa-play"></i>
+          <span class="btn-label-responsive">Mock Exam</span>
+        </a>
+      </div>
+    </header>
+
+    <!-- Content Area Container -->
+    <main id="content-area" role="main">
+
+      <!-- ====================================================================
+           VIEW 1: HOME DASHBOARD
+           ==================================================================== -->
+      <section id="view-dashboard" class="view-section active">
+        <!-- Hero Card -->
+        <div class="hero-card">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 16px;">
+            <div>
+              <span class="hero-tag"><i class="fas fa-graduation-cap"></i> IIUC CGED Semester End Exam Preparation Platform</span>
+              <h2 class="hero-title">EngMaster IIUC: Advanced English Portal</h2>
+              <p class="hero-desc">
+                The comprehensive offline-first study companion for GEEL-1106 / UREL-1106. Integrating the official syllabus, E.L. Tibbitts' reading units (11C–20C), lecture slides, 7 years of solved Semester End Examinations (2018–2025), and interactive diagnostic evaluation.
+              </p>
+            </div>
+            <div class="exam-countdown-widget">
+              <div class="countdown-label"><i class="fas fa-clock"></i> SEE Exam Countdown</div>
+              <div class="countdown-clock" id="dashboard-countdown-clock">
+                <div class="clock-unit"><span id="cd-days">00</span><small>Days</small></div>
+                <div class="clock-unit"><span id="cd-hours">00</span><small>Hours</small></div>
+                <div class="clock-unit"><span id="cd-mins">00</span><small>Mins</small></div>
+                <div class="clock-unit"><span id="cd-secs">00</span><small>Secs</small></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hero Metrics Bar -->
+          <div class="hero-stats">
+            <div class="stat-box">
+              <div class="stat-val" id="stat-completed-modules">0 / 16</div>
+              <div class="stat-label">Modules Completed</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-val" id="stat-rules-mastered">0 / 100</div>
+              <div class="stat-label">Rules Mastered</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-val" id="stat-quiz-accuracy">0%</div>
+              <div class="stat-label">Quiz Accuracy</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-val" id="stat-bookmarks-count">0</div>
+              <div class="stat-label">Saved Bookmarks</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-val">7 Years</div>
+              <div class="stat-label">Solved Papers (2018–25)</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Revision Pills Bar -->
+        <div class="quick-revision-bar">
+          <span class="quick-rev-title"><i class="fas fa-bolt"></i> Quick Revision:</span>
+          <div class="quick-pills">
+            <button class="pill-btn" data-view-target="view-sva">Subject-Verb Concord</button>
+            <button class="pill-btn" data-view-target="view-conditionals">Conditionals (Types 0-3)</button>
+            <button class="pill-btn" data-view-target="view-causatives">Causatives (Have/Get/Make)</button>
+            <button class="pill-btn" onclick="openSeenPassage('passage-17c')">Passage 17C: Film Shooting</button>
+            <button class="pill-btn" onclick="openSeenPassage('passage-16c')">Passage 16C: Rochdale Co-op</button>
+            <button class="pill-btn" data-view-target="view-summary-studio">50-Word Summary</button>
+            <button class="pill-btn" data-view-target="view-writing-workshop">Letter Templates</button>
+            <button class="pill-btn" data-view-target="view-suggestions">Top High-Yield Topics</button>
+          </div>
+        </div>
+
+        <!-- Two-Column Study Dashboard Grid -->
+        <div class="dashboard-grid">
+          <!-- Left Column: Daily Study Goal & Recent Activity -->
+          <div class="dashboard-col">
+            <div class="dashboard-panel">
+              <div class="panel-header">
+                <h3><i class="fas fa-tasks"></i> Daily Study Checklist</h3>
+                <button class="btn-text-sm" id="btn-reset-daily-goals">Reset Goals</button>
+              </div>
+              <ul class="checklist-items" id="dashboard-daily-goals">
+                <!-- Injected via JavaScript -->
+              </ul>
+            </div>
+
+            <div class="dashboard-panel">
+              <div class="panel-header">
+                <h3><i class="fas fa-history"></i> Recent Study Activity</h3>
+                <span class="panel-badge" id="activity-count-badge">Active</span>
+              </div>
+              <div id="recent-activity-list" class="recent-activity-list">
+                <!-- Injected via JavaScript -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Continue Reading & Top Rules Showcase -->
+          <div class="dashboard-col">
+            <div class="dashboard-panel">
+              <div class="panel-header">
+                <h3><i class="fas fa-bookmark"></i> Continue Where You Left Off</h3>
+              </div>
+              <div id="continue-reading-card" class="continue-reading-box">
+                <!-- Injected via JavaScript -->
+              </div>
+            </div>
+
+            <div class="dashboard-panel">
+              <div class="panel-header">
+                <h3><i class="fas fa-star"></i> High-Yield Exam Rules Spotlight</h3>
+                <a class="btn-text-sm" data-view-target="view-rules">View All 100 &rarr;</a>
+              </div>
+              <div id="top-rules-spotlight" class="rules-spotlight-list">
+                <!-- Injected via JavaScript -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Interactive Core Modules Features Grid -->
+        <h3 style="margin: 32px 0 16px; font-size: 20px; font-weight: 700;">Curriculum Modules Explorer</h3>
+        <div class="grid-cards">
+          
+          <div class="card-feature" data-view-target="view-rules">
+            <div class="card-icon icon-blue"><i class="fas fa-list-ol"></i></div>
+            <h4 class="card-title">Top 100 Grammar Rules</h4>
+            <p class="card-desc">Searchable, categorized catalog of all 100 university grammar rules with formulas, examples, and exceptions.</p>
+            <div class="card-footer"><span>Explore 100 Rules</span> <i class="fas fa-arrow-right"></i></div>
+          </div>
+
+          <div class="card-feature" data-view-target="view-sva">
+            <div class="card-icon icon-purple"><i class="fas fa-check-double"></i></div>
+            <h4 class="card-title">Subject-Verb Agreement</h4>
+            <p class="card-desc">Interactive explorer for Headword concord, Additive connectors, Proximity rules, and Quantifiers.</p>
+            <div class="card-footer"><span>Launch SVA Explorer</span> <i class="fas fa-arrow-right"></i></div>
+          </div>
+
+          <div class="card-feature" data-view-target="view-conditionals">
+            <div class="card-icon icon-cyan"><i class="fas fa-code-branch"></i></div>
+            <h4 class="card-title">Conditional Sentences</h4>
+            <p class="card-desc">Interactive formula cards (Types 0, 1, 2, 3, Inverted, Mixed) with visual timelines and instant mini-drills.</p>
+            <div class="card-footer"><span>Explore Conditionals</span> <i class="fas fa-arrow-right"></i></div>
+          </div>
+
+          <div class="card-feature" data-view-target="view-causatives">
+            <div class="card-icon icon-amber"><i class="fas fa-cogs"></i></div>
+            <h4 class="card-title">Causative Verbs Hub</h4>
+            <p class="card-desc">Master Have, Get, Make, Let, Help in Active & Passive voices with direct comparison matrices.</p>
+            <div class="card-footer"><span>Master Causatives</span> <i class="fas fa-arrow-right"></i></div>
+          </div>
+
+          <div class="card-feature" data-view-target="view-seen-passages">
+            <div class="card-icon icon-emerald"><i class="fas fa-glasses"></i></div>
+            <h4 class="card-title">Seen Passages (Tibbitts 11C–20C)</h4>
+            <p class="card-desc">Authentic texts with interactive in-text vocabulary popovers, themes, 50-word summaries, and model answers.</p>
+            <div class="card-footer"><span>Read Passages</span> <i class="fas fa-arrow-right"></i></div>
+          </div>
+
+          <div class="card-feature" data-view-target="view-summary-studio">
+            <div class="card-icon icon-rose"><i class="fas fa-feather-alt"></i></div>
+            <h4 class="card-title">50-Word Summary Studio</h4>
+            <p class="card-desc">Interactive drafting pad with live word counter, strict 45–50 word indicator, and overflow highlighter.</p>
+            <div class="card-footer"><span>Open Studio</span> <i class="fas fa-arrow-right"></i></div>
+          </div>
+
+          <div class="card-feature" data-view-target="view-writing-workshop">
+            <div class="card-icon icon-blue"><i class="fas fa-pen-nib"></i></div>
+            <h4 class="card-title">Writing Workshop</h4>
+            <p class="card-desc">Official templates and editable practice areas for Business Letters (Order, Complaint, Request) and Essays.</p>
+            <div class="card-footer"><span>Practice Writing</span> <i class="fas fa-arrow-right"></i></div>
+          </div>
+
+          <div class="card-feature" data-view-target="view-prev-questions">
+            <div class="card-icon icon-purple"><i class="fas fa-history"></i></div>
+            <h4 class="card-title">Past Questions (2018–2025)</h4>
+            <p class="card-desc">Multi-filtered university questions organized by Year, Semester, Topic, and Difficulty with model solutions.</p>
+            <div class="card-footer"><span>Search Questions</span> <i class="fas fa-arrow-right"></i></div>
+          </div>
+
+          <div class="card-feature" data-view-target="view-mock-test">
+            <div class="card-icon icon-rose"><i class="fas fa-stopwatch-20"></i></div>
+            <h4 class="card-title">45-Min Mock Test Simulator</h4>
+            <p class="card-desc">Simulated examination environment with auto-timer, negative marking toggle, and detailed diagnostic report.</p>
+            <div class="card-footer"><span>Start Mock Exam</span> <i class="fas fa-arrow-right"></i></div>
+          </div>
+
+        </div>
+
+        <!-- Official Marks Breakdown Card -->
+        <div class="reader-article" style="margin-top: 24px;">
+          <h2>Official Examination Marks Breakdown (50 Marks SEE)</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Component</th>
+                <th>Target Area</th>
+                <th>Marks</th>
+                <th>Exam Technique & Pitfalls</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Seen Reading</strong></td>
+                <td>Tibbitts Units 11C–20C (Units 17C, 16C, 15C, 18C, 14C)</td>
+                <td><strong>15 Marks</strong></td>
+                <td>Direct citation of factual Qs, True/False with reasons, Synonyms/Antonyms, grammatical transformations.</td>
+              </tr>
+              <tr>
+                <td><strong>Unseen Reading</strong></td>
+                <td>Socio-economic / environmental articles</td>
+                <td><strong>10 Marks</strong></td>
+                <td>Contextual vocabulary, WH-questions, and <strong>Strict 50-Word Precision Summary (45–50 words)</strong>.</td>
+              </tr>
+              <tr>
+                <td><strong>Grammar Part</strong></td>
+                <td>SVA, Conditionals, Causatives, Modifiers, Voice, Prepositions</td>
+                <td><strong>10 Marks</strong></td>
+                <td>10 questions × 1 mark each with direct instruction. Precision and formula adherence required.</td>
+              </tr>
+              <tr>
+                <td><strong>Writing Part</strong></td>
+                <td>Professional & Academic Writing</td>
+                <td><strong>15 Marks</strong></td>
+                <td>Argumentative Essay (5 M), Chart/Graph Description (5 M), Official Business Letter (5 M).</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           VIEW 2: TOP 100 RULES CATALOG
+           ==================================================================== -->
+      <section id="view-rules" class="view-section">
+        <div class="hero-card" style="padding: 28px; margin-bottom: 24px;">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 12px;">
+            <div>
+              <span class="hero-tag"><i class="fas fa-list-ol"></i> Definitive Grammar Catalog</span>
+              <h2>Top 100 Essential Grammar Rules</h2>
+              <p style="color: var(--text-muted); font-size: 14px; margin-top: 6px;">
+                Complete indexed catalog of university grammar rules tested across 2018–2025 examinations.
+              </p>
+            </div>
+            <div class="catalog-counter-pill">
+              <span id="rules-count-display">Showing 100 of 100 Rules</span>
+            </div>
+          </div>
+
+          <div style="margin-top: 18px; display: flex; gap: 12px; flex-wrap: wrap;">
+            <input type="text" id="rules-search-input" placeholder="Search rules (e.g. neither, causative, subjunctive, quantifier)..." style="flex: 1; min-width: 260px; padding: 10px 16px; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle); background: var(--bg-surface); color: var(--text-main); font-size: 14px;">
+            <div class="filter-pills" id="rules-category-filters">
+              <button class="filter-btn active" data-rule-cat="all">All (100)</button>
+              <button class="filter-btn" data-rule-cat="sva">Concord (1-21)</button>
+              <button class="filter-btn" data-rule-cat="conditionals">Conditionals (22-33)</button>
+              <button class="filter-btn" data-rule-cat="causatives">Causatives (34-42)</button>
+              <button class="filter-btn" data-rule-cat="verbs">Verbs & Tenses (43-61)</button>
+              <button class="filter-btn" data-rule-cat="modifiers">Non-Finite & Modifiers (62-70)</button>
+              <button class="filter-btn" data-rule-cat="prepositions">Prepositions & Errors (71-100)</button>
+            </div>
+          </div>
+        </div>
+
+        <div id="rules-list-container" class="rules-container">
+          <!-- Injected via JavaScript -->
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           VIEW 3: SUBJECT-VERB AGREEMENT EXPLORER
+           ==================================================================== -->
+      <section id="view-sva" class="view-section">
+        <div class="hero-card" style="padding: 28px; margin-bottom: 24px;">
+          <span class="hero-tag" style="background: rgba(139, 92, 246, 0.2); color: #c084fc;"><i class="fas fa-check-double"></i> 100% Recurrence In All Exams</span>
+          <h2>Subject-Verb Agreement (Concord) Master Explorer</h2>
+          <p style="color: var(--text-muted); font-size: 14px; margin-top: 6px;">
+            The single most tested grammar topic in GEEL-1106. Master the 5 fundamental trap patterns with interactive filters and rule comparisons.
+          </p>
+
+          <div class="filter-pills" style="margin-top: 16px;">
+            <button class="filter-btn active" data-sva-filter="all">All Concord Rules</button>
+            <button class="filter-btn" data-sva-filter="headword">Headword Concord</button>
+            <button class="filter-btn" data-sva-filter="additive">Additive Connectors (as well as)</button>
+            <button class="filter-btn" data-sva-filter="proximity">Proximity (Neither... nor)</button>
+            <button class="filter-btn" data-sva-filter="quantifier">Quantifiers (A number of)</button>
+            <button class="filter-btn" data-sva-filter="collective">Collective Nouns & Measures</button>
+          </div>
+        </div>
+
+        <!-- Rule Comparison Matrix Widget -->
+        <div class="reader-article" style="margin-bottom: 24px;">
+          <h3><i class="fas fa-balance-scale"></i> Critical Rule Comparison Matrix</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Grammar Pattern</th>
+                <th>Governing Subject</th>
+                <th>Verb Form</th>
+                <th>Exam Exemplar</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Additive Connectors</strong><br>(<em>as well as, along with, together with, with</em>)</td>
+                <td><strong>Subject 1</strong> (First subject)</td>
+                <td>Follows S1 strictly</td>
+                <td><em>The captain as well as his players <strong>was</strong> awarded.</em></td>
+              </tr>
+              <tr>
+                <td><strong>Correlative Conjunctions</strong><br>(<em>either... or, neither... nor, not only... but also</em>)</td>
+                <td><strong>Subject 2</strong> (Nearest subject)</td>
+                <td>Follows S2 strictly</td>
+                <td><em>Neither the manager nor his assistants <strong>were</strong> present.</em></td>
+              </tr>
+              <tr>
+                <td><strong>Isolated Pronouns</strong><br>(<em>Neither of, Either of, Each of, Everyone</em>)</td>
+                <td>Grammatically <strong>Singular</strong></td>
+                <td>Always <strong>Singular</strong></td>
+                <td><em>Neither of the two solutions <strong>is</strong> viable.</em></td>
+              </tr>
+              <tr>
+                <td><strong>Quantifier: <code>A number of</code></strong></td>
+                <td>Indefinite Plural Collection</td>
+                <td>Always <strong>Plural</strong></td>
+                <td><em>A number of students <strong>have</strong> registered.</em></td>
+              </tr>
+              <tr>
+                <td><strong>Statistic: <code>The number of</code></strong></td>
+                <td>Definite Numerical Statistic</td>
+                <td>Always <strong>Singular</strong></td>
+                <td><em>The number of students <strong>is</strong> seventy-five.</em></td>
+              </tr>
+              <tr>
+                <td><strong>Quantities of Money, Time, Distance</strong></td>
+                <td>Single Unified Unit</td>
+                <td>Always <strong>Singular</strong></td>
+                <td><em>Fifty thousand dollars <strong>was</strong> invested.</em></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div id="sva-rules-container" class="rules-container">
+          <!-- Injected via JavaScript -->
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           VIEW 4: CONDITIONAL SENTENCES
+           ==================================================================== -->
+      <section id="view-conditionals" class="view-section">
+        <div class="hero-card" style="padding: 28px; margin-bottom: 24px;">
+          <span class="hero-tag" style="background: rgba(6, 182, 212, 0.2); color: #22d3ee;"><i class="fas fa-code-branch"></i> Essential Formula Hub</span>
+          <h2>Conditional Sentences Master Studio</h2>
+          <p style="color: var(--text-muted); font-size: 14px; margin-top: 6px;">
+            Interactive formula cards for Types 0, 1, 2, 3, Inverted, and Mixed conditionals with visual timelines and interactive mini-drills.
+          </p>
+        </div>
+
+        <div id="conditionals-cards-container" class="conditionals-deck">
+          <!-- Injected via JavaScript -->
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           VIEW 5: CAUSATIVE VERBS
+           ==================================================================== -->
+      <section id="view-causatives" class="view-section">
+        <div class="hero-card" style="padding: 28px; margin-bottom: 24px;">
+          <span class="hero-tag" style="background: rgba(245, 158, 11, 0.2); color: #fbbf24;"><i class="fas fa-cogs"></i> Active vs. Passive Mechanics</span>
+          <h2>Causative Verbs Master Studio</h2>
+          <p style="color: var(--text-muted); font-size: 14px; margin-top: 6px;">
+            Master HAVE, GET, MAKE, LET, HELP, and FORCE in active and passive constructions with the definitive Bare vs. To-Infinitive matrix.
+          </p>
+        </div>
+
+        <!-- Comparison Table -->
+        <div class="reader-article" style="margin-bottom: 24px;">
+          <h3>Causative Quick Comparison Matrix</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Verb</th>
+                <th>Active Voice Formula</th>
+                <th>Passive Voice Formula</th>
+                <th>Nuance & Meaning</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>HAVE</strong></td>
+                <td><code>S + have + Person + V1 (bare)</code></td>
+                <td><code>S + have + Thing + V3</code></td>
+                <td>Delegation, formal assignment, instruction.</td>
+              </tr>
+              <tr>
+                <td><strong>GET</strong></td>
+                <td><code>S + get + Person + TO + V1</code></td>
+                <td><code>S + get + Thing + V3</code></td>
+                <td>Persuasion, convincing, overcoming resistance.</td>
+              </tr>
+              <tr>
+                <td><strong>MAKE</strong></td>
+                <td><code>S + make + Person + V1 (bare)</code></td>
+                <td><code>S + BE MADE + TO + V1</code> (Trap!)</td>
+                <td>Force, compulsion, unavoidable obligation.</td>
+              </tr>
+              <tr>
+                <td><strong>LET</strong></td>
+                <td><code>S + let + Person + V1 (bare)</code></td>
+                <td><code>S + BE ALLOWED TO + V1</code></td>
+                <td>Permission, authorization, non-prevention.</td>
+              </tr>
+              <tr>
+                <td><strong>HELP</strong></td>
+                <td><code>S + help + Person + (TO) + V1</code></td>
+                <td><code>S + BE HELPED + TO + V1</code></td>
+                <td>Assistance (both bare and to-infinitive correct).</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div id="causatives-cards-container" class="causatives-grid">
+          <!-- Injected via JavaScript -->
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           VIEW 6: TOP 50 COMMON MISTAKES
+           ==================================================================== -->
+      <section id="view-mistakes" class="view-section">
+        <div class="hero-card" style="padding: 28px; margin-bottom: 24px;">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 12px;">
+            <div>
+              <span class="hero-tag" style="background: rgba(244, 63, 94, 0.2); color: #fb7185;"><i class="fas fa-times-circle"></i> University Trap Buster</span>
+              <h2>Top 50 Common Mistakes & Sentence Corrections</h2>
+              <p style="color: var(--text-muted); font-size: 14px; margin-top: 6px;">
+                Direct before-and-after corrections of high-frequency university exam errors with full grammatical rationales.
+              </p>
+            </div>
+            <div class="catalog-counter-pill">
+              <span id="mistakes-count-display">Showing 50 of 50 Mistakes</span>
+            </div>
+          </div>
+
+          <div style="margin-top: 16px;">
+            <input type="text" id="mistakes-search-input" placeholder="Search mistake corrections (e.g. worth, home, let alone, advise, discuss)..." style="width: 100%; max-width: 480px; padding: 10px 16px; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle); background: var(--bg-surface); color: var(--text-main); font-size: 14px;">
+          </div>
+        </div>
+
+        <div id="mistakes-list-container" class="mistakes-container">
+          <!-- Injected via JavaScript -->
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           VIEW 7: SEEN PASSAGES (TIBBITTS 11C–20C)
+           ==================================================================== -->
+      <section id="view-seen-passages" class="view-section">
+        <div class="hero-card" style="padding: 28px; margin-bottom: 24px;">
+          <span class="hero-tag" style="background: rgba(16, 185, 129, 0.2); color: #34d399;"><i class="fas fa-glasses"></i> Section A: 15 Marks Master Unit</span>
+          <h2>Tibbitts Prescribed Seen Passages (Units 11C–20C)</h2>
+          <p style="color: var(--text-muted); font-size: 14px; margin-top: 6px;">
+            Authentic texts from E.L. Tibbitts' <em>Exercises in Reading Comprehension</em>. Click highlighted vocabulary words to view instant definitions, pronunciation, synonyms, and exam usage.
+          </p>
+
+          <!-- Passage Selector Tabs -->
+          <div class="passage-tabs" id="seen-passage-tabs" style="margin-top: 16px;">
+            <!-- Injected via JavaScript -->
+          </div>
+        </div>
+
+        <div id="seen-passage-content-container">
+          <!-- Injected via JavaScript -->
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           VIEW 8: TOP 50 ACADEMIC VOCABULARY
+           ==================================================================== -->
+      <section id="view-vocab" class="view-section">
+        <div class="hero-card" style="padding: 28px; margin-bottom: 24px;">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 12px;">
+            <div>
+              <span class="hero-tag"><i class="fas fa-spell-check"></i> High-Yield Lexicon</span>
+              <h2>Top 50 High-Frequency Academic Vocabulary</h2>
+              <p style="color: var(--text-muted); font-size: 14px; margin-top: 6px;">
+                Curated academic and seen passage vocabulary. Click the audio button <i class="fas fa-volume-up"></i> to hear offline pronunciation powered by the Web Speech API.
+              </p>
+            </div>
+            <div class="catalog-counter-pill">
+              <span id="vocab-count-display">Showing 50 of 50 Words</span>
+            </div>
+          </div>
+
+          <div style="margin-top: 16px; display: flex; gap: 12px; flex-wrap: wrap;">
+            <input type="text" id="vocab-search-input" placeholder="Search vocabulary, synonyms, antonyms (e.g. intelligible, surplus, genuine)..." style="flex: 1; min-width: 260px; padding: 10px 16px; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle); background: var(--bg-surface); color: var(--text-main); font-size: 14px;">
+            <button class="filter-btn active" id="btn-vocab-all">All Words</button>
+            <button class="filter-btn" id="btn-vocab-bookmarked">Bookmarked Only</button>
+          </div>
+        </div>
+
+        <div class="vocab-grid" id="vocab-grid-container">
+          <!-- Injected via JavaScript -->
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           VIEW 9: 50-WORD SUMMARY STUDIO
+           ==================================================================== -->
+      <section id="view-summary-studio" class="view-section">
+        <div class="summary-studio">
+          <span class="hero-tag"><i class="fas fa-feather-alt"></i> Precision Writing Engine</span>
+          <h2>50-Word Unseen Summary Studio</h2>
+          <p style="color: var(--text-muted); font-size: 14px; margin: 8px 0 20px;">
+            Practice distilling complex unseen reading passages into the strict examination constraint of <strong>45 to 50 words</strong>.
+          </p>
+
+          <!-- Sample Passage Selector -->
+          <div style="margin-bottom: 16px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+            <span style="font-size: 13.5px; font-weight: 600; color: var(--text-muted);">Select Practice Passage:</span>
+            <button class="filter-btn active summary-passage-btn" data-passage-idx="0">Autumn 2025: Healthcare Diplomacy</button>
+            <button class="filter-btn summary-passage-btn" data-passage-idx="1">Spring 2024: Cyber Hygiene in FinTech</button>
+            <button class="filter-btn summary-passage-btn" data-passage-idx="2">Autumn 2023: Renewable Microgrids</button>
+          </div>
+
+          <div class="reader-article" style="margin-bottom: 24px; padding: 22px;" id="summary-source-box">
+            <!-- Injected via JavaScript -->
+          </div>
+
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+            <label for="summary-input" style="font-size: 14px; font-weight: 700;">Your 50-Word Precision Summary:</label>
+            <div style="display: flex; gap: 8px;">
+              <button class="btn-text-sm" id="btn-copy-summary"><i class="fas fa-copy"></i> Copy</button>
+              <button class="btn-text-sm" id="btn-clear-summary"><i class="fas fa-eraser"></i> Clear</button>
+            </div>
+          </div>
+
+          <textarea id="summary-input" class="summary-textarea" placeholder="Type or paste your summary here... (Formula: 1 Topic Sentence + 2 Evidence Sentences + 1 Concluding Synthesis)"></textarea>
+          
+          <div class="summary-counter-bar">
+            <span class="word-count-tag" id="summary-status-badge">Empty (0 words)</span>
+            <span id="summary-word-count" style="font-size: 14px; font-weight: 700; color: var(--primary);">0 / 50 words</span>
+          </div>
+
+          <!-- Live Overflow Highlighting Box -->
+          <div id="summary-overflow-container" class="summary-overflow-preview" style="display: none;">
+            <div style="font-size: 12px; font-weight: 700; color: var(--accent-rose); margin-bottom: 6px;">
+              <i class="fas fa-exclamation-triangle"></i> Words past the 50th word limit (Penalized by Examiners):
+            </div>
+            <div id="summary-overflow-text" class="overflow-text-display"></div>
+          </div>
+
+          <div class="alert-box alert-info" style="margin-top: 24px;">
+            <i class="fas fa-lightbulb"></i>
+            <div>
+              <strong>Examiner's Golden Rule:</strong> An unseen summary exceeding 50 words or containing verbatim copied sentences loses 2 to 3 marks. Synthesize ideas using subordinating conjunctions (<em>Although, By implementing, Due to</em>).
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           VIEW 10: WRITING WORKSHOP
+           ==================================================================== -->
+      <section id="view-writing-workshop" class="view-section">
+        <div class="hero-card" style="padding: 28px; margin-bottom: 24px;">
+          <span class="hero-tag" style="background: rgba(99, 102, 241, 0.2); color: #818cf8;"><i class="fas fa-pen-nib"></i> Section C: 15 Marks Mastery</span>
+          <h2>Professional & Academic Writing Workshop</h2>
+          <p style="color: var(--text-muted); font-size: 14px; margin-top: 6px;">
+            Official university templates for Business Letters (Order, Complaint, Request), Applications, Paragraphs, and Argumentative Essays with editable drafting pads.
+          </p>
+
+          <!-- Template Tabs -->
+          <div class="passage-tabs" id="writing-template-tabs" style="margin-top: 16px;">
+            <!-- Injected via JavaScript -->
+          </div>
+        </div>
+
+        <div id="writing-template-display-container">
+          <!-- Injected via JavaScript -->
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           VIEW 11: PREVIOUS QUESTIONS EXPLORER (2018–2025)
+           ==================================================================== -->
+      <section id="view-prev-questions" class="view-section">
+        <div class="hero-card" style="padding: 28px; margin-bottom: 24px;">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 12px;">
+            <div>
+              <span class="hero-tag" style="background: rgba(139, 92, 246, 0.2); color: #c084fc;"><i class="fas fa-history"></i> 7 Years Verified Solutions</span>
+              <h2>Previous Examination Questions Explorer (2018–2025)</h2>
+              <p style="color: var(--text-muted); font-size: 14px; margin-top: 6px;">
+                Filter across 7 years of solved Semester End Examinations by Year, Semester, Topic, and Difficulty.
+              </p>
+            </div>
+            <div class="catalog-counter-pill">
+              <span id="pq-counter-display">Showing Solved Questions</span>
+            </div>
+          </div>
+
+          <!-- Multi-Filter Control Bar -->
+          <div class="pq-filters-grid" style="margin-top: 18px;">
+            <div>
+              <label for="pq-filter-year" class="filter-label">Filter by Year:</label>
+              <select id="pq-filter-year" class="select-control">
+                <option value="all">All Years (2018–2025)</option>
+                <option value="2025">2025</option>
+                <option value="2024">2024</option>
+                <option value="2023">2023</option>
+                <option value="2022">2022</option>
+                <option value="2021">2021</option>
+                <option value="2020">2020</option>
+                <option value="2019">2019</option>
+                <option value="2018">2018</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="pq-filter-topic" class="filter-label">Filter by Topic:</label>
+              <select id="pq-filter-topic" class="select-control">
+                <option value="all">All Topics</option>
+                <option value="Subject-Verb Agreement">Subject-Verb Agreement</option>
+                <option value="Conditionals">Conditionals</option>
+                <option value="Causative Verbs">Causative Verbs</option>
+                <option value="Sentence Correction">Sentence Correction</option>
+                <option value="Gerund vs Participle">Gerund vs Participle</option>
+                <option value="Prepositions">Prepositions</option>
+                <option value="Seen Comprehension">Seen Comprehension</option>
+                <option value="Quantifiers">Quantifiers</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="pq-filter-difficulty" class="filter-label">Filter by Difficulty:</label>
+              <select id="pq-filter-difficulty" class="select-control">
+                <option value="all">All Difficulties</option>
+                <option value="Easy">Easy</option>
+                <option value="Moderate">Moderate</option>
+                <option value="Challenging">Challenging</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="pq-search-input" class="filter-label">Search Questions:</label>
+              <input type="text" id="pq-search-input" placeholder="Search keywords..." class="select-control">
+            </div>
+          </div>
+        </div>
+
+        <div id="pq-list-container" class="pq-container">
+          <!-- Injected via JavaScript -->
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           VIEW 12: MCQ QUIZ SIMULATOR
+           ==================================================================== -->
+      <section id="view-quiz" class="view-section">
+        <div class="quiz-header">
+          <div>
+            <h2 style="font-size: 24px; font-weight: 800;">Interactive MCQ Quiz Simulator</h2>
+            <p style="color: var(--text-muted); font-size: 13.5px;">Practice across 50 exam-calibrated questions with instant step-by-step feedback.</p>
+          </div>
+
+          <div class="quiz-score-card">
+            <div>Score: <span class="score-num" id="quiz-score-val">0</span> / <span id="quiz-attempted-val">0</span></div>
+            <div style="font-size: 13px; color: var(--text-muted);">Accuracy: <strong id="quiz-percent-val" style="color: var(--text-main);">0%</strong></div>
+            <button class="btn-primary" id="btn-reset-quiz" style="padding: 6px 12px; font-size: 12px;"><i class="fas fa-redo"></i> Reset</button>
+          </div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 12px;">
+          <div class="filter-pills">
+            <button class="filter-btn active" data-difficulty="all">All Questions (50)</button>
+            <button class="filter-btn" data-difficulty="Easy">Easy (15)</button>
+            <button class="filter-btn" data-difficulty="Intermediate">Intermediate (20)</button>
+            <button class="filter-btn" data-difficulty="Challenging">Challenging (15)</button>
+          </div>
+        </div>
+
+        <div id="mcq-list-container">
+          <!-- Injected via JavaScript -->
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           VIEW 13: 45-MINUTE TIMED MOCK TEST
+           ==================================================================== -->
+      <section id="view-mock-test" class="view-section">
+        <div class="mock-test-header">
+          <div>
+            <span class="hero-tag" style="background: rgba(244, 63, 94, 0.2); color: #fb7185;"><i class="fas fa-stopwatch-20"></i> Official Exam Simulator</span>
+            <h2 style="font-size: 24px; font-weight: 800;">45-Minute SEE Mock Test Simulator</h2>
+            <p style="color: var(--text-muted); font-size: 13.5px;">Simulate realistic Semester End Examination conditions under strict time constraints.</p>
+          </div>
+
+          <!-- Mock Test Controls & Live Timer -->
+          <div class="mock-timer-box">
+            <div class="mock-clock" id="mock-clock-display">45:00</div>
+            <div class="mock-timer-actions">
+              <button class="btn-sm btn-outline" id="btn-mock-pause"><i class="fas fa-pause"></i> Pause</button>
+              <button class="btn-sm btn-danger" id="btn-mock-submit"><i class="fas fa-check-circle"></i> Submit Test</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mock Test Configuration Toolbar -->
+        <div class="mock-config-toolbar" id="mock-config-bar">
+          <div style="display: flex; align-items: center; gap: 16px; flex-wrap: wrap;">
+            <label style="display: flex; align-items: center; gap: 8px; font-size: 13.5px; cursor: pointer;">
+              <input type="checkbox" id="mock-neg-marking" style="width: 16px; height: 16px;">
+              <span>Enable Negative Marking (-0.25 per wrong answer)</span>
+            </label>
+            <label style="display: flex; align-items: center; gap: 8px; font-size: 13.5px; cursor: pointer;">
+              <input type="checkbox" id="mock-randomize" checked style="width: 16px; height: 16px;">
+              <span>Randomize Question Order</span>
+            </label>
+          </div>
+          <button class="btn-primary" id="btn-start-mock-test"><i class="fas fa-play"></i> Start 45-Min Test</button>
+        </div>
+
+        <!-- Question Navigation Palette -->
+        <div class="mock-palette" id="mock-palette-container" style="display: none;">
+          <div class="palette-header">
+            <span>Question Palette (Answered: <strong id="mock-answered-count">0</strong>/25)</span>
+            <span class="palette-legend">
+              <span class="leg-item"><span class="dot unans"></span> Unanswered</span>
+              <span class="leg-item"><span class="dot ans"></span> Answered</span>
+            </span>
+          </div>
+          <div class="palette-grid" id="mock-palette-grid"></div>
+        </div>
+
+        <!-- Live Question Area -->
+        <div id="mock-active-container" style="display: none;">
+          <div id="mock-question-card" class="mock-q-card"></div>
+          <div class="mock-nav-actions">
+            <button class="btn-outline" id="btn-mock-prev"><i class="fas fa-arrow-left"></i> Previous</button>
+            <button class="btn-primary" id="btn-mock-next">Next <i class="fas fa-arrow-right"></i></button>
+          </div>
+        </div>
+
+        <!-- Diagnostic Report Container (Appears after submission) -->
+        <div id="mock-report-container" class="mock-report-card" style="display: none;">
+          <!-- Injected via JavaScript -->
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           VIEW 14: EXAM SUGGESTION MODULE
+           ==================================================================== -->
+      <section id="view-suggestions" class="view-section">
+        <div class="hero-card" style="padding: 28px; margin-bottom: 24px;">
+          <span class="hero-tag" style="background: rgba(245, 158, 11, 0.2); color: #fbbf24;"><i class="fas fa-lightbulb"></i> Strategic Examination Intelligence</span>
+          <h2>Exam Suggestions & Trend Analysis (2018–2025)</h2>
+          <p style="color: var(--text-muted); font-size: 14px; margin-top: 6px;">
+            Empirical priority matrix based on 7 years of IIUC Semester End Examination papers.
+          </p>
+
+          <div class="filter-pills" style="margin-top: 16px;">
+            <button class="filter-btn active" data-sugg-tab="high">High Priority (100% Recurrence)</button>
+            <button class="filter-btn" data-sugg-tab="medium">Medium Priority (70–85%)</button>
+            <button class="filter-btn" data-sugg-tab="low">Low Priority (40–60%)</button>
+            <button class="filter-btn" data-sugg-tab="traps">Top 10 University Traps</button>
+          </div>
+        </div>
+
+        <div id="suggestions-content-container">
+          <!-- Injected via JavaScript -->
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           VIEW 15: LAST NIGHT REVISION & CHECKLIST
+           ==================================================================== -->
+      <section id="view-cram-booster" class="view-section">
+        <div class="hero-card" style="padding: 28px; margin-bottom: 24px;">
+          <span class="hero-tag" style="background: rgba(245, 158, 11, 0.2); color: #fbbf24;"><i class="fas fa-bolt"></i> High-Yield Cram Booster</span>
+          <h2>Last-Night Rapid Revision & 15-Point Pre-Exam Checklist</h2>
+          <p style="color: var(--text-muted); font-size: 14px; margin-top: 6px;">
+            Zero filler—pure formulas, memory mnemonics, and the 15-Point Sanity Checklist to review 1 hour before entering the examination hall.
+          </p>
+        </div>
+
+        <div class="reader-article">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 10px;">
+            <h3>The 15-Point Pre-Exam Sanity Checklist</h3>
+            <button class="btn-text-sm" id="btn-reset-sanity-checks"><i class="fas fa-redo"></i> Reset Checklist</button>
+          </div>
+          <ul class="checklist-items" id="sanity-checklist-container">
+            <!-- Injected via JavaScript -->
+          </ul>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           VIEW 16: SMART NOTE (INTERACTIVE NOTEBOOK)
+           ==================================================================== -->
+      <section id="view-smart-notes" class="view-section">
+        <div class="hero-card" style="padding: 28px; margin-bottom: 24px;">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 12px;">
+            <div>
+              <span class="hero-tag"><i class="fas fa-book-open"></i> Complete Interactive Notebook</span>
+              <h2>EngMaster 10-Chapter Smart Note</h2>
+              <p style="color: var(--text-muted); font-size: 14px; margin-top: 6px;">
+                Organized into cards, accordions, and summary boxes. Formatted cleanly for both online study and high-resolution printing.
+              </p>
+            </div>
+            <button class="btn-primary" onclick="window.print()"><i class="fas fa-print"></i> Print Smart Notes</button>
+          </div>
+        </div>
+
+        <div id="smart-notes-container" class="smart-notes-grid">
+          <!-- Injected via JavaScript -->
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           VIEW 17: MY BOOKMARKS
+           ==================================================================== -->
+      <section id="view-bookmarks" class="view-section">
+        <div class="hero-card" style="padding: 28px; margin-bottom: 24px;">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 12px;">
+            <div>
+              <span class="hero-tag"><i class="fas fa-bookmark"></i> Personalized Library</span>
+              <h2>My Saved Bookmarks</h2>
+              <p style="color: var(--text-muted); font-size: 14px; margin-top: 6px;">
+                Quickly access all bookmarked grammar rules, vocabulary words, questions, and revision notes saved in your browser.
+              </p>
+            </div>
+            <button class="btn-sm btn-danger" id="btn-clear-all-bookmarks"><i class="fas fa-trash"></i> Clear All</button>
+          </div>
+        </div>
+
+        <div id="bookmarks-container" class="bookmarks-list">
+          <!-- Injected via JavaScript -->
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           VIEW 18: PERSONAL STUDY NOTES
+           ==================================================================== -->
+      <section id="view-notes" class="view-section">
+        <div class="hero-card" style="padding: 28px; margin-bottom: 24px;">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 12px;">
+            <div>
+              <span class="hero-tag"><i class="fas fa-sticky-note"></i> Offline Notepad</span>
+              <h2>Personal Study Notes & Scratchpad</h2>
+              <p style="color: var(--text-muted); font-size: 14px; margin-top: 6px;">
+                Draft personal insights, lecture summaries, and revision reminders. Auto-saved locally in your browser.
+              </p>
+            </div>
+            <button class="btn-primary" id="btn-new-note"><i class="fas fa-plus"></i> Create New Note</button>
+          </div>
+        </div>
+
+        <!-- Note Editor Card (Visible when creating/editing) -->
+        <div id="note-editor-card" class="note-editor-card" style="display: none;">
+          <div class="editor-header">
+            <h4 id="note-editor-mode-title">Create New Note</h4>
+            <button class="btn-text-sm" id="btn-cancel-note">&times; Cancel</button>
+          </div>
+          <input type="text" id="note-title-input" placeholder="Note Title (e.g. Inverted Conditionals Exception in Spring 24)..." class="note-input-field">
+          <select id="note-category-select" class="select-control" style="margin-bottom: 12px;">
+            <option value="Grammar">Grammar Insights</option>
+            <option value="Vocabulary">Vocabulary Notes</option>
+            <option value="Seen Passages">Seen Reading</option>
+            <option value="Writing">Writing Templates</option>
+            <option value="Exam Strategy">Exam Strategy</option>
+          </select>
+          <textarea id="note-content-input" class="note-textarea" placeholder="Write your notes here..."></textarea>
+          <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 12px;">
+            <button class="btn-outline" id="btn-save-note"><i class="fas fa-save"></i> Save Note</button>
+          </div>
+        </div>
+
+        <!-- Saved Notes List -->
+        <div id="notes-list-container" class="notes-grid">
+          <!-- Injected via JavaScript -->
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           VIEW 19: SETTINGS & DATA
+           ==================================================================== -->
+      <section id="view-settings" class="view-section">
+        <div class="hero-card" style="padding: 28px; margin-bottom: 24px;">
+          <span class="hero-tag"><i class="fas fa-sliders-h"></i> Configuration</span>
+          <h2>Platform Preferences & Local Data</h2>
+          <p style="color: var(--text-muted); font-size: 14px; margin-top: 6px;">
+            Customize your visual reading experience and manage your offline LocalStorage data.
+          </p>
+        </div>
+
+        <div class="reader-article">
+          <h3>Display & Aesthetic Settings</h3>
+          <div class="settings-row">
+            <div>
+              <strong>Visual Theme Mode</strong>
+              <div style="font-size: 13px; color: var(--text-muted);">Toggle between sleek academic Dark Mode and high-contrast Light Mode.</div>
+            </div>
+            <button class="btn-primary" id="settings-theme-toggle">Switch Theme</button>
+          </div>
+
+          <div class="settings-row">
+            <div>
+              <strong>Typography Scaling</strong>
+              <div style="font-size: 13px; color: var(--text-muted);">Adjust font size across all modules for comfortable reading.</div>
+            </div>
+            <div class="filter-pills" id="settings-font-pills">
+              <button class="filter-btn active" data-font="standard">Standard (15px)</button>
+              <button class="filter-btn" data-font="large">Large (17px)</button>
+              <button class="filter-btn" data-font="xl">Extra Large (19px)</button>
+            </div>
+          </div>
+
+          <div class="settings-row">
+            <div>
+              <strong>Semester End Exam Date</strong>
+              <div style="font-size: 13px; color: var(--text-muted);">Configure the date for your live countdown timer.</div>
+            </div>
+            <input type="date" id="settings-exam-date-input" class="select-control" style="width: auto;">
+          </div>
+
+          <h3 style="margin-top: 32px;">Data Management & Reset</h3>
+          <div class="settings-row">
+            <div>
+              <strong>Export Personal Data</strong>
+              <div style="font-size: 13px; color: var(--text-muted);">Download your personal notes, bookmarks, and quiz performance as a JSON file.</div>
+            </div>
+            <button class="btn-outline" id="btn-export-data"><i class="fas fa-download"></i> Export JSON</button>
+          </div>
+
+          <div class="settings-row">
+            <div>
+              <strong style="color: var(--accent-rose);">Reset All Progress & Cache</strong>
+              <div style="font-size: 13px; color: var(--text-muted);">Clear all saved bookmarks, personal notes, completed chapters, and quiz scores.</div>
+            </div>
+            <button class="btn-sm btn-danger" id="btn-reset-all-data"><i class="fas fa-trash-alt"></i> Reset All Data</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           VIEW 20: ABOUT CURRICULUM
+           ==================================================================== -->
+      <section id="view-about" class="view-section">
+        <div class="hero-card" style="padding: 28px; margin-bottom: 24px;">
+          <span class="hero-tag"><i class="fas fa-university"></i> Academic Accreditation</span>
+          <h2>About EngMaster IIUC & Course GEEL-1106</h2>
+          <p style="color: var(--text-muted); font-size: 14px; margin-top: 6px;">
+            Course specification, institutional framework, and offline technical architecture.
+          </p>
+        </div>
+
+        <div class="reader-article">
+          <h3>Course Overview & Departmental Affiliation</h3>
+          <p>
+            <strong>Course Code:</strong> GEEL-1106 / UREL-1106<br>
+            <strong>Course Title:</strong> Advanced English<br>
+            <strong>Academic Credits:</strong> 2.0 Credit Hours (Graded)<br>
+            <strong>Administering Body:</strong> Center for General Education (CGED), International Islamic University Chittagong (IIUC), Kumira, Sitakunda, Chattogram-4318, Bangladesh.<br>
+            <strong>Target Cohort:</strong> First Year First Semester (Autumn & Spring sessions) across the Department of Computer Science & Engineering (CSE), Department of Electrical & Electronic Engineering (EEE), and Department of Civil Engineering (CEE).
+          </p>
+
+          <h3>Offline-First Zero-Dependency Architecture</h3>
+          <p>
+            EngMaster IIUC has been engineered as a single-page, 100% offline educational web application. It requires zero backend servers, zero databases, zero Node.js runtimes, and zero external build tools. Once <code>index.html</code> is opened in any modern browser (Chrome, Firefox, Edge, Safari), all 16 textbook modules, 100 grammar rules, 50 mistakes, 50 vocabulary entries, 7 years of previous exam questions, and the 45-minute mock test simulator execute entirely in client-side memory with instant responsiveness.
+          </p>
+
+          <h3>Audio Pronunciation Technology</h3>
+          <p>
+            Interactive vocabulary pronunciation is powered entirely by the native browser <strong>Web Speech API</strong> (<code>window.speechSynthesis</code>), requiring zero external audio file downloads or active internet connections.
+          </p>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           VIEW 21: DYNAMIC MODULE / CHAPTER READER
+           ==================================================================== -->
+      <section id="view-module-reader" class="view-section">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; flex-wrap: wrap; gap: 12px;">
+          <div>
+            <span class="nav-badge" id="module-reader-category" style="background: rgba(99, 102, 241, 0.2); color: #818cf8; font-size: 12px; margin-bottom: 8px; display: inline-block;">Category</span>
+            <h2 id="module-reader-title" style="font-size: 26px; font-weight: 800; letter-spacing: -0.5px;">Module Title</h2>
+          </div>
+          <div style="display: flex; gap: 10px;">
+            <button class="btn-outline" id="btn-mark-chapter-complete"><i class="fas fa-check"></i> Mark Complete</button>
+            <button class="btn-primary" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+              <i class="fas fa-arrow-up"></i> <span>Back to Top</span>
+            </button>
+          </div>
+        </div>
+        <div id="module-reader-container">
+          <!-- Rendered markdown injected here -->
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Application Scripts -->
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
