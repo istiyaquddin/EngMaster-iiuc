@@ -625,7 +625,7 @@
           </div>
 
           <div style="margin-top: 16px;">
-            <input type="text" id="mistakes-search-input" placeholder="Search mistake corrections (e.g. worth, home, let alone, advise, discuss)..." style="width: 100%; max-width: 480px; padding: 10px 16px; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle); background: var(--bg-surface); color: var(--text-main); font-size: 14px;">
+            <input type="text" id="mistakes-search-input" placeholder="Search mistake corrections (e.g. worth, home, let alone, advise, discuss)..." style="width: 100%; max-width: 680px; padding: 10px 16px; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle); background: var(--bg-surface); color: var(--text-main); font-size: 14px;">
           </div>
         </div>
 
@@ -705,37 +705,43 @@
             <button class="filter-btn summary-passage-btn" data-passage-idx="2">Autumn 2023: Renewable Microgrids</button>
           </div>
 
-          <div class="reader-article" style="margin-bottom: 24px; padding: 22px;" id="summary-source-box">
-            <!-- Injected via JavaScript -->
-          </div>
+          <div class="summary-workspace-grid">
+            <div class="summary-source-pane">
+              <div class="reader-article" style="margin-bottom: 20px; padding: 22px;" id="summary-source-box">
+                <!-- Injected via JavaScript -->
+              </div>
 
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-            <label for="summary-input" style="font-size: 14px; font-weight: 700;">Your 50-Word Precision Summary:</label>
-            <div style="display: flex; gap: 8px;">
-              <button class="btn-text-sm" id="btn-copy-summary"><i class="fas fa-copy"></i> Copy</button>
-              <button class="btn-text-sm" id="btn-clear-summary"><i class="fas fa-eraser"></i> Clear</button>
+              <div class="alert-box alert-info">
+                <i class="fas fa-lightbulb"></i>
+                <div>
+                  <strong>Examiner's Golden Rule:</strong> An unseen summary exceeding 50 words or containing verbatim copied sentences loses 2 to 3 marks. Synthesize ideas using subordinating conjunctions (<em>Although, By implementing, Due to</em>).
+                </div>
+              </div>
             </div>
-          </div>
 
-          <textarea id="summary-input" class="summary-textarea" placeholder="Type or paste your summary here... (Formula: 1 Topic Sentence + 2 Evidence Sentences + 1 Concluding Synthesis)"></textarea>
-          
-          <div class="summary-counter-bar">
-            <span class="word-count-tag" id="summary-status-badge">Empty (0 words)</span>
-            <span id="summary-word-count" style="font-size: 14px; font-weight: 700; color: var(--primary);">0 / 50 words</span>
-          </div>
+            <div class="summary-editor-pane">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                <label for="summary-input" style="font-size: 14px; font-weight: 700;">Your 50-Word Precision Summary:</label>
+                <div style="display: flex; gap: 8px;">
+                  <button class="btn-text-sm" id="btn-copy-summary"><i class="fas fa-copy"></i> Copy</button>
+                  <button class="btn-text-sm" id="btn-clear-summary"><i class="fas fa-eraser"></i> Clear</button>
+                </div>
+              </div>
 
-          <!-- Live Overflow Highlighting Box -->
-          <div id="summary-overflow-container" class="summary-overflow-preview" style="display: none;">
-            <div style="font-size: 12px; font-weight: 700; color: var(--accent-rose); margin-bottom: 6px;">
-              <i class="fas fa-exclamation-triangle"></i> Words past the 50th word limit (Penalized by Examiners):
-            </div>
-            <div id="summary-overflow-text" class="overflow-text-display"></div>
-          </div>
+              <textarea id="summary-input" class="summary-textarea" placeholder="Type or paste your summary here... (Formula: 1 Topic Sentence + 2 Evidence Sentences + 1 Concluding Synthesis)"></textarea>
+              
+              <div class="summary-counter-bar">
+                <span class="word-count-tag" id="summary-status-badge">Empty (0 words)</span>
+                <span id="summary-word-count" style="font-size: 14px; font-weight: 700; color: var(--primary);">0 / 50 words</span>
+              </div>
 
-          <div class="alert-box alert-info" style="margin-top: 24px;">
-            <i class="fas fa-lightbulb"></i>
-            <div>
-              <strong>Examiner's Golden Rule:</strong> An unseen summary exceeding 50 words or containing verbatim copied sentences loses 2 to 3 marks. Synthesize ideas using subordinating conjunctions (<em>Although, By implementing, Due to</em>).
+              <!-- Live Overflow Highlighting Box -->
+              <div id="summary-overflow-container" class="summary-overflow-preview" style="display: none;">
+                <div style="font-size: 12px; font-weight: 700; color: var(--accent-rose); margin-bottom: 6px;">
+                  <i class="fas fa-exclamation-triangle"></i> Words past the 50th word limit (Penalized by Examiners):
+                </div>
+                <div id="summary-overflow-text" class="overflow-text-display"></div>
+              </div>
             </div>
           </div>
         </div>

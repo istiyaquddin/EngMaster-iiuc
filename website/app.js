@@ -4,37 +4,101 @@
  * Zero Dependencies | Vanilla ES6+ | Offline Native SpeechSynthesis
  */
 
+/**
+ * EngMaster Data Normalization Engine
+ * Automatically harmonizes all dataset schemas across Top Rules, Top Mistakes, and Vocab.
+ */
+function normalizeData() {
+  if (!window.GEEL_DATA) return;
+
+  // 1. Normalize topRules
+  if (Array.isArray(window.GEEL_DATA.topRules)) {
+    window.GEEL_DATA.topRules.forEach((r, idx) => {
+      r.id = r.id || r.number || (idx + 1);
+      r.number = r.number || r.id;
+      r.title = r.title || `Rule #${r.id}`;
+      r.rule = r.rule || r.description || '';
+      r.description = r.description || r.rule || '';
+      if (!r.example) {
+        const exMatch = r.rule.match(/\((.*?)\)/);
+        r.example = exMatch ? exMatch[1] : r.rule;
+      }
+    });
+  }
+
+  // 2. Normalize topMistakes
+  if (Array.isArray(window.GEEL_DATA.topMistakes)) {
+    window.GEEL_DATA.topMistakes.forEach((m, idx) => {
+      m.id = m.id || (idx + 1);
+      m.incorrect = m.incorrect || '';
+      m.correct = m.correct || '';
+      m.category = m.category || 'Grammar';
+      if (!m.explanation) {
+        m.explanation = `Grammar rationale: Use "${m.correct}" instead of "${m.incorrect}" (${m.category}).`;
+      }
+    });
+  }
+
+  // 3. Normalize vocabList
+  if (Array.isArray(window.GEEL_DATA.vocabList)) {
+    window.GEEL_DATA.vocabList.forEach((v, idx) => {
+      v.id = v.id || (idx + 1);
+      v.word = v.word || '';
+      v.meaning = v.meaning || '';
+      v.synonyms = v.synonyms || '';
+      v.antonyms = v.antonyms || '';
+      v.sentence = v.sentence || v.example || '';
+      v.example = v.example || v.sentence || '';
+      v.pos = v.pos || 'Academic Term';
+    });
+  }
+}
+
+// Normalize immediately if GEEL_DATA was already loaded
+if (window.GEEL_DATA) {
+  normalizeData();
+}
+
+function safeInit(componentName, fn) {
+  try {
+    fn();
+  } catch (err) {
+    console.error(`[EngMaster] Error initializing ${componentName}:`, err);
+  }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   initApp();
 });
 
 function initApp() {
-  initTheme();
-  initFontSize();
-  initReadingProgressBar();
-  initSidebar();
-  initExamCountdown();
-  initGlobalSearch();
-  initDashboard();
-  initRulesCatalog();
-  initSVAExplorer();
-  initConditionalsExplorer();
-  initCausativesExplorer();
-  initMistakesExplorer();
-  initSeenPassagesReader();
-  initVocabModule();
-  initSummaryStudio();
-  initWritingWorkshop();
-  initPreviousQuestions();
-  initMCQQuiz();
-  initMockTest();
-  initExamSuggestions();
-  initLastNightRevision();
-  initSmartNotes();
-  initBookmarksSystem();
-  initPersonalNotes();
-  initSettings();
-  initModalPopover();
+  normalizeData();
+  safeInit('Theme', initTheme);
+  safeInit('FontSize', initFontSize);
+  safeInit('ReadingProgressBar', initReadingProgressBar);
+  safeInit('Sidebar', initSidebar);
+  safeInit('ExamCountdown', initExamCountdown);
+  safeInit('GlobalSearch', initGlobalSearch);
+  safeInit('Dashboard', initDashboard);
+  safeInit('RulesCatalog', initRulesCatalog);
+  safeInit('SVAExplorer', initSVAExplorer);
+  safeInit('ConditionalsExplorer', initConditionalsExplorer);
+  safeInit('CausativesExplorer', initCausativesExplorer);
+  safeInit('MistakesExplorer', initMistakesExplorer);
+  safeInit('SeenPassagesReader', initSeenPassagesReader);
+  safeInit('VocabModule', initVocabModule);
+  safeInit('SummaryStudio', initSummaryStudio);
+  safeInit('WritingWorkshop', initWritingWorkshop);
+  safeInit('PreviousQuestions', initPreviousQuestions);
+  safeInit('MCQQuiz', initMCQQuiz);
+  safeInit('MockTest', initMockTest);
+  safeInit('ExamSuggestions', initExamSuggestions);
+  safeInit('LastNightRevision', initLastNightRevision);
+  safeInit('SmartNotes', initSmartNotes);
+  safeInit('BookmarksSystem', initBookmarksSystem);
+  safeInit('PersonalNotes', initPersonalNotes);
+  safeInit('Settings', initSettings);
+  safeInit('ModalPopover', initModalPopover);
   
   // Default Route: Dashboard
   switchView('view-dashboard');
@@ -503,9 +567,9 @@ function renderTopRulesSpotlight() {
   const spotlight = window.GEEL_DATA.topRules.slice(0, 4);
   container.innerHTML = spotlight.map(r => `
     <div style="padding: 10px 12px; background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); margin-bottom: 8px; cursor: pointer;" onclick="switchView('view-rules')">
-      <div style="font-size: 11px; font-weight: 800; color: var(--primary);">RULE #${r.id}</div>
-      <div style="font-size: 13.5px; font-weight: 600; margin: 2px 0;">${r.title}</div>
-      <div style="font-size: 12px; color: var(--text-muted);">${r.rule.substring(0, 90)}...</div>
+      <div style="font-size: 11px; font-weight: 800; color: var(--primary);">RULE #${r.id || r.number || 0}</div>
+      <div style="font-size: 13.5px; font-weight: 600; margin: 2px 0;">${r.title || ''}</div>
+      <div style="font-size: 12px; color: var(--text-muted);">${(r.rule || r.description || '').substring(0, 90)}...</div>
     </div>
   `).join('');
 }
@@ -1047,7 +1111,7 @@ function renderPassage(p) {
       </div>
 
       <h3 style="margin-top: 28px;"><i class="fas fa-question-circle"></i> Solved University Exam Questions & Model Answers:</h3>
-      <div style="display: flex; flex-direction: column; gap: 14px; margin-top: 14px;">
+      <div class="seen-questions-grid">
         ${p.questions.map((q, qIdx) => `
           <div style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 16px;">
             <div style="display: flex; justify-content: space-between; font-size: 12px; color: var(--primary); font-weight: 700; margin-bottom: 4px;">
@@ -1388,24 +1452,30 @@ function renderTemplate(t) {
         </ul>
       </div>
 
-      <h3><i class="fas fa-file-alt"></i> Model Template Text:</h3>
-      <pre style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 20px; font-family: var(--font-mono); font-size: 13px; line-height: 1.6; color: var(--text-main); white-space: pre-wrap; overflow-x: auto;"><code>${escapeHtml(t.templateText)}</code></pre>
+      <div class="writing-dual-workspace">
+        <div class="writing-model-col">
+          <h3><i class="fas fa-file-alt"></i> Model Template Text:</h3>
+          <pre style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 20px; font-family: var(--font-mono); font-size: 13px; line-height: 1.6; color: var(--text-main); white-space: pre-wrap; overflow-x: auto;"><code>${escapeHtml(t.templateText)}</code></pre>
 
-      <div class="alert-box alert-success" style="margin-top: 18px;">
-        <i class="fas fa-lightbulb"></i>
-        <div><strong>Examiner's Advice:</strong> ${t.tips}</div>
-      </div>
+          <div class="alert-box alert-success" style="margin-top: 16px;">
+            <i class="fas fa-lightbulb"></i>
+            <div><strong>Examiner's Advice:</strong> ${t.tips}</div>
+          </div>
+        </div>
 
-      <!-- Editable Practice Pad -->
-      <h3 style="margin-top: 28px;"><i class="fas fa-edit"></i> Interactive Practice Drafting Pad:</h3>
-      <p style="font-size: 13px; color: var(--text-muted);">Customize this template with your own details or draft your own version:</p>
-      <textarea id="practice-draft-textarea" class="writing-practice-pad" placeholder="Type your drafted letter or essay here..."></textarea>
-      
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 8px;">
-        <span id="practice-draft-counter" style="font-size: 13px; color: var(--text-muted);">0 words • 0 characters</span>
-        <div style="display: flex; gap: 8px;">
-          <button class="btn-text-sm" id="btn-insert-template-draft"><i class="fas fa-paste"></i> Load Template into Editor</button>
-          <button class="btn-text-sm" id="btn-copy-practice-draft"><i class="fas fa-copy"></i> Copy Draft</button>
+        <!-- Editable Practice Pad -->
+        <div class="writing-practice-col">
+          <h3><i class="fas fa-edit"></i> Interactive Practice Drafting Pad:</h3>
+          <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 8px;">Customize this template with your own details or draft your own version:</p>
+          <textarea id="practice-draft-textarea" class="writing-practice-pad" placeholder="Type your drafted letter or essay here..."></textarea>
+          
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 8px;">
+            <span id="practice-draft-counter" style="font-size: 13px; color: var(--text-muted);">0 words • 0 characters</span>
+            <div style="display: flex; gap: 8px;">
+              <button class="btn-text-sm" id="btn-insert-template-draft"><i class="fas fa-paste"></i> Load Template into Editor</button>
+              <button class="btn-text-sm" id="btn-copy-practice-draft"><i class="fas fa-copy"></i> Copy Draft</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -2322,3 +2392,19 @@ function renderMarkdown(md) {
 
   return `<div class="reader-article"><p>${html}</p></div>`;
 }
+
+/* ==========================================================================
+   Global Window Function Exports
+   ========================================================================== */
+window.normalizeData = normalizeData;
+window.switchView = switchView;
+window.loadModuleContent = loadModuleContent;
+window.openSeenPassage = openSeenPassage;
+window.speakWord = speakWord;
+window.showWordPopover = showWordPopover;
+window.toggleBookmark = toggleBookmark;
+window.toggleMasteredRule = toggleMasteredRule;
+window.togglePQAnswer = togglePQAnswer;
+window.deleteNote = deleteNote;
+window.checkCondQuiz = checkCondQuiz;
+
