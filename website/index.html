@@ -79,6 +79,18 @@
       </ul>
     </div>
 
+    <!-- Navigation Section: Academic Syllabus Hubs -->
+    <div class="nav-section">
+      <div class="nav-section-title">Academic Syllabus Hubs</div>
+      <ul class="nav-links">
+        <li><a class="nav-item" data-view-target="view-midterm"><i class="fas fa-book-reader" style="color: #60a5fa;"></i><span>Midterm Hub (CIE 50)</span><span class="nav-badge" style="background: rgba(59, 130, 246, 0.2); color: #93c5fd;">Mid 30</span></a></li>
+        <li><a class="nav-item" data-view-target="view-final-exam"><i class="fas fa-graduation-cap" style="color: #34d399;"></i><span>Final Exam Hub (SEE 50)</span><span class="nav-badge" style="background: rgba(16, 185, 129, 0.2); color: #6ee7b7;">SEE 50</span></a></li>
+        <li><a class="nav-item" data-view-target="view-prev-questions"><i class="fas fa-history" style="color: #c084fc;"></i><span>Previous Question Bank</span><span class="nav-badge">2018–25</span></a></li>
+        <li><a class="nav-item" data-view-target="view-practice-zone"><i class="fas fa-vial" style="color: #fbbf24;"></i><span>Practice Zone (Drills)</span><span class="nav-badge" style="background: rgba(245, 158, 11, 0.2); color: #fde047;">Interactive</span></a></li>
+        <li><a class="nav-item" data-view-target="view-mock-test"><i class="fas fa-stopwatch-20" style="color: #f43f5e;"></i><span>Multi-Track Mock Suite</span><span class="nav-badge" style="background: rgba(244, 63, 94, 0.2); color: #fda4af;">6 Modes</span></a></li>
+      </ul>
+    </div>
+
     <!-- Navigation Section: Core Grammar Explorers -->
     <div class="nav-section">
       <div class="nav-section-title">Interactive Grammar Hub</div>
@@ -96,7 +108,7 @@
       <div class="nav-section-title">Reading & Vocabulary</div>
       <ul class="nav-links">
         <li><a class="nav-item" data-view-target="view-seen-passages"><i class="fas fa-glasses"></i><span>Seen Passages (Tibbitts)</span><span class="nav-badge">11C–20C</span></a></li>
-        <li><a class="nav-item" data-view-target="view-vocab"><i class="fas fa-spell-check"></i><span>Top 50 Academic Vocab</span><span class="nav-badge">Audio</span></a></li>
+        <li><a class="nav-item" data-view-target="view-vocab"><i class="fas fa-spell-check"></i><span>Top 50 Academic Vocab</span><span class="nav-badge">50 Terms</span></a></li>
         <li><a class="nav-item" data-view-target="view-summary-studio"><i class="fas fa-feather-alt"></i><span>50-Word Summary Studio</span><span class="nav-badge">Live Counter</span></a></li>
       </ul>
     </div>
@@ -409,6 +421,192 @@
         </div>
       </section>
 
+    <!-- ====================================================================
+         VIEW: MIDTERM HUB (CIE 50 MARKS / MIDTERM 30 MARKS)
+         ==================================================================== -->
+    <section class="view-section" id="view-midterm">
+      <div class="hero-banner">
+        <div class="hero-tag" style="background: rgba(59, 130, 246, 0.2); color: #60a5fa;"><i class="fas fa-university"></i> Continuous Internal Evaluation (CIE) — 50 Marks</div>
+        <h1 class="hero-title">Midterm Examination Academic Hub</h1>
+        <p class="hero-subtitle">Comprehensive coverage of Prescribed Reading (Tibbitts 1C–10C, A.J. Glover, The Pilgrim's Progress, The Old Man and the Sea), Reading Skills, Sentence Construction, and Writing.</p>
+        
+        <div class="hero-stats">
+          <div class="stat-box">
+            <div class="stat-val" style="color: var(--primary);">30 Marks</div>
+            <div class="stat-label">Written Midterm Exam</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-val" style="color: var(--accent-cyan);">10 Marks</div>
+            <div class="stat-label">Reading (Seen 1C–10C)</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-val" style="color: var(--accent-emerald);">10 Marks</div>
+            <div class="stat-label">Sentence Construction</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-val" style="color: var(--accent-amber);">10 Marks</div>
+            <div class="stat-label">Composition & Viva</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Midterm Section Navigation Tabs -->
+      <div class="passage-tabs" id="midterm-section-tabs" style="margin-bottom: 24px;">
+        <button class="passage-tab-btn active" data-mid-tab="prescribed"><i class="fas fa-book-reader"></i> Section 1: Prescribed Reading</button>
+        <button class="passage-tab-btn" data-mid-tab="reading-skills"><i class="fas fa-glasses"></i> Section 2: Reading Skills & Strategies</button>
+        <button class="passage-tab-btn" data-mid-tab="writing-comm"><i class="fas fa-pen-nib"></i> Section 3: Writing & Communication</button>
+      </div>
+
+      <!-- Tab 1: Prescribed Reading Content -->
+      <div id="midterm-tab-prescribed" class="midterm-tab-content">
+        <div id="midterm-prescribed-container">
+          <!-- Injected dynamically via app.js -->
+        </div>
+      </div>
+
+      <!-- Tab 2: Reading Skills Content -->
+      <div id="midterm-tab-reading-skills" class="midterm-tab-content" style="display: none;">
+        <div id="midterm-reading-skills-container" class="rules-container">
+          <!-- Injected dynamically via app.js -->
+        </div>
+      </div>
+
+      <!-- Tab 3: Writing & Communication Content -->
+      <div id="midterm-tab-writing-comm" class="midterm-tab-content" style="display: none;">
+        <div id="midterm-writing-comm-container">
+          <!-- Injected dynamically via app.js -->
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ====================================================================
+         VIEW: FINAL EXAM HUB (SEE 50 MARKS)
+         ==================================================================== -->
+    <section class="view-section" id="view-final-exam">
+      <div class="hero-banner">
+        <div class="hero-tag" style="background: rgba(16, 185, 129, 0.2); color: #34d399;"><i class="fas fa-graduation-cap"></i> Semester End Examination (SEE) — 50 Marks</div>
+        <h1 class="hero-title">Final Examination Academic Master Hub</h1>
+        <p class="hero-subtitle">Complete syllabus mastery: Tibbitts Units 11C–20C, Unseen Analysis, 7 Core Grammar Chapters, Professional Composition, and Exam Vocab.</p>
+        
+        <div class="hero-stats">
+          <div class="stat-box">
+            <div class="stat-val" style="color: var(--accent-emerald);">25 Marks</div>
+            <div class="stat-label">Part A: Reading (Seen 15 + Unseen 10)</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-val" style="color: var(--primary);">10 Marks</div>
+            <div class="stat-label">Part B: Advanced Grammar</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-val" style="color: var(--accent-purple);">15 Marks</div>
+            <div class="stat-label">Part C: Professional Writing</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-val" style="color: var(--accent-amber);">2.5 Hours</div>
+            <div class="stat-label">Exam Duration (150 Mins)</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Final Exam Section Navigation Tabs -->
+      <div class="passage-tabs" id="final-section-tabs" style="margin-bottom: 24px;">
+        <button class="passage-tab-btn active" data-fin-tab="prescribed"><i class="fas fa-book"></i> Section 1: Prescribed Reading</button>
+        <button class="passage-tab-btn" data-fin-tab="unseen"><i class="fas fa-newspaper"></i> Section 2: Reading & Comprehension</button>
+        <button class="passage-tab-btn" data-fin-tab="grammar"><i class="fas fa-spell-check"></i> Section 3: 7 Grammar Chapters</button>
+        <button class="passage-tab-btn" data-fin-tab="composition"><i class="fas fa-chart-bar"></i> Section 4: Composition & Graphs</button>
+        <button class="passage-tab-btn" data-fin-tab="speaking"><i class="fas fa-comments"></i> Section 5: Academic Speaking</button>
+        <button class="passage-tab-btn" data-fin-tab="vocab"><i class="fas fa-layer-group"></i> Section 6: Vocabulary Masterlists</button>
+      </div>
+
+      <!-- Tab 1: Prescribed Reading -->
+      <div id="final-tab-prescribed" class="final-tab-content">
+        <div id="final-prescribed-container">
+          <!-- Injected via app.js -->
+        </div>
+      </div>
+
+      <!-- Tab 2: Reading Sources & Unseen -->
+      <div id="final-tab-unseen" class="final-tab-content" style="display: none;">
+        <div id="final-unseen-container">
+          <!-- Injected via app.js -->
+        </div>
+      </div>
+
+      <!-- Tab 3: Grammar Chapters -->
+      <div id="final-tab-grammar" class="final-tab-content" style="display: none;">
+        <div id="final-grammar-container">
+          <!-- Injected via app.js -->
+        </div>
+      </div>
+
+      <!-- Tab 4: Composition -->
+      <div id="final-tab-composition" class="final-tab-content" style="display: none;">
+        <div id="final-composition-container">
+          <!-- Injected via app.js -->
+        </div>
+      </div>
+
+      <!-- Tab 5: Speaking -->
+      <div id="final-tab-speaking" class="final-tab-content" style="display: none;">
+        <div id="final-speaking-container">
+          <!-- Injected via app.js -->
+        </div>
+      </div>
+
+      <!-- Tab 6: Vocabulary -->
+      <div id="final-tab-vocab" class="final-tab-content" style="display: none;">
+        <div id="final-vocab-container">
+          <!-- Injected via app.js -->
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ====================================================================
+         VIEW: PRACTICE ZONE
+         ==================================================================== -->
+    <section class="view-section" id="view-practice-zone">
+      <div class="hero-banner">
+        <div class="hero-tag" style="background: rgba(245, 158, 11, 0.2); color: #fbbf24;"><i class="fas fa-vial"></i> Interactive Self-Assessment Arena</div>
+        <h1 class="hero-title">Practice Zone & Interactive Drills</h1>
+        <p class="hero-subtitle">Master every examination skill through targeted, self-checking drills: Sentence Correction, Fill in the Blanks, Error Identification, and CQ Prompts with Instant Explanations.</p>
+      </div>
+
+      <div class="passage-tabs" id="practice-zone-tabs" style="margin-bottom: 24px;">
+        <button class="passage-tab-btn active" data-pz-tab="correction"><i class="fas fa-wrench"></i> Sentence Correction</button>
+        <button class="passage-tab-btn" data-pz-tab="blanks"><i class="fas fa-edit"></i> Fill in the Blanks</button>
+        <button class="passage-tab-btn" data-pz-tab="errors"><i class="fas fa-bug"></i> Error Identification</button>
+        <button class="passage-tab-btn" data-pz-tab="cq"><i class="fas fa-file-alt"></i> CQ Analytical Practice</button>
+      </div>
+
+      <div id="pz-tab-correction" class="pz-tab-content">
+        <div id="pz-correction-container" class="mistakes-container">
+          <!-- Injected via app.js -->
+        </div>
+      </div>
+
+      <div id="pz-tab-blanks" class="pz-tab-content" style="display: none;">
+        <div id="pz-blanks-container" class="mistakes-container">
+          <!-- Injected via app.js -->
+        </div>
+      </div>
+
+      <div id="pz-tab-errors" class="pz-tab-content" style="display: none;">
+        <div id="pz-errors-container" class="mistakes-container">
+          <!-- Injected via app.js -->
+        </div>
+      </div>
+
+      <div id="pz-tab-cq" class="pz-tab-content" style="display: none;">
+        <div id="pz-cq-container">
+          <!-- Injected via app.js -->
+        </div>
+      </div>
+    </section>
+
+
+
       <!-- ====================================================================
            VIEW 2: TOP 100 RULES CATALOG
            ==================================================================== -->
@@ -666,7 +864,7 @@
               <span class="hero-tag"><i class="fas fa-spell-check"></i> High-Yield Lexicon</span>
               <h2>Top 50 High-Frequency Academic Vocabulary</h2>
               <p style="color: var(--text-muted); font-size: 14px; margin-top: 6px;">
-                Curated academic and seen passage vocabulary. Click the audio button <i class="fas fa-volume-up"></i> to hear offline pronunciation powered by the Web Speech API.
+                Curated academic and seen passage vocabulary. Click the audio button <i class="fas fa-book"></i> to hear offline pronunciation powered by the Web Speech API.
               </p>
             </div>
             <div class="catalog-counter-pill">

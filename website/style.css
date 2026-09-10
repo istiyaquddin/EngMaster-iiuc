@@ -2618,6 +2618,84 @@ body.sidebar-locked {
 }
 
 /* ==========================================================================
+   Academic LMS Hubs, Practice Zone & Multi-Track Styles
+   ========================================================================== */
+.midterm-tab-content,
+.final-tab-content,
+.pz-tab-content {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.mock-track-selector {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.track-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.track-card:hover {
+  border-color: var(--primary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.track-card.active {
+  background: rgba(99, 102, 241, 0.12);
+  border-color: var(--primary);
+  box-shadow: 0 0 0 1px var(--primary);
+}
+
+.track-card.active strong {
+  color: var(--primary);
+}
+
+.btn-success {
+  background: var(--accent-emerald) !important;
+  color: #ffffff !important;
+  border: none !important;
+}
+
+.btn-danger {
+  background: var(--accent-rose) !important;
+  color: #ffffff !important;
+  border: none !important;
+}
+
+/* Widescreen and 100% full-width grid alignments for new LMS containers */
+@media (min-width: 1200px) {
+  #midterm-reading-skills-container,
+  #pz-correction-container,
+  #pz-blanks-container,
+  #pz-errors-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+}
+
+@media (min-width: 1800px) {
+  #midterm-reading-skills-container,
+  #pz-correction-container,
+  #pz-blanks-container,
+  #pz-errors-container {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+}
+
+/* ==========================================================================
    Print Mode Optimization
    ========================================================================== */
 @media print {

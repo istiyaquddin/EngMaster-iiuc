@@ -3255,5 +3255,1589 @@ window.GEEL_DATA = {
         "02:25-02:30 (5 min): Final proofreading and word counts."
       ]
     }
+  ],
+  "midtermData": {
+    "overview": {
+      "title": "Midterm Examination (CIE Continuous Internal Evaluation)",
+      "marks": 50,
+      "writtenMarks": 30,
+      "syllabusDistribution": "Reading Comprehension (Seen 1C-10C: 10 Marks), Sentence Construction (10 Marks), Composition (5 Marks), Speaking (5 Marks)",
+      "duration": "1 Hour 30 Minutes"
+    },
+    "prescribedReading": [
+      {
+        "id": "mid-seen-tibbitts-1-10",
+        "source": "Exercises in Reading Comprehension (E.L. Tibbitts)",
+        "title": "Tibbitts Units 1C to 10C Master Reader",
+        "coverage": "Units 1C, 2C, 3C, 4C, 5C, 6C, 7C, 8C, 9C, 10C",
+        "introduction": "Prescribed foundational reading comprehension units for the first half of the semester. Emphasizes basic structural comprehension, vocabulary acquisition, and factual text analysis.",
+        "summary": "Covers foundational themes including geography (The Pacific Ocean, The Amazon River), cultural anthropology (Customs and Beliefs, Polynesian Navigators), scientific discovery (The Structure of the Atom, The Solar System), and historical milestones (Early Printing, The Industrial Dawn).",
+        "importantVocabulary": [
+          {
+            "word": "Archipelago",
+            "pos": "Noun",
+            "meaning": "A group or chain of islands clustered together in a body of water.",
+            "synonym": "Isle chain",
+            "antonym": "Continent",
+            "example": "The Polynesian navigators traversed the Pacific archipelago without compasses."
+          },
+          {
+            "word": "Subsistence",
+            "pos": "Noun",
+            "meaning": "The action or fact of maintaining or supporting oneself at a minimum level.",
+            "synonym": "Livelihood, survival",
+            "antonym": "Luxury, affluence",
+            "example": "Early settlers engaged in subsistence farming along the river valley."
+          },
+          {
+            "word": "Precipitous",
+            "pos": "Adjective",
+            "meaning": "Dangerously high, steep, or done suddenly without careful consideration.",
+            "synonym": "Sheer, abrupt",
+            "antonym": "Gradual, gentle",
+            "example": "The explorers encountered a precipitous decline in temperature."
+          },
+          {
+            "word": "Disseminate",
+            "pos": "Verb",
+            "meaning": "To spread or disperse information, ideas, or knowledge widely.",
+            "synonym": "Circulate, diffuse",
+            "antonym": "Suppress, conceal",
+            "example": "Early printing presses helped disseminate scientific concepts across Europe."
+          }
+        ],
+        "importantQuestions": [
+          {
+            "q": "What physical constraints did early Pacific navigators face according to Unit 2C?",
+            "a": "Early Polynesian sailors navigated vast expanses of open ocean without navigational instruments, relying solely on wave currents, bird flight patterns, and celestial navigation.",
+            "type": "Inferential"
+          },
+          {
+            "q": "How does the author characterize the shift from agrarian craft to machine manufacturing in Unit 7C?",
+            "a": "The author depicts the transition as a revolutionary paradigm shift that centralized labor in urban mills, drastically accelerating production output while fracturing traditional village social structures.",
+            "type": "Analytical"
+          }
+        ],
+        "modelAnswers": [
+          {
+            "question": "Summarize the central message of Tibbitts Unit 4C in exactly 50 words.",
+            "answer": "Human civilization flourishes primarily around navigable river deltas and fertile plains. These waterways provided reliable irrigation, fertile silt, and natural trade arteries, which catalyzed early civic governance, specialized labor division, and sustained agricultural surplus necessary for urban civilization to thrive sustainably.",
+            "wordCount": 46
+          }
+        ],
+        "practiceMCQ": [
+          {
+            "q": "In Tibbitts Unit 1C, the Pacific Ocean is described as the largest ocean covering more than ___ of the earth's surface.",
+            "options": [
+              "One-third",
+              "One-fourth",
+              "One-half",
+              "Two-thirds"
+            ],
+            "answer": "One-third",
+            "explanation": "Unit 1C explicitly states the Pacific occupies roughly one-third of the terrestrial surface."
+          },
+          {
+            "q": "The word 'precipitous' in the context of mountain navigation most nearly signifies:",
+            "options": [
+              "Perilously steep",
+              "Gently sloping",
+              "Damp and foggy",
+              "Barren"
+            ],
+            "answer": "Perilously steep",
+            "explanation": "Precipitous comes from precipice, referring to sheer vertical drops."
+          }
+        ],
+        "practiceCQ": [
+          {
+            "prompt": "Analyze the impact of river basins on early human trade routes based on the prescribed texts.",
+            "guidelines": "Mention natural flow, bulk cargo transportation, defense advantages, and civic concentration."
+          }
+        ],
+        "previousExamQuestions": [
+          {
+            "year": "Midterm 2024",
+            "question": "Explain why early agricultural communities were constrained to river valleys.",
+            "marks": "5 Marks"
+          }
+        ]
+      },
+      {
+        "id": "mid-prescribed-glover",
+        "source": "Build Up Your English (A.J. Glover)",
+        "title": "Structural Synthesis & Phrase Formations",
+        "coverage": "Core Structural Patterns, Prepositional Idioms, and Sentence Transformation Exercises",
+        "introduction": "A classic structural textbook utilized for sentence synthesis, adverbial particle usage, and idiomatic phrase mastery.",
+        "summary": "Focuses on converting choppy clauses into sophisticated academic sentences through participles, absolute phrases, correlative conjunctions, and prepositional collocations.",
+        "importantVocabulary": [
+          {
+            "word": "Abide by",
+            "pos": "Phrasal Verb",
+            "meaning": "To accept, comply with, or conform to a decision, rule, or recommendation.",
+            "synonym": "Comply, heed",
+            "antonym": "Flout, violate",
+            "example": "Every registered student must abide by the university examination code."
+          },
+          {
+            "word": "Bear out",
+            "pos": "Phrasal Verb",
+            "meaning": "To support or confirm the truth of an assertion or hypothesis.",
+            "synonym": "Corroborate, substantiate",
+            "antonym": "Contradict, refute",
+            "example": "The empirical data gathered during the laboratory trial bore out our initial hypothesis."
+          }
+        ],
+        "importantQuestions": [
+          {
+            "q": "How does A.J. Glover formulate the difference between 'participial reduction' and 'coordinate clauses'?",
+            "a": "Participial reduction subordinates lesser background actions into participial phrases (e.g., 'Opening the valve, he observed the pressure drop'), elevating the primary action to the main predicate."
+          }
+        ],
+        "modelAnswers": [
+          {
+            "question": "Combine into a single simple sentence: 'The technician finished the inspection. He submitted the calibration log.'",
+            "answer": "Having finished the inspection, the technician submitted the calibration log.",
+            "explanation": "Uses a perfect participial phrase to denote the completed prior action."
+          }
+        ],
+        "practiceMCQ": [
+          {
+            "q": "Which preposition correctly completes: 'The council decided to abide ___ the arbitrator\\'s ruling'?",
+            "options": [
+              "by",
+              "with",
+              "to",
+              "at"
+            ],
+            "answer": "by",
+            "explanation": "The idiom is 'abide by', meaning to follow or obey."
+          }
+        ],
+        "practiceCQ": [
+          {
+            "prompt": "Rewrite three compound sentences from your lecture slides into periodic complex sentences using subordinating conjunctions.",
+            "guidelines": "Use 'although', 'inasmuch as', and 'whereas'."
+          }
+        ],
+        "previousExamQuestions": [
+          {
+            "year": "Midterm 2023",
+            "question": "Combine sentences using past participles and appropriate connectors.",
+            "marks": "5 Marks"
+          }
+        ]
+      },
+      {
+        "id": "mid-prescribed-pilgrims-progress",
+        "source": "The Pilgrim's Progress (John Bunyan)",
+        "title": "Allegorical Masterpiece — Part 1: The Journey of Christian",
+        "coverage": "The City of Destruction, The Slough of Despond, The Wicket Gate, The Hill Difficulty, Vanity Fair",
+        "introduction": "One of the most significant allegories in English literature, illustrating spiritual determination, ethical conflict, and existential perseverance.",
+        "summary": "Christian flees the City of Destruction burdened by a heavy pack representing guilt and mortality. Guided by Evangelist, he overcomes the Slough of Despond, ascends Hill Difficulty, resists worldly compromise at Vanity Fair, and presses onward toward the Celestial City.",
+        "importantVocabulary": [
+          {
+            "word": "Allegory",
+            "pos": "Noun",
+            "meaning": "A story, poem, or picture that can be interpreted to reveal a hidden symbolic meaning.",
+            "synonym": "Parable, metaphor",
+            "antonym": "Literal history",
+            "example": "Bunyan uses the journey as an allegory of moral resilience."
+          },
+          {
+            "word": "Despondency",
+            "pos": "Noun",
+            "meaning": "A state of low spirits caused by loss of hope or courage.",
+            "synonym": "Dejection, hopelessness",
+            "antonym": "Exuberance, optimism",
+            "example": "The Slough of Despond symbolizes paralyzing doubts and despondency."
+          },
+          {
+            "word": "Perseverance",
+            "pos": "Noun",
+            "meaning": "Persistence in doing something despite difficulty or delay in achieving success.",
+            "synonym": "Tenacity, fortitude",
+            "antonym": "Apathy, surrender",
+            "example": "Faithful demonstrates moral perseverance under persecutions at Vanity Fair."
+          }
+        ],
+        "importantQuestions": [
+          {
+            "q": "What do the Slough of Despond and Vanity Fair allegorically symbolize?",
+            "a": "The Slough of Despond symbolizes despair and psychological fear that trap individuals when confronting hardship. Vanity Fair symbolizes consumerist superficiality, worldly distractions, and the persecution of individuals who reject materialistic obsessions.",
+            "type": "Thematic Analysis"
+          }
+        ],
+        "modelAnswers": [
+          {
+            "question": "Explain the significance of the burden on Christian's back and how it falls away.",
+            "answer": "The burden symbolizes Christian's acute consciousness of his moral imperfections and spiritual anxiety. It falls from his shoulders only when he reaches the Cross on the hill, symbolizing intellectual and spiritual liberation through faith and moral truth.",
+            "wordCount": 42
+          }
+        ],
+        "practiceMCQ": [
+          {
+            "q": "Who directs Christian to the Wicket Gate at the beginning of his pilgrimage?",
+            "options": [
+              "Evangelist",
+              "Worldly Wiseman",
+              "Pliable",
+              "Apollyon"
+            ],
+            "answer": "Evangelist",
+            "explanation": "Evangelist points Christian toward the narrow gate and shining light."
+          },
+          {
+            "q": "At Vanity Fair, what crime are Christian and Faithful accused of committing?",
+            "options": [
+              "Despising the fair's merchandise and speaking truth",
+              "Theft of gold",
+              "Armed insurrection",
+              "Blaspheming the king"
+            ],
+            "answer": "Despising the fair's merchandise and speaking truth",
+            "explanation": "They refused to purchase worldly trifles and declared they bought only 'the truth'."
+          }
+        ],
+        "practiceCQ": [
+          {
+            "prompt": "Discuss Christian's encounter with Worldly Wiseman and how it represents legalism versus authentic ethical purpose.",
+            "guidelines": "Explain the advice to go to the town of Morality and why Mr. Legality cannot remove the burden."
+          }
+        ],
+        "previousExamQuestions": [
+          {
+            "year": "Midterm 2022",
+            "question": "Write a short note on the character of Faithful in The Pilgrim's Progress.",
+            "marks": "5 Marks"
+          }
+        ]
+      },
+      {
+        "id": "mid-prescribed-old-man-and-the-sea",
+        "source": "The Old Man and the Sea (Ernest Hemingway)",
+        "title": "Heroic Endurance & Tragic Victory",
+        "coverage": "Santiago's 84-Day Slump, The Great Marlin Duel, The Shark Assault, The Return to Shore",
+        "introduction": "Hemingway's Nobel Prize-winning novella examining dignity, isolation, professional pride, and the unconquerable nature of the human spirit.",
+        "summary": "Santiago, an aging Cuban fisherman enduring an 84-day run without catching a fish, sails far into the Gulf Stream alone. On the 85th day, he hooks a colossal marlin. Over three days of intense physical torment, he subdues the noble fish, only to lose its flesh to ravaging mako and shovel-nosed sharks. He returns with only the skeletal trophy, maintaining unbroken dignity.",
+        "importantVocabulary": [
+          {
+            "word": "Salao",
+            "pos": "Adjective",
+            "meaning": "The worst form of unlucky; a prolonged streak of misfortune.",
+            "synonym": "Cursed, ill-fated",
+            "antonym": "Auspicious, fortunate",
+            "example": "The boy's parents forbade him from sailing with Santiago because the old man was salao."
+          },
+          {
+            "word": "Resolution",
+            "pos": "Noun",
+            "meaning": "A firm determination to do something; unwavering purpose.",
+            "synonym": "Resolve, steadfastness",
+            "antonym": "Hesitation, vacillation",
+            "example": "Santiago possessed an indomitable resolution that sustained him through cramping hands and exhaustion."
+          }
+        ],
+        "importantQuestions": [
+          {
+            "q": "What is the philosophical meaning of Santiago's maxim: 'A man is not made for defeat. A man can be destroyed but not defeated'?",
+            "a": "Hemingway distinguishes between physical destruction and moral defeat. External forces or nature may obliterate a person's physical body or possessions, but their dignity, courage, and core spirit remain undefeated as long as they strive with absolute commitment.",
+            "type": "Philosophical Analysis"
+          }
+        ],
+        "modelAnswers": [
+          {
+            "question": "How does Santiago view the marlin during their three-day duel?",
+            "answer": "Santiago regards the marlin not as an adversary, but as a noble brother and worthy equal. He respects its dignity, beauty, and strength, expressing regret that he must kill it to fulfill his vocation as a true fisherman.",
+            "wordCount": 43
+          }
+        ],
+        "practiceMCQ": [
+          {
+            "q": "How many days had Santiago gone without catching a fish before hooking the giant marlin?",
+            "options": [
+              "84 days",
+              "40 days",
+              "100 days",
+              "50 days"
+            ],
+            "answer": "84 days",
+            "explanation": "The novella begins: 'He was an old man who fished alone in a skiff in the Gulf Stream and he had gone eighty-four days now without taking a fish.'"
+          },
+          {
+            "q": "What baseball idol does Santiago repeatedly invoke to summon inner fortitude?",
+            "options": [
+              "Joe DiMaggio",
+              "Babe Ruth",
+              "Lou Gehrig",
+              "Jackie Robinson"
+            ],
+            "answer": "Joe DiMaggio",
+            "explanation": "Santiago admires DiMaggio, who played courageously despite the handicap of a bone spur in his heel."
+          }
+        ],
+        "practiceCQ": [
+          {
+            "prompt": "Analyze the role of the boy Manolin in Santiago's life and emotional survival.",
+            "guidelines": "Discuss companionship, apprentice relationship, psychological faith, and generational continuity."
+          }
+        ],
+        "previousExamQuestions": [
+          {
+            "year": "Midterm 2024",
+            "question": "Explain the symbolic significance of the lions on the African beach in Santiago's dreams.",
+            "marks": "5 Marks"
+          }
+        ]
+      }
+    ],
+    "readingSkills": [
+      {
+        "id": "rs-scanning",
+        "title": "Scanning",
+        "definition": "A high-speed reading technique utilized to locate specific facts, statistics, names, dates, or technical keywords without reading the entire text.",
+        "explanation": "Scanning relies on fixing a target search term in mind and moving eyes rapidly in zig-zag or spiral motions across paragraphs, ignoring irrelevant prose until the target keyword or numerical figure surfaces.",
+        "examples": [
+          {
+            "task": "Locate the birth year of Louis XVI in a 1000-word historical passage.",
+            "technique": "Scan directly for 4-digit numbers (1774, 1793, 1754) or capitalized 'King Louis'."
+          }
+        ],
+        "practice": "Scan the provided text to locate the percentage of out-of-pocket medical expenses in Bangladesh within 10 seconds.",
+        "examTips": "Always read the comprehension question stems FIRST. Underline the operative keywords (e.g., '1945', 'Arthur Young', 'mitochondria') and scan the passage strictly for those anchor terms."
+      },
+      {
+        "id": "rs-skimming",
+        "title": "Skimming",
+        "definition": "Rapidly previewing a text to extract the overarching thesis, macro-organization, and gist without getting bogged down in microscopic details.",
+        "explanation": "Skimming involves reading the title, abstract, introductory paragraph, first sentence of every body paragraph (topic sentences), and the concluding synthesis.",
+        "examples": [
+          {
+            "task": "Determine whether an article advocates for solar or nuclear energy in 30 seconds.",
+            "technique": "Read introduction, bold subheadings, and concluding paragraph."
+          }
+        ],
+        "practice": "Skim the editorial passage on renewable microgrids and summarize its stance in one sentence.",
+        "examTips": "In 45-minute exam scenarios, spend 90 seconds skimming before answering questions to build a mental map of paragraph functions."
+      },
+      {
+        "id": "rs-main-idea",
+        "title": "Identifying Main Ideas",
+        "definition": "Isolating the primary assertion or central thesis that an author develops throughout a paragraph or discourse.",
+        "explanation": "Every well-structured academic paragraph contains a topic sentence (often the first or second sentence) that expresses the main idea, supported by empirical data, citations, or anecdotes.",
+        "examples": [
+          {
+            "paragraph": "While AI algorithms enhance diagnostic image processing, they cannot replace the clinical empathy and ethical discernment of seasoned physicians...",
+            "mainIdea": "Artificial intelligence serves as a complementary medical tool rather than a full substitute for human clinical judgment."
+          }
+        ],
+        "practice": "Extract the main idea of Tibbitts Unit 13C regarding the Third Estate.",
+        "examTips": "Watch out for transition words like 'However', 'Nevertheless', and 'Consequently'—the true main idea often follows these contrastive markers."
+      },
+      {
+        "id": "rs-supporting-details",
+        "title": "Supporting Details",
+        "definition": "Factual evidence, statistics, expert testimonies, illustrations, and cause-effect chains that substantiate the central assertion.",
+        "explanation": "Supporting details are classified into major details (directly proving the topic sentence) and minor details (clarifying or illustrating major details).",
+        "examples": [
+          {
+            "claim": "Smoking damages cardiovascular health.",
+            "supportingDetail": "Clinical studies prove nicotine constricts coronary blood vessels by 25%."
+          }
+        ],
+        "practice": "Identify two supporting details from the health policy article proving financial distress.",
+        "examTips": "Questions starting with 'How', 'Why', or 'According to the text' demand specific supporting details rather than broad generalizations."
+      },
+      {
+        "id": "rs-summarizing",
+        "title": "Academic Summarizing",
+        "definition": "Synthesizing the vital substance of an extended passage into a concise, accurate, and objective reformulation using original phrasing.",
+        "explanation": "Requires eliminating rhetorical flourishes, duplicate examples, parenthetical explanations, and verbatim quotations while preserving the author's logical trajectory.",
+        "examples": [
+          {
+            "passage": "Extended 350-word text on decentralized microgrids.",
+            "summary": "Decentralized renewable microgrids solve delta transmission losses and power outages. Despite high setup expenditures, long-term operational efficiency and sovereign carbon credits justify rapid public investment."
+          }
+        ],
+        "practice": "Condense the 400-word excerpt on mass production into a 45-to-50 word precision summary.",
+        "examTips": "Never insert external knowledge or personal commentary ('I think that...') in a summary. Keep it strictly descriptive."
+      },
+      {
+        "id": "rs-speed-reading",
+        "title": "Speed Reading & Eye-Span Expansion",
+        "definition": "Techniques aimed at increasing reading rates (words per minute) while preserving high conceptual comprehension.",
+        "explanation": "Techniques include suppressing subvocalization (inner voice pronunciation), expanding peripheral eye-span to absorb 3-to-4 word phrases simultaneously, and using a pointer to prevent regression (unconscious re-reading).",
+        "examples": [
+          {
+            "technique": "Read in syntactic chunks: [The film director] [faces twin demands] [of art and commerce]."
+          }
+        ],
+        "practice": "Measure your WPM on an unseen 300-word passage aiming for a minimum of 220 words per minute.",
+        "examTips": "Never sacrifice comprehension for speed on complex grammatical questions; apply speed reading during the initial orientation pass."
+      }
+    ],
+    "writingAndCommunication": {
+      "sentenceTypes": [
+        {
+          "classification": "By Meaning & Function",
+          "types": [
+            {
+              "name": "Assertive / Declarative",
+              "formula": "Subject + Verb + Object/Complement.",
+              "desc": "States a fact, assertion, or opinion.",
+              "ex": "The engineer calculated the structural load accurately."
+            },
+            {
+              "name": "Interrogative",
+              "formula": "Wh-word / Auxiliary + Subject + Main Verb + Object + '?'",
+              "desc": "Asks an authentic direct question.",
+              "ex": "Did the board approve the microgrid proposal?"
+            },
+            {
+              "name": "Imperative",
+              "formula": "Base Verb (V1) + Object/Modifier.",
+              "desc": "Issues a command, polite request, or instructional directive.",
+              "ex": "Calibrate the oscilloscope prior to taking voltage readings."
+            },
+            {
+              "name": "Optative",
+              "formula": "May + Subject + Base Verb + Complement + '.'",
+              "desc": "Expresses a devout wish, prayer, or blessing.",
+              "ex": "May the university continue to pioneer engineering research."
+            },
+            {
+              "name": "Exclamatory",
+              "formula": "What a/an + Adj + Noun + S + V + '!' / How + Adj + S + V + '!'",
+              "desc": "Conveys intense surprise, admiration, or shock.",
+              "ex": "How remarkably the turbine operates under severe thermal stress!"
+            }
+          ]
+        },
+        {
+          "classification": "By Structural Composition",
+          "types": [
+            {
+              "name": "Simple Sentence",
+              "formula": "One Independent Clause (1 Subject + 1 Finite Verb).",
+              "desc": "Expresses a complete standalone thought.",
+              "ex": "The quality of these industrial capacitors determines overall circuit efficiency."
+            },
+            {
+              "name": "Compound Sentence",
+              "formula": "Clause 1 + Coordinate Conjunction (FANBOYS: for, and, nor, but, or, yet, so) + Clause 2.",
+              "desc": "Connects two syntactically equal, independent clauses.",
+              "ex": "The initial cost was high, yet the long-term energy savings justified the sovereign expenditure."
+            },
+            {
+              "name": "Complex Sentence",
+              "formula": "Independent Clause + Subordinating Conjunction (because, although, since, if, when, that) + Dependent Clause.",
+              "desc": "Subordinates one idea beneath another.",
+              "ex": "Although the battery prototype performed reliably in laboratory trials, its thermal dissipation required modification."
+            }
+          ]
+        }
+      ],
+      "grammarSkills": [
+        {
+          "topic": "Active and Passive Voice",
+          "rules": "Active: Subject performs the action. Passive: Subject receives the action. Formula: `Object as Subject + Appropriate Be-Verb + V3 (Past Participle) + by + Agent`.",
+          "examples": [
+            {
+              "active": "The research team conducted three calibration tests.",
+              "passive": "Three calibration tests were conducted by the research team."
+            },
+            {
+              "active": "One must keep one's promises.",
+              "passive": "Promises must be kept. (Omit indefinite agent)."
+            }
+          ],
+          "examTrap": "Intransitive verbs (die, happen, arrive, disappear) CANNOT be converted to passive voice. Wrong: *The accident was happened last night* -> Correct: *The accident happened last night*."
+        },
+        {
+          "topic": "Sequence of Tense",
+          "rules": "If the principal clause is in the Past Tense, the subordinate clause MUST be in the corresponding past tense. Exceptions: Universal scientific truths and habitual facts remain in the Present Simple.",
+          "examples": [
+            {
+              "incorrect": "The professor said that water boiled at 100 degrees Celsius.",
+              "correct": "The professor said that water boils at 100 degrees Celsius. (Scientific Law)."
+            },
+            {
+              "incorrect": "He told me that he will come tomorrow.",
+              "correct": "He told me that he would come tomorrow. (Sequence of Past)."
+            }
+          ]
+        },
+        {
+          "topic": "WH-Questions Formulation",
+          "rules": "Formula: `WH-word + Auxiliary Verb + Subject + Main Verb + Object?`. When the WH-word is the subject itself, no auxiliary do/did is used: `Who broke the glass?` (not *Who did break*).",
+          "examples": [
+            {
+              "statement": "The director coordinates story and dialogue.",
+              "question": "What does the director coordinate?"
+            },
+            {
+              "statement": "Louis XVI was executed in 1793.",
+              "question": "When was Louis XVI executed?"
+            }
+          ]
+        },
+        {
+          "topic": "Yes/No Questions & Inversion",
+          "rules": "Formed by inverting the auxiliary verb or modal auxiliary before the subject: `Auxiliary + Subject + Main Verb?`.",
+          "examples": [
+            {
+              "statement": "The students have submitted the assignment.",
+              "question": "Have the students submitted the assignment?"
+            },
+            {
+              "statement": "The system operates under pressure.",
+              "question": "Does the system operate under pressure?"
+            }
+          ]
+        }
+      ],
+      "writingWorkshops": [
+        {
+          "type": "Guided Paragraph",
+          "structure": "1. Topic Sentence (Direct claim) -> 2. Supporting Sentence 1 (Data/Reason) -> 3. Supporting Sentence 2 (Exemplar) -> 4. Supporting Sentence 3 (Analysis) -> 5. Concluding Sentence (Restatement).",
+          "samplePrompt": "Write a guided paragraph on 'The Role of Engineers in Flood Management in Coastal Bangladesh' using provided cue words: delta, embankment, sluice gate, automation, resilience."
+        },
+        {
+          "type": "Story Writing & Story Completion",
+          "structure": "Exposition (Setting & Character) -> Inciting Incident -> Rising Action (Obstacles) -> Climax -> Resolution & Moral.",
+          "samplePrompt": "Complete the story: 'An honest rickshaw puller found an unattended briefcase containing five hundred thousand taka on the rear seat...'"
+        }
+      ],
+      "speakingWorkshops": [
+        {
+          "topic": "Professional Self-Introduction",
+          "guidelines": "State name, academic affiliation (Department of CSE/EEE, IIUC), technical passions, flagship project, and professional ambition in 60-90 seconds.",
+          "sampleDialogue": "Good morning, esteemed faculty. My name is [Name], a first-year undergraduate in Computer Science and Engineering at IIUC. My technical interests focus on embedded systems and algorithmic problem solving..."
+        },
+        {
+          "topic": "Situational Dialogue Writing",
+          "guidelines": "Maintain authentic conversational turns, polite greetings, turn-taking markers, and clear communicative objectives.",
+          "sampleDialogue": "Student: Excuse me, Professor, could you clarify the distinction between restrictive and non-restrictive relative clauses?\nProfessor: Certainly! A restrictive clause provides indispensable identification..."
+        }
+      ]
+    }
+  },
+  "finalData": {
+    "overview": {
+      "title": "Semester End Examination (SEE)",
+      "totalMarks": 50,
+      "writtenMarks": 45,
+      "oralVivaMarks": 5,
+      "duration": "2 Hours 30 Minutes",
+      "sectionBreakdown": "Part A: Reading (25 Marks [Seen 15 + Unseen 10]), Part B: Grammar (10 Marks [10 Qs x 1 Mark]), Part C: Writing (15 Marks [3 items x 5 Marks])"
+    },
+    "prescribedReading": [
+      {
+        "id": "fin-seen-tibbitts-11-20",
+        "title": "Tibbitts Units 11C–20C Examination Master Suite",
+        "units": [
+          {
+            "unit": "Unit 11C",
+            "title": "The Path of Power (The Film Director)",
+            "examHistory": "Autumn 2018, Spring 2024 (100% Core Frequency)",
+            "summary": "Explores the monumental challenges faced by a motion picture director who must reconcile artistic vision with commercial viability while synthesizing acting, lighting, camera angles, sound, and narrative structure.",
+            "vocabulary": [
+              "Intelligible",
+              "Commercial",
+              "Artistic",
+              "Synthetic",
+              "Subjugate"
+            ]
+          },
+          {
+            "unit": "Unit 12C",
+            "title": "The Co-operative Movement",
+            "examHistory": "Spring 2022, Autumn 2023",
+            "summary": "Analyzes the Rochdale Pioneers and the emergence of consumer cooperatives as an ethical shield against exploitative industrial capitalism and contaminated retail goods.",
+            "vocabulary": [
+              "Adulteration",
+              "Dividend",
+              "Democratic",
+              "Monopoly",
+              "Collectivism"
+            ]
+          },
+          {
+            "unit": "Unit 13C",
+            "title": "The French Revolution & The Third Estate",
+            "examHistory": "Autumn 2025 (Most Recent Final Exam)",
+            "summary": "Details the execution of Louis XVI, the catastrophic tax burden levied exclusively upon the Third Estate, and the revolutionary emergence of the National Assembly.",
+            "vocabulary": [
+              "Guillotine",
+              "Clergy",
+              "States-General",
+              "Monarchy",
+              "Injustice"
+            ]
+          },
+          {
+            "unit": "Unit 14C",
+            "title": "The Birth of the United Nations Organization",
+            "examHistory": "Spring 2023, Autumn 2024",
+            "summary": "Chronicles the founding of the UNO at San Francisco in 1945 following the devastation of World War II to preserve global peace and human rights.",
+            "vocabulary": [
+              "Charter",
+              "Sovereignty",
+              "Aggression",
+              "Ratification",
+              "Diplomacy"
+            ]
+          },
+          {
+            "unit": "Unit 15C",
+            "title": "Mass Production & The Industrial Assembly",
+            "examHistory": "Spring 2021, Autumn 2022",
+            "summary": "Examines Henry Ford's moving assembly line, the standardization of interchangeable parts, and the dramatic reduction of manufacturing costs coupled with worker monotony.",
+            "vocabulary": [
+              "Standardization",
+              "Interchangeable",
+              "Conveyor",
+              "Automation",
+              "Monotony"
+            ]
+          }
+        ]
+      }
+    ],
+    "readingAndComprehension": {
+      "sources": [
+        {
+          "name": "Dhaka Courier",
+          "type": "National News Magazine",
+          "focus": "Contemporary economic policies, bilateral diplomacy, health and climate challenges in Bangladesh."
+        },
+        {
+          "name": "Daily Newspapers (The Daily Star, Independent)",
+          "type": "Editorial & Op-Ed Journalism",
+          "focus": "Technological adoption, FinTech cybersecurity, delta urbanization."
+        },
+        {
+          "name": "IELTS Academic Reading Passages",
+          "type": "Standardized Global Examination",
+          "focus": "Complex informational prose on biotechnology, archaeology, and ecological restoration."
+        }
+      ],
+      "skillsAnalysis": [
+        {
+          "skill": "Tone & Mood Detection",
+          "desc": "Discerning whether the author's stance is cynical, objective, laudatory, alarming, or cautionary through lexical choices."
+        },
+        {
+          "skill": "Argumentative Evaluation",
+          "desc": "Mapping primary claims, warrants, counter-claims, and detecting logical fallacies."
+        },
+        {
+          "skill": "50-Word Precision Summary",
+          "desc": "Drafting summaries strictly between 45 and 50 words with zero verbatim clause copying."
+        }
+      ]
+    },
+    "grammarChapters": [
+      {
+        "chapterNumber": 1,
+        "title": "Tenses & Right Forms of Verbs",
+        "definition": "The morphological inflection and auxiliary framing of verbs to denote the exact temporal anchor (past, present, future) and aspect (simple, continuous, perfect, perfect continuous) of an action.",
+        "rules": [
+          "Rule 1: Adverbs of habit (always, regularly, daily, often) govern Present Simple.",
+          "Rule 2: Specific past markers (yesterday, ago, last year, in 1971) strictly require Past Simple.",
+          "Rule 3: Since/For denoting duration from past into present governs Present Perfect Continuous.",
+          "Rule 4: When two past actions are linked by 'before' or 'after': Action 1 (earlier) takes Past Perfect; Action 2 (later) takes Past Simple.",
+          "Rule 5: Subjunctive expressions like 'It is high time' require Past Simple inflection: 'It is high time we acted'."
+        ],
+        "formula": "Past Perfect + before + Past Simple | Past Simple + after + Past Perfect",
+        "structure": "Subject + had + V3 + before + Subject + V2",
+        "examples": [
+          "The train had departed before the passenger reached the platform.",
+          "He completed the project after the supervisor had approved the schematics."
+        ],
+        "wrongVsCorrect": [
+          {
+            "wrong": "The patient died before the doctor came.",
+            "correct": "The patient had died before the doctor came."
+          },
+          {
+            "wrong": "It is high time we change our habits.",
+            "correct": "It is high time we changed our habits."
+          }
+        ],
+        "exceptions": "Universal physical laws remain in Present Simple even after past reporting verbs: 'He proved that the earth revolves around the sun.'",
+        "commonMistakes": "Using present perfect with definite past timestamps: *I have seen him yesterday* (Wrong) -> *I saw him yesterday* (Correct).",
+        "shortcutTricks": "B-P-B trick: Before has Past-Perfect BEFORE it. A-P-A trick: After has Past-Perfect AFTER it.",
+        "practiceMCQ": [
+          {
+            "q": "He talked as if he ___ everything.",
+            "options": [
+              "knew",
+              "knows",
+              "has known",
+              "will know"
+            ],
+            "answer": "knew",
+            "explanation": "After present tense, 'as if' takes unreal past subjunctive (V2)."
+          }
+        ],
+        "practiceCQ": [
+          {
+            "prompt": "Correct the right form of verbs: 'Since last month, our laboratory (work) on the autonomous rover.'",
+            "answer": "has been working"
+          }
+        ],
+        "previousQuestions": [
+          {
+            "year": "Spring 2024",
+            "q": "Had the government taken necessary steps, prices (not rise).",
+            "ans": "would not have risen"
+          }
+        ],
+        "revisionNotes": "Always check time adverbials first: now/at this moment -> continuous; already/just now -> perfect; tomorrow/next -> future."
+      },
+      {
+        "chapterNumber": 2,
+        "title": "Articles & Determiners",
+        "definition": "Grammatical determiners indicating the specificity, definiteness, or general category of noun phrases.",
+        "rules": [
+          "Rule 1: Indefinite articles (a/an) modify singular countable nouns introduced for the first time.",
+          "Rule 2: 'An' precedes vowel sounds (an honest man, an hour, an heir, an MP, an MBA).",
+          "Rule 3: Definite article 'the' modifies unique entities, superlatives, musical instruments, rivers, and specified nouns.",
+          "Rule 4: Zero article occurs before uncountable abstract nouns in general statements (Honesty is the best policy) and names of languages, meals, sports."
+        ],
+        "formula": "The + Singular Noun (Representing entire class) | Zero Article + Plural/Uncountable Noun",
+        "structure": "Determiner + (Adjective) + Noun Headword",
+        "examples": [
+          "The cow is a useful domestic animal.",
+          "Water consists of hydrogen and oxygen (Zero article for chemical substances)."
+        ],
+        "wrongVsCorrect": [
+          {
+            "wrong": "He is an European.",
+            "correct": "He is a European. (Initial sound is consonant /j/)."
+          },
+          {
+            "wrong": "He plays the football daily.",
+            "correct": "He plays football daily. (No article before sports)."
+          }
+        ],
+        "exceptions": "When abstract nouns are qualified by an 'of' phrase, they take 'the': 'The honesty of the rickshaw puller charmed the passengers.'",
+        "commonMistakes": "Omitting 'the' before superlative adjectives: *He is best student* -> *He is the best student*.",
+        "shortcutTricks": "Pronounce the initial sound: If throat vibrates with pure vowel sound (a, e, i, o, u), use 'an'; if 'yu' or 'wa' sound, use 'a'.",
+        "practiceMCQ": [
+          {
+            "q": "He graduated with ___ MBA degree in management.",
+            "options": [
+              "an",
+              "a",
+              "the",
+              "no article"
+            ],
+            "answer": "an",
+            "explanation": "'MBA' begins with vowel phoneme /em/."
+          }
+        ],
+        "practiceCQ": [
+          {
+            "prompt": "Insert appropriate articles: '___ Pacific is ___ deepest ocean on earth.'",
+            "answer": "The, the"
+          }
+        ],
+        "previousQuestions": [
+          {
+            "year": "Spring 2023",
+            "q": "He is ___ one-eyed man.",
+            "ans": "a ('one' begins with consonant /w/ sound)"
+          }
+        ],
+        "revisionNotes": "Remember: The Himalayas (range = the), but Mount Everest (single peak = zero article)."
+      },
+      {
+        "chapterNumber": 3,
+        "title": "Prepositions, Connectors & Conjunctions",
+        "definition": "Words governing nouns or pronouns expressing spatial, temporal, or logical relations, and linkers establishing clause cohesion.",
+        "rules": [
+          "Rule 1: Appropriate prepositions are strictly governed by specific adjectives, verbs, and nouns.",
+          "Rule 2: Connectors of cause/effect: because, as, since, so that, therefore.",
+          "Rule 3: Connectors of contrast: although, though, despite, in spite of, nevertheless.",
+          "Rule 4: 'Lest' takes 'should + base verb': 'Walk fast lest you should miss the train'."
+        ],
+        "formula": "Despite + Noun/Gerund | Although + Full Clause (S + V)",
+        "structure": "Subordinate Clause (Linker + S + V), Principal Clause (S + V)",
+        "examples": [
+          "Despite working tirelessly, he could not meet the deadline.",
+          "Although he worked tirelessly, he could not meet the deadline."
+        ],
+        "wrongVsCorrect": [
+          {
+            "wrong": "Despite of his poverty, he is honest.",
+            "correct": "Despite his poverty... / In spite of his poverty..."
+          },
+          {
+            "wrong": "Walk fast lest you will miss the train.",
+            "correct": "Walk fast lest you should miss the train."
+          }
+        ],
+        "exceptions": "Do not insert 'that' after 'despite': *Despite that he came* -> *Despite the fact that he came*.",
+        "commonMistakes": "Confusing 'senior than' with 'senior to', 'inferior to', 'preferable to' (Latin comparatives take 'to', never 'than').",
+        "shortcutTricks": "'In spite' has three words (In + spite + of); 'Despite' is a single standalone word.",
+        "practiceMCQ": [
+          {
+            "q": "Death is preferable ___ dishonor.",
+            "options": [
+              "to",
+              "than",
+              "from",
+              "for"
+            ],
+            "answer": "to",
+            "explanation": "Preferable is followed by 'to'."
+          }
+        ],
+        "practiceCQ": [
+          {
+            "prompt": "Fill in the gap: 'He started early lest he ___ be delayed by road congestion.'",
+            "answer": "should"
+          }
+        ],
+        "previousQuestions": [
+          {
+            "year": "Spring 2024",
+            "q": "The committee agreed ___ the proposed changes.",
+            "ans": "to (agree to a proposal; agree with a person)"
+          }
+        ],
+        "revisionNotes": "Key pairs: abstain from, refrain from, adjacent to, devoid of, conducive to, comply with."
+      },
+      {
+        "chapterNumber": 4,
+        "title": "Subject–Verb Agreement (Grammatical Concord)",
+        "definition": "The syntactic requirement that a finite verb must agree in grammatical number and person with its authentic headword subject.",
+        "rules": [
+          "Rule 1 (Headword): Modifying prepositional phrases between subject and verb must be ignored.",
+          "Rule 2 (Additive Connectors): 'as well as', 'along with', 'together with' agree with the FIRST subject.",
+          "Rule 3 (Proximity): 'either... or', 'neither... nor' agree with the NEAREST subject.",
+          "Rule 4 (Quantifiers): 'A number of' = Plural; 'The number of' = Singular.",
+          "Rule 5 (Units): Quantities of time, money, distance, weight are singular units.",
+          "Rule 6 (Indefinite Pronouns): -body, -one, -thing are strictly singular."
+        ],
+        "formula": "S1 + [as well as / along with] + S2 + Verb(agrees with S1)",
+        "structure": "Headword Noun + [Prepositional Modifier] + Verb(governed by Headword)",
+        "examples": [
+          "The quality of these mangoes is exceptional.",
+          "The teacher along with his students was present."
+        ],
+        "wrongVsCorrect": [
+          {
+            "wrong": "The danger of forest fires are alarming.",
+            "correct": "The danger of forest fires is alarming. (Headword: danger)."
+          },
+          {
+            "wrong": "Neither of the boys were present.",
+            "correct": "Neither of the boys was present. (Neither of = singular)."
+          }
+        ],
+        "exceptions": "When collective nouns act with internal dissension or split decisions, the verb becomes plural: 'The jury were divided in their verdict.'",
+        "commonMistakes": "Matching verbs to the closest noun inside a prepositional phrase rather than identifying the authentic headword.",
+        "shortcutTricks": "Cross out with pencil every prepositional phrase starting with 'of', 'in', 'on', 'with' to reveal the bare subject.",
+        "practiceMCQ": [
+          {
+            "q": "Fifty thousand dollars ___ a massive sum for the equipment.",
+            "options": [
+              "is",
+              "are",
+              "were",
+              "have been"
+            ],
+            "answer": "is",
+            "explanation": "Amounts of money are singular units."
+          }
+        ],
+        "practiceCQ": [
+          {
+            "prompt": "Correct: 'Living expenses in this country as well as abroad is all time high.'",
+            "answer": "are (Headword: expenses [plural])"
+          }
+        ],
+        "previousQuestions": [
+          {
+            "year": "Autumn 2023",
+            "q": "Neither you nor your brothers (is/are) suitable for this post.",
+            "ans": "are (Nearest: brothers [plural])"
+          }
+        ],
+        "revisionNotes": "Remember: Each and every always take singular verbs, even when joined by 'and': 'Every boy and girl was awarded'."
+      },
+      {
+        "chapterNumber": 5,
+        "title": "Clauses & Sentence Synthesis",
+        "definition": "The analysis of dependent clauses (Noun, Adjective, Adverbial) and the technique of combining multiple simple clauses into cohesive complex or compound sentences.",
+        "rules": [
+          "Rule 1: Noun Clauses function as Subject, Object, or Complement of a preposition.",
+          "Rule 2: Relative (Adjective) Clauses qualify an antecedent noun (who, whom, whose, which, that).",
+          "Rule 3: Restrictive relative clauses do not take commas; non-restrictive parenthetical clauses require commas.",
+          "Rule 4: Sentence combination using participial phrases eliminates repetitive subject pronouns."
+        ],
+        "formula": "Antecedent Noun + Relative Pronoun + Dependent Predicate",
+        "structure": "Main Clause + [Relative Clause] + Remainder of Main Clause",
+        "examples": [
+          "The engineer who developed the circuit received the national patent.",
+          "I understand that the algorithm requires optimization (Noun Clause as Object)."
+        ],
+        "wrongVsCorrect": [
+          {
+            "wrong": "He is the man which helped me.",
+            "correct": "He is the man who helped me. ('who' for humans; 'which' for objects)."
+          },
+          {
+            "wrong": "Being a rainy day, he stayed home.",
+            "correct": "It being a rainy day, he stayed home. (Avoid dangling participles)."
+          }
+        ],
+        "exceptions": "Prepositions in formal relative clauses precede the relative pronoun ('the platform upon which the guillotine stood').",
+        "commonMistakes": "Dangling participles where the participial phrase does not logically modify the grammatical subject of the sentence.",
+        "shortcutTricks": "Replace the clause with 'something': If the sentence makes sense ('I know [something]'), it is a Noun Clause.",
+        "practiceMCQ": [
+          {
+            "q": "Identify the clause type: 'That he is honest is known to all.'",
+            "options": [
+              "Noun Clause",
+              "Adjective Clause",
+              "Adverbial Clause",
+              "Co-ordinate Clause"
+            ],
+            "answer": "Noun Clause",
+            "explanation": "Functions as the grammatical subject of the verb 'is known'."
+          }
+        ],
+        "practiceCQ": [
+          {
+            "prompt": "Combine into one complex sentence: 'Arthur Young travelled through France. He met an impoverished peasant woman.'",
+            "answer": "When Arthur Young travelled through France, he met an impoverished peasant woman."
+          }
+        ],
+        "previousQuestions": [
+          {
+            "year": "Autumn 2025",
+            "q": "The man whom they had come to see executed came into sight in an open cart. (Identify clause).",
+            "ans": "Adjective (Relative) Clause qualifying 'man'"
+          }
+        ],
+        "revisionNotes": "Gerund vs Participle: Gerund = Verbal Noun (ends in -ing, acts as subject/object); Participle = Verbal Adjective (acts as modifier)."
+      },
+      {
+        "chapterNumber": 6,
+        "title": "Modals & Semi-Modals",
+        "definition": "Auxiliary verbs that express the speaker's attitude regarding possibility, permission, ability, obligation, necessity, or counterfactual deduction.",
+        "rules": [
+          "Rule 1: Modal auxiliaries (can, could, may, might, shall, should, will, would, must) are followed by the BARE INFINITIVE (V1).",
+          "Rule 2: Past counterfactual deduction: 'must have + V3' (certainty in past), 'can't have + V3' (impossibility), 'should have + V3' (unfulfilled obligation).",
+          "Rule 3: Semi-modals: 'ought to', 'used to', 'dare', 'need'."
+        ],
+        "formula": "Subject + Modal + V1 | Subject + Modal + have + V3 (Past Reflection)",
+        "structure": "Subject + must / should / could + have + Past Participle",
+        "examples": [
+          "You should have submitted the lab report before noon.",
+          "The ground is soaking wet; it must have rained heavily last night."
+        ],
+        "wrongVsCorrect": [
+          {
+            "wrong": "He can to speak English fluently.",
+            "correct": "He can speak English fluently. (No 'to' after modal)."
+          },
+          {
+            "wrong": "You ought consult a physician.",
+            "correct": "You ought to consult a physician."
+          }
+        ],
+        "exceptions": "'Used to' takes bare infinitive, but 'be used to' / 'get used to' takes a GERUND (-ing): 'I am used to waking up early.'",
+        "commonMistakes": "Confusing 'may have' (possible past event) with 'might have' (hypothetical counterfactual that did not happen).",
+        "shortcutTricks": "Never add '-s' or '-ed' to a modal verb: 'he cans' or 'he musted' are impossible in English.",
+        "practiceMCQ": [
+          {
+            "q": "You ___ park your vehicle in front of the emergency bay; it is strictly prohibited.",
+            "options": [
+              "must not",
+              "need not",
+              "might not",
+              "could not"
+            ],
+            "answer": "must not",
+            "explanation": "Must not denotes strict prohibition."
+          }
+        ],
+        "practiceCQ": [
+          {
+            "prompt": "Express past unfulfilled duty: 'He did not attend the review session (should).'",
+            "answer": "He should have attended the review session."
+          }
+        ],
+        "previousQuestions": [
+          {
+            "year": "Midterm 2023",
+            "q": "Rewrite using modal: It was necessary for him to leave early.",
+            "ans": "He had to leave early."
+          }
+        ],
+        "revisionNotes": "Deduction ladder: Must have (95% sure it happened) -> May/Might have (50% chance) -> Can't have (95% sure it didn't happen)."
+      },
+      {
+        "chapterNumber": 7,
+        "title": "Conditional Sentences (Real & Unreal)",
+        "definition": "Complex sentences containing an if-clause (condition) and a principal clause (result), denoting factual, predictive, hypothetical, or counterfactual realities.",
+        "rules": [
+          "Rule 1 (Zero): If + Present Simple, Present Simple (Scientific laws).",
+          "Rule 2 (First): If + Present Simple, will/can/may + V1 (Real future possibility).",
+          "Rule 3 (Second): If + Past Simple (were/had/V2), would/could/might + V1 (Unreal present/future).",
+          "Rule 4 (Third): If + Past Perfect (had + V3), would/could/might + have + V3 (Past counterfactual regret).",
+          "Rule 5 (Inversion): Had + S + V3, S + would have + V3 (Omission of 'if')."
+        ],
+        "formula": "If + S + had + V3, S + would have + V3 | Had + S + V3, S + would have + V3",
+        "structure": "Inverted Conditional: Had + Subject + Past Participle, Subject + would have + Past Participle",
+        "examples": [
+          "If water reaches 100 degrees Celsius, it boils.",
+          "Had you renewed your visa in time, you would not have fallen into trouble."
+        ],
+        "wrongVsCorrect": [
+          {
+            "wrong": "If I will win the lottery, I will buy a car.",
+            "correct": "If I win the lottery, I will buy a car. (No 'will' inside if-clause)."
+          },
+          {
+            "wrong": "If I was you, I would protest.",
+            "correct": "If I were you, I would protest. (Subjunctive 'were')."
+          }
+        ],
+        "exceptions": "Difference between 'If you had [Noun]' (2nd conditional: present non-possession) and 'If you had had [Noun]' (3rd conditional: past non-possession).",
+        "commonMistakes": "Placing 'would have' inside the if-clause: *If you would have studied, you would have passed* (Gross Error) -> *If you had studied, you would have passed*.",
+        "shortcutTricks": "1-2-3 Rule: V1 -> will; V2 -> would; Had+V3 -> would have.",
+        "practiceMCQ": [
+          {
+            "q": "Had the captain navigated cautiously, the vessel ___ the coral reef.",
+            "options": [
+              "would have avoided",
+              "avoided",
+              "will avoid",
+              "would avoid"
+            ],
+            "answer": "would have avoided",
+            "explanation": "Inverted 3rd conditional requires would have + V3."
+          }
+        ],
+        "practiceCQ": [
+          {
+            "prompt": "Complete: 'I will leave no stone unturned provided that ___.'",
+            "answer": "you support me wholeheartedly."
+          }
+        ],
+        "previousQuestions": [
+          {
+            "year": "Spring 2024",
+            "q": "If water is boiled at 100 degrees Celsius, it (become) vapor.",
+            "ans": "becomes (Zero conditional)"
+          }
+        ],
+        "revisionNotes": "'Provided that', 'as long as', and 'on condition that' function as synonyms of 'if'."
+      }
+    ],
+    "composition": [
+      {
+        "id": "comp-graphs-charts",
+        "title": "Data & Chart Description Masterclass",
+        "formats": [
+          "Pie Chart",
+          "Bar Chart",
+          "Column Chart",
+          "Line Graph",
+          "Data Table"
+        ],
+        "structure": [
+          "Paragraph 1 (Introduction): Paraphrase the title, time period, and unit of measurement.",
+          "Paragraph 2 (Overview & Major Trends): Highlight the highest and lowest values, sharpest contrasts, and general trajectory without citing every trivial number.",
+          "Paragraph 3 (Specific Data Comparison): Group related data, cite percentages/metrics accurately using comparison linkers ('in contrast', 'whereas', 'outperformed')."
+        ],
+        "vocabulary": {
+          "upward": [
+            "soared",
+            "surged",
+            "climbed steadily",
+            "reached a peak of"
+          ],
+          "downward": [
+            "plummeted",
+            "slumped",
+            "declined gradually",
+            "hit a trough"
+          ],
+          "stability": [
+            "leveled off",
+            "remained constant",
+            "plateaued at",
+            "stabilized"
+          ],
+          "fluctuation": [
+            "fluctuated wildly",
+            "oscillated between",
+            "showed errancy"
+          ]
+        },
+        "modelAnswer": "The provided bar chart illustrates sovereign renewable energy adoption across four South Asian economies between 2018 and 2024. Overall, solar adoption demonstrated exponential growth, whereas coal reliance experienced a noticeable deceleration..."
+      },
+      {
+        "id": "comp-opinion-argumentative",
+        "title": "Opinion & Argumentative Essay Architecture",
+        "formats": [
+          "Agree/Disagree Essay",
+          "Balanced Discussion",
+          "Cause-and-Solution Framework"
+        ],
+        "structure": [
+          "Paragraph 1: Broad Hook + Paraphrased Prompt + Explicit Thesis Statement taking a firm stance.",
+          "Paragraph 2: Primary Argument + Empirical Evidence / Exemplar + Link back to thesis.",
+          "Paragraph 3: Secondary Argument + Technical Context + Impact analysis.",
+          "Paragraph 4: Counter-Argument Refutation (Acknowledge opposing view, then dismantle it logically).",
+          "Paragraph 5: Conclusion (Restate thesis in novel words + Forward-looking synthesis)."
+        ],
+        "modelAnswer": "Technological Automation in Manufacturing: Opportunity or Threat? It is frequently argued that industrial robotics displace blue-collar labor. However, this essay contends that automated manufacturing elevates societal welfare by eliminating hazardous occupations and generating specialized engineering careers..."
+      },
+      {
+        "id": "comp-business-letters",
+        "title": "Official Business & Academic Correspondence",
+        "formats": [
+          "Complaint Letter",
+          "Order Letter",
+          "Request Letter",
+          "Credit & Collection Letter",
+          "Informal Letter"
+        ],
+        "structure": [
+          "1. Sender Address & Date (Top Left)",
+          "2. Recipient Name, Title & Institutional Address",
+          "3. Subject Line: Concise, bolded, underlined reference",
+          "4. Formal Salutation (Dear Sir/Madam)",
+          "5. Body Paragraph 1: Direct statement of purpose and reference number",
+          "6. Body Paragraph 2: Comprehensive factual narrative and specific remediation requested",
+          "7. Body Paragraph 3: Anticipated timeline and polite professional sign-off",
+          "8. Formal Complimentary Close (Yours sincerely / Yours faithfully) + Signature & Designation"
+        ],
+        "modelTemplates": {
+          "complaint": "To\nThe Sales Manager\nMicroTech Electronics Ltd.\nChittagong, Bangladesh\n\nSubject: Formal Complaint Regarding Defective Laboratory Oscilloscopes (Invoice #MT-9042)\n\nDear Sir,\n\nI am writing on behalf of the Department of Electrical and Electronic Engineering at International Islamic University Chittagong to formally register our dissatisfaction regarding the batch of ten digital oscilloscopes delivered on September 4, 2026 under Purchase Order PO-8812...\n\nUpon unpacking and bench-testing, our laboratory technicians discovered that three units display erratic waveform artifacts and fail internal voltage calibration. Furthermore, two units were shipped without manufacturer grounding cables.\n\nIn accordance with Section 4 of our procurement agreement, we request an immediate replacement of the five defective units within seven business days. Please contact our procurement officer to coordinate return transit.\n\nYours faithfully,\n\n[Signature]\nLaboratory Director\nDepartment of EEE, IIUC",
+          "order": "To\nThe Circulation Manager\nAcademic Books International\nDhaka-1205\n\nSubject: Purchase Order for University Reference Textbooks (PO-2026/09)\n\nDear Sir,\n\nPlease supply the following textbooks to the Central Library, IIUC Kumira Campus, at the institutional discount agreed upon:\n\n1. Exercises in Reading Comprehension (E.L. Tibbitts, Longman) — 50 Copies\n2. Oxford Practice Grammar (John Eastwood, 2nd Ed.) — 30 Copies\n\nPlease ensure all copies are in pristine condition and dispatch via secure freight...\n\nYours faithfully,\nHead Librarian, IIUC"
+        }
+      }
+    ],
+    "speaking": [
+      {
+        "topic": "Describing People & Character Profiles",
+        "framework": "Physical attributes -> Intellectual strengths -> Behavioral temperament -> Personal impact.",
+        "expressions": [
+          "strikingly astute",
+          "indomitable perseverance",
+          "commanding presence",
+          "unassuming humility"
+        ],
+        "practice": "Describe Santiago from The Old Man and the Sea emphasizing his physical resilience and nobility."
+      },
+      {
+        "topic": "Describing Places & Engineering Environments",
+        "framework": "Spatial orientation (foreground to background) -> Sensory impressions (auditory, thermal) -> Functional significance.",
+        "expressions": [
+          "nestled amidst",
+          "state-of-the-art facility",
+          "characterized by rhythmic humming",
+          "bustling with activity"
+        ],
+        "practice": "Describe the IIUC Central Library or a modern robotics laboratory."
+      },
+      {
+        "topic": "Extempore Speech & The PREP Strategy",
+        "framework": "P (Point - state thesis directly) -> R (Reason - provide logical cause) -> E (Example - cite real-world case) -> P (Point - reiterate conclusion).",
+        "expressions": [
+          "The crux of the matter is...",
+          "Empirical evidence demonstrates that...",
+          "To illustrate this phenomenon...",
+          "Consequently, it is evident that..."
+        ],
+        "practice": "Deliver a 2-minute extempore speech on 'Why Cybersecurity Hygiene is Vital for Developing Nations'."
+      },
+      {
+        "topic": "Academic Presentation Techniques",
+        "framework": "Introduction & Signposting -> Body Transitions -> Graphical Narration -> Summary & Floor Defense (Q&A).",
+        "expressions": [
+          "Allow me to direct your attention to slide 4...",
+          "Turning now to the second operational parameter...",
+          "In conclusion, our findings demonstrate..."
+        ],
+        "practice": "Structure a 5-minute technical presentation on a semester capstone project."
+      }
+    ],
+    "vocabularyCatalog": [
+      {
+        "id": 1,
+        "word": "Substantiate",
+        "pos": "Verb",
+        "meaning": "Provide evidence to support or prove the truth of something.",
+        "example": "The researcher substantiated the claim with peer-reviewed data.",
+        "synonym": "Corroborate, verify",
+        "antonym": "Disprove, refute"
+      },
+      {
+        "id": 2,
+        "word": "Paradigm",
+        "pos": "Noun",
+        "meaning": "A typical example or pattern of something; a distinct conceptual framework.",
+        "example": "Artificial intelligence introduces a new paradigm in software engineering.",
+        "synonym": "Model, prototype",
+        "antonym": "Anomaly"
+      },
+      {
+        "id": 3,
+        "word": "Pragmatic",
+        "pos": "Adjective",
+        "meaning": "Dealing with things sensibly and realistically based on practical considerations.",
+        "example": "The committee adopted a pragmatic approach to budget allocation.",
+        "synonym": "Practical, expedient",
+        "antonym": "Idealistic, impractical"
+      },
+      {
+        "id": 4,
+        "word": "Autonomous",
+        "pos": "Adjective",
+        "meaning": "Having the freedom to govern itself or control its own operations.",
+        "example": "The university inaugurated an autonomous research laboratory.",
+        "synonym": "Independent, self-governing",
+        "antonym": "Dependent, subordinate"
+      },
+      {
+        "id": 5,
+        "word": "Stringent",
+        "pos": "Adjective",
+        "meaning": "Strict, precise, and exacting regulations or conditions.",
+        "example": "Stringent quality controls prevented flawed microchips from shipping.",
+        "synonym": "Rigorous, exacting",
+        "antonym": "Lenient, lax"
+      },
+      {
+        "id": 6,
+        "word": "Disparate",
+        "pos": "Adjective",
+        "meaning": "Essentially different in kind; not able to be compared.",
+        "example": "The director synthesized disparate elements into a unified cinematic film.",
+        "synonym": "Divergent, heterogeneous",
+        "antonym": "Homogeneous, uniform"
+      },
+      {
+        "id": 7,
+        "word": "Unprecedented",
+        "pos": "Adjective",
+        "meaning": "Never done or known before.",
+        "example": "The flood caused unprecedented damage to the coastal embankments.",
+        "synonym": "Unmatched, unparalleled",
+        "antonym": "Commonplace, customary"
+      },
+      {
+        "id": 8,
+        "word": "Mitigate",
+        "pos": "Verb",
+        "meaning": "Make something bad less severe, serious, or painful.",
+        "example": "Civil defense measures helped mitigate cyclone casualties.",
+        "synonym": "Alleviate, attenuate",
+        "antonym": "Exacerbate, aggravate"
+      },
+      {
+        "id": 9,
+        "word": "Inherent",
+        "pos": "Adjective",
+        "meaning": "Existing in something as a permanent, essential, or characteristic attribute.",
+        "example": "Every communication medium carries inherent transmission latency.",
+        "synonym": "Intrinsic, innate",
+        "antonym": "Extrinsic, incidental"
+      },
+      {
+        "id": 10,
+        "word": "Fluctuate",
+        "pos": "Verb",
+        "meaning": "Rise and fall irregularly in number or amount.",
+        "example": "Sensor readings fluctuated wildly under unstable power currents.",
+        "synonym": "Oscillate, vacillate",
+        "antonym": "Stabilize, persist"
+      }
+    ]
+  },
+  "previousQuestionBank": [
+    {
+      "id": "pq-2025-aut-1",
+      "year": "2025",
+      "semester": "Autumn",
+      "topic": "Seen Passage (French Revolution)",
+      "type": "Comprehension & Vocabulary",
+      "question": "In the French Revolution passage, why was the Third Estate determined to destroy the monarchy and nobility?",
+      "modelAnswer": "The Third Estate was determined to destroy the monarchy because it had suffered the absolute brunt of royal oppression and paid virtually all state taxes while the wealthy clergy and aristocracy escaped taxation entirely.",
+      "explanation": "Derived directly from Tibbitts Unit 13C text on Louis XVI and the States-General.",
+      "difficulty": "Medium",
+      "frequency": "High"
+    },
+    {
+      "id": "pq-2025-aut-2",
+      "year": "2025",
+      "semester": "Autumn",
+      "topic": "Conditionals",
+      "type": "Fill in the Blanks",
+      "question": "Had the anti-corruption commission been active, corruption (not be) so rampant.",
+      "modelAnswer": "would not have been",
+      "explanation": "Inverted 3rd Conditional (Had + Subject + been) requires would not have + V3 in the principal clause.",
+      "difficulty": "Challenging",
+      "frequency": "High"
+    },
+    {
+      "id": "pq-2024-spr-1",
+      "year": "2024",
+      "semester": "Spring",
+      "topic": "Subject-Verb Agreement",
+      "type": "Sentence Correction",
+      "question": "The number of applicants who have been interviewed (is/are) remarkably high.",
+      "modelAnswer": "is",
+      "explanation": "'The number of' denotes a singular mathematical figure and takes a singular verb; unlike 'A number of' which takes plural.",
+      "difficulty": "Easy",
+      "frequency": "High"
+    },
+    {
+      "id": "pq-2024-spr-2",
+      "year": "2024",
+      "semester": "Spring",
+      "topic": "Seen Passage (Film Director)",
+      "type": "Inferential",
+      "question": "What twin demands make the film director's vocation uniquely difficult according to Tibbitts Unit 11C?",
+      "modelAnswer": "The film director must simultaneously satisfy the demands of genuine artistic creativity while ensuring broad commercial popularity to recover substantial financial investments.",
+      "explanation": "Appeared in Autumn 2018 and Spring 2024 Semester End Examinations.",
+      "difficulty": "Medium",
+      "frequency": "High"
+    },
+    {
+      "id": "pq-2023-aut-1",
+      "year": "2023",
+      "semester": "Autumn",
+      "topic": "Subject-Verb Agreement",
+      "type": "Sentence Correction",
+      "question": "Neither you nor your brothers (is/are) suitable for this post.",
+      "modelAnswer": "are",
+      "explanation": "Correlative conjunction 'neither... nor' follows the rule of proximity: the verb agrees with the closer subject ('your brothers' [plural]).",
+      "difficulty": "Medium",
+      "frequency": "High"
+    },
+    {
+      "id": "pq-2023-spr-1",
+      "year": "2023",
+      "semester": "Spring",
+      "topic": "Causative Verbs",
+      "type": "Sentence Transformation",
+      "question": "I had the technician (repair) the laboratory power generator yesterday.",
+      "modelAnswer": "repair",
+      "explanation": "Active causative HAVE followed by a person/agent takes the bare infinitive (V1).",
+      "difficulty": "Medium",
+      "frequency": "High"
+    },
+    {
+      "id": "pq-2022-aut-1",
+      "year": "2022",
+      "semester": "Autumn",
+      "topic": "Common Mistakes",
+      "type": "Correction",
+      "question": "Correct: 'The two first chapters of the textbook are straightforward.'",
+      "modelAnswer": "The first two chapters of the textbook are straightforward.",
+      "explanation": "In English word order, ordinal numbers (first, second, third) MUST precede cardinal numbers (one, two, three).",
+      "difficulty": "Easy",
+      "frequency": "High"
+    },
+    {
+      "id": "pq-2022-spr-1",
+      "year": "2022",
+      "semester": "Spring",
+      "topic": "Subject-Verb Agreement",
+      "type": "Sentence Correction",
+      "question": "Living expenses in this country as well as abroad (is/are) all time high.",
+      "modelAnswer": "are",
+      "explanation": "The grammatical headword is the plural noun 'expenses'. The parenthetical phrase introduced by 'as well as' does not affect concord.",
+      "difficulty": "Medium",
+      "frequency": "High"
+    },
+    {
+      "id": "pq-2021-aut-1",
+      "year": "2021",
+      "semester": "Autumn",
+      "topic": "Voice Transformation",
+      "type": "Rewrite",
+      "question": "Passive transformation: 'They made him sign the confession statement.'",
+      "modelAnswer": "He was made to sign the confession statement.",
+      "explanation": "While active causative 'make' takes a bare infinitive, passive 'be made' requires the full infinitive with 'to'.",
+      "difficulty": "Challenging",
+      "frequency": "High"
+    },
+    {
+      "id": "pq-2020-spr-1",
+      "year": "2020",
+      "semester": "Spring",
+      "topic": "Conditional Sentences",
+      "type": "Completion",
+      "question": "If you had informed me earlier, I (arrange) alternative transport.",
+      "modelAnswer": "would have arranged",
+      "explanation": "Past counterfactual (3rd Conditional) requires would have + V3.",
+      "difficulty": "Easy",
+      "frequency": "High"
+    },
+    {
+      "id": "pq-2019-aut-1",
+      "year": "2019",
+      "semester": "Autumn",
+      "topic": "Prepositions",
+      "type": "Fill in the Blanks",
+      "question": "Smoking is injurious ___ human cardiovascular longevity.",
+      "modelAnswer": "to",
+      "explanation": "'Injurious' is followed by the appropriate preposition 'to'.",
+      "difficulty": "Easy",
+      "frequency": "High"
+    },
+    {
+      "id": "pq-2018-aut-1",
+      "year": "2018",
+      "semester": "Autumn",
+      "topic": "Subject-Verb Agreement",
+      "type": "Sentence Correction",
+      "question": "A bouquet of yellow roses (was/were) presented to the chief guest.",
+      "modelAnswer": "was",
+      "explanation": "The headword is 'bouquet' (singular unit); 'of yellow roses' is a prepositional modifier.",
+      "difficulty": "Easy",
+      "frequency": "High"
+    }
+  ],
+  "practiceZone": {
+    "sentenceCorrection": [
+      {
+        "id": "sc-1",
+        "sentence": "He entered into the conference hall without greeting his colleagues.",
+        "correction": "He entered the conference hall without greeting his colleagues.",
+        "rule": "'Enter' meaning to step into a physical room is transitive and does not take 'into'."
+      },
+      {
+        "id": "sc-2",
+        "sentence": "I look forward to hear from your office at your earliest convenience.",
+        "correction": "I look forward to hearing from your office...",
+        "rule": "The prepositional phrase 'look forward to' governs a gerund (-ing)."
+      },
+      {
+        "id": "sc-3",
+        "sentence": "The price of these imported computer components are exorbitant.",
+        "correction": "The price of these imported computer components is exorbitant.",
+        "rule": "Headword is singular 'price'."
+      },
+      {
+        "id": "sc-4",
+        "sentence": "Unless you do not practice coding regularly, you will struggle in the lab.",
+        "correction": "Unless you practice coding regularly...",
+        "rule": "'Unless' already contains a negative meaning ('if not'); do not add a double negative."
+      }
+    ],
+    "fillInTheBlanks": [
+      {
+        "id": "fib-1",
+        "sentence": "He insisted ___ paying the full invoice immediately.",
+        "answer": "on",
+        "hint": "Preposition following insist",
+        "rule": "Insist on + gerund"
+      },
+      {
+        "id": "fib-2",
+        "sentence": "The engineer is confident ___ passing the professional accreditation exam.",
+        "answer": "of",
+        "hint": "Confident of vs in",
+        "rule": "Confident of success"
+      },
+      {
+        "id": "fib-3",
+        "sentence": "No sooner had the alarm sounded ___ the occupants evacuated the floor.",
+        "answer": "than",
+        "hint": "Correlative with No sooner",
+        "rule": "No sooner... than"
+      }
+    ],
+    "errorIdentification": [
+      {
+        "id": "ei-1",
+        "sentence": "Each of the candidate who registered for the interview were notified.",
+        "errorWord": "were",
+        "correctedWord": "was",
+        "explanation": "'Each of' is strictly singular and governs 'was'."
+      },
+      {
+        "id": "ei-2",
+        "sentence": "The committee discussed about the curriculum reforms for over three hours.",
+        "errorWord": "about",
+        "correctedWord": "[omitted]",
+        "explanation": "'Discuss' is a transitive verb; it takes a direct object without 'about'."
+      }
+    ]
+  },
+  "mockExams": [
+    {
+      "id": "mock-grammar",
+      "title": "Grammar Master Mock Test",
+      "durationMinutes": 30,
+      "questionCount": 25,
+      "category": "Grammar",
+      "description": "Rigorous timed assessment covering Subject-Verb Agreement, Conditionals, Causatives, Tenses, Voice, and Common Mistakes.",
+      "negativeMarking": true,
+      "passMark": 60
+    },
+    {
+      "id": "mock-reading",
+      "title": "Reading Comprehension Mock Test",
+      "durationMinutes": 35,
+      "questionCount": 15,
+      "category": "Reading",
+      "description": "Full authentic comprehension drill featuring Tibbitts passage, vocabulary in context, inferential questions, and 50-word precision summary.",
+      "negativeMarking": false,
+      "passMark": 60
+    },
+    {
+      "id": "mock-writing",
+      "title": "Professional Writing Mock Workshop",
+      "durationMinutes": 40,
+      "questionCount": 2,
+      "category": "Writing",
+      "description": "Timed dual-drafting simulation: Official Business Letter (Complaint/Order) + 150-Word Argumentative Agree/Disagree Essay.",
+      "negativeMarking": false,
+      "passMark": 50
+    },
+    {
+      "id": "mock-vocab",
+      "title": "Academic Vocabulary Sprint",
+      "durationMinutes": 20,
+      "questionCount": 30,
+      "category": "Vocabulary",
+      "description": "Rapid-fire testing on academic synonyms, antonyms, parts of speech, and contextual sentence completion.",
+      "negativeMarking": true,
+      "passMark": 70
+    },
+    {
+      "id": "mock-midterm",
+      "title": "Complete Midterm Mock Examination (CIE 30 Marks)",
+      "durationMinutes": 45,
+      "questionCount": 25,
+      "category": "Midterm",
+      "description": "Comprehensive midterm simulation: Tibbitts 1C-10C reading, sentence construction, and short composition.",
+      "negativeMarking": false,
+      "passMark": 50
+    },
+    {
+      "id": "mock-final",
+      "title": "Full Final Semester End Mock Examination (SEE 50 Marks)",
+      "durationMinutes": 60,
+      "questionCount": 45,
+      "category": "Final Exam",
+      "description": "Exhaustive Semester End Examination simulation reproducing the official IIUC question paper architecture.",
+      "negativeMarking": false,
+      "passMark": 50
+    }
   ]
 };
